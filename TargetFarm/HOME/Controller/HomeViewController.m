@@ -10,6 +10,8 @@
 #import "HomeTableView.h"
 #import "HomeTableViewCell.h"
 #import "HomeTableSectionHeadView.h"
+#import "HomeFoundTargetView.h"
+#import "HomeFoundTargetViewController.h"
 
 #import "TargetModel.h"
 
@@ -54,6 +56,10 @@
 
 - (void)rightClick:(id )sender {
     
+    HomeFoundTargetViewController *foundTargetVC = [HomeFoundTargetViewController new];
+    BasicNavigationController *NavVC = [[BasicNavigationController alloc]initWithRootViewController:foundTargetVC];
+    [self presentViewController:NavVC animated:YES completion:nil] ;
+    
     
 }
 - (void)getData {
@@ -75,52 +81,56 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return self.targetAry.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    TargetModel *targetModel = self.targetAry[section];
-    return targetModel.unfold ? targetModel.scheduleAry.count:0;
+//    TargetModel *targetModel = self.targetAry[section];
+//    return targetModel.unfold ? targetModel.scheduleAry.count:0;
     
+    return self.targetAry.count;;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HomeTableViewCell *cell = [HomeTableViewCell cellWithTableView:tableView Identifier:@"homeTableView"];
-    TargetModel *targetModel = self.targetAry[indexPath.section];
-    TargetScheduleModel *targetScheduleModel = targetModel.scheduleAry[indexPath.row];
-    cell.targetScheduleModel = targetScheduleModel;
+    TargetModel *targetModel = self.targetAry[indexPath.row];
+    cell.targetModel = targetModel;
+//    cell.targetScheduleModel = targetScheduleModel;
 //    cell.textLabel.text = @"首页";
     return cell;
 }
 
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
-    return 100;
-}
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    
-    
-    HomeTableSectionHeadView *headView = [HomeTableSectionHeadView new];
-    headView.delegate = self;
-    headView.frame = CGRectMake(0, 0, Screen_Width, 0);
-    TargetModel *targetModel = self.targetAry[section];
-    targetModel.section = section;
-    headView.targetModel = targetModel;
-    
-    
-    return headView;
-    
-}
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
+    TargetModel *targetModel = self.targetAry[indexPath.row];
+    targetModel.unfold = YES;
+    [self.homeTableView reloadData];
 }
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//
+//    return 100;
+//}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//
+//
+//
+//    HomeTableSectionHeadView *headView = [HomeTableSectionHeadView new];
+//    headView.delegate = self;
+//    headView.frame = CGRectMake(0, 0, Screen_Width, 0);
+//    TargetModel *targetModel = self.targetAry[section];
+//    targetModel.section = section;
+//    headView.targetModel = targetModel;
+//
+//
+//    return headView;
+//
+//}
+
+
+
 //- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
 //
 //

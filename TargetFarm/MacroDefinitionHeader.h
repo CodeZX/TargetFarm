@@ -40,6 +40,11 @@
 #define TabBar_Height 49
 /** 导航条整体高度 */
 #define NavgationBar_Height 64
+
+//适配iPhone x 底栏高度
+#define Tabbar_Height     ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
+#define VoiceSearchHeight 150
+
 /** frame */
 #define Frame(x, y, width, height) CGRectMake((x),(y),(width),(height))
 /** Size*/
@@ -152,6 +157,17 @@
 #else
 #define NSLog(format,...)
 #endif
+
+//5.自定义高效率的 NSLog
+#ifdef DEBUG
+#define ZXLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#else
+#define ZXLog(...)
+
+
+
+#endif
+
 /***********以上为调试和打包相关固定写法勿动*******************/
 
 

@@ -22,9 +22,13 @@ typedef void (^NSDateCompletionBlock)(NSDate *date);
 
 #import "MacroDefinitionHeader.h"
 #import "Masonry.h"
+#import "JKCategories.h"
 
 #import "BasicNavigationController.h"
 #import "BasicViewController.h"
 #import "BasicTabBarController.h"
+#import "BasicView.h"
+#import "BasicTableView.h"
+#import "BasicTableViewCell.h"
 
 #endif /* PrefixHeader_pch */

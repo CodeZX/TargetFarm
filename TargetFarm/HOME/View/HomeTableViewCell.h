@@ -8,8 +8,10 @@
 
 #import "BasicTableViewCell.h"
 #import "TargetScheduleModel.h"
+#import "TargetModel.h"
 
 @interface HomeTableViewCell : BasicTableViewCell
 @property (nonatomic,strong) TargetScheduleModel *targetScheduleModel;
+@property (nonatomic,strong) TargetModel *targetModel;
 //+ (instancetype)cellWithTableView:(UITableView *)tableView Identifier:(NSString *)Identifier;
 @end

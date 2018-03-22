@@ -7,7 +7,7 @@
 //
 
 #import "BigFarmVC.h"
-
+#import "FarmScene.h"
 @interface BigFarmVC ()
 
 @end
@@ -16,7 +16,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    SKView *skView = [[SKView alloc] initWithFrame:self.view.bounds];
+    
+    //    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
+    FarmScene *scene = [FarmScene nodeWithFileNamed:@"FarmScene.sks"];
+    
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    // Present the scene
+    [skView presentScene:scene];
+    
+    skView.showsFPS = YES;
+    skView.showsNodeCount = YES;
+    self.view = skView;
 }
 
 - (void)didReceiveMemoryWarning {

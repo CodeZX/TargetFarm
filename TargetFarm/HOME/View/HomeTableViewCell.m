@@ -8,10 +8,13 @@
 //
 
 #import "HomeTableViewCell.h"
-
+#import "HomeTableCellContainerView.h"
 
 @interface HomeTableViewCell ()
 @property (nonatomic,weak) UILabel *contentLable;
+@property (nonatomic,weak) UIImageView *backgroundImg;
+@property (nonatomic,weak) HomeTableCellContainerView *containerView;
+@property (nonatomic,weak) UIImageView *tagImg;
 
 @end
 @implementation HomeTableViewCell
@@ -57,28 +60,55 @@
 
 - (void)setupUI {
     
-    self.backgroundColor = RandomColor;
+//    self.backgroundColor = RandomColor;
     
-    UILabel *contentLable = [UILabel new];
-    contentLable.backgroundColor = RandomColor;
-    contentLable.textColor = RandomColor;
-    [self.contentView addSubview:contentLable];
-    self.contentLable = contentLable;
-    self.contentLable.text    = @"1111";
-    [self.contentLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(30);
-        make.height.equalTo(20);
-        make.top.equalTo(10);
+    
+    HomeTableCellContainerView *containerView = [HomeTableCellContainerView new];
+    [self.contentView addSubview:containerView];
+    self.containerView = containerView;
+    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(UIEdgeInsetsMake(10, 10, 10, 10));
     }];
+    
+//    UIImageView *backgroundImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"beijing22"]];
+//    [self.containerView addSubview:backgroundImg];
+//    self.backgroundImg = backgroundImg;
+//    [self.backgroundImg mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(0);
+//    }];
+//
+//    UIImageView *tagImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"beijing1"]];
+//    [self.containerView addSubview:tagImg];
+//    self.tagImg = tagImg;
+//    [self.tagImg mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(UIEdgeInsetsMake(30, 30, 30, 30));
+//    }];
+//
+//    UILabel *contentLable = [UILabel new];
+////    contentLable.backgroundColor = RandomColor;
+//    contentLable.textColor = RandomColor;
+//    [self.containerView addSubview:contentLable];
+//    self.contentLable = contentLable;
+////    self.contentLable.text    = @"1111";
+//    [self.contentLable mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.equalTo(self.containerView);
+//
+//    }];
     
     
     
 }
 
+- (void)setTargetModel:(TargetModel *)targetModel {
+    
+    _targetModel = targetModel;
+    self.containerView.targetModel = targetModel;
+}
+
 - (void)setTargetScheduleModel:(TargetScheduleModel *)targetScheduleModel {
     
     _targetScheduleModel = targetScheduleModel;
-    self.contentLable.text = _targetScheduleModel.contentStr;
+//    self.contentLable.text = _targetScheduleModel.contentStr;
     
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

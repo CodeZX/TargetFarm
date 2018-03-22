@@ -53,7 +53,11 @@
 		18969A12206225940098AFFF /* HomeTableSectionHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A11206225940098AFFF /* HomeTableSectionHeadView.m */; };
 		18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A142062438A0098AFFF /* TargetScheduleModel.m */; };
 		18969A1820625E8D0098AFFF /* HomeAddTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A1720625E8D0098AFFF /* HomeAddTargetView.m */; };
-		18969A1E206266AE0098AFFF /* myview.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A1D206266AE0098AFFF /* myview.m */; };
+		18969A21206353640098AFFF /* HomeTableCellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A20206353640098AFFF /* HomeTableCellContainerView.m */; };
+		18969A24206371AA0098AFFF /* HomeFoundTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A23206371AA0098AFFF /* HomeFoundTargetView.m */; };
+		18969A27206372D20098AFFF /* HomeFoundTargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A26206372D20098AFFF /* HomeFoundTargetViewController.m */; };
+		18969A2A206383A50098AFFF /* HomeFoundTargetSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A29206383A40098AFFF /* HomeFoundTargetSelectBar.m */; };
+		18969A2D2063AA860098AFFF /* HomeAddPhaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A2C2063AA860098AFFF /* HomeAddPhaseViewController.m */; };
 		6BF3EC4D13651AAB018159A5 /* libPods-TargetFarm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC92D377CA07A55A32D2D23 /* libPods-TargetFarm.a */; };
 /* End PBXBuildFile section */
 
@@ -148,8 +152,16 @@
 		18969A142062438A0098AFFF /* TargetScheduleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TargetScheduleModel.m; sourceTree = "<group>"; };
 		18969A1620625E8D0098AFFF /* HomeAddTargetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeAddTargetView.h; sourceTree = "<group>"; };
 		18969A1720625E8D0098AFFF /* HomeAddTargetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeAddTargetView.m; sourceTree = "<group>"; };
-		18969A1C206266AE0098AFFF /* myview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myview.h; sourceTree = "<group>"; };
-		18969A1D206266AE0098AFFF /* myview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myview.m; sourceTree = "<group>"; };
+		18969A1F206353640098AFFF /* HomeTableCellContainerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeTableCellContainerView.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/HomeTableCellContainerView.h"; sourceTree = "<group>"; };
+		18969A20206353640098AFFF /* HomeTableCellContainerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeTableCellContainerView.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/HomeTableCellContainerView.m"; sourceTree = "<group>"; };
+		18969A22206371AA0098AFFF /* HomeFoundTargetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeFoundTargetView.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetView.h"; sourceTree = "<group>"; };
+		18969A23206371AA0098AFFF /* HomeFoundTargetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeFoundTargetView.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetView.m"; sourceTree = "<group>"; };
+		18969A25206372D20098AFFF /* HomeFoundTargetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeFoundTargetViewController.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetViewController.h"; sourceTree = "<group>"; };
+		18969A26206372D20098AFFF /* HomeFoundTargetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeFoundTargetViewController.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetViewController.m"; sourceTree = "<group>"; };
+		18969A28206383A40098AFFF /* HomeFoundTargetSelectBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeFoundTargetSelectBar.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetSelectBar.h"; sourceTree = "<group>"; };
+		18969A29206383A40098AFFF /* HomeFoundTargetSelectBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeFoundTargetSelectBar.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetSelectBar.m"; sourceTree = "<group>"; };
+		18969A2B2063AA860098AFFF /* HomeAddPhaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeAddPhaseViewController.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeAddPhaseViewController.h"; sourceTree = "<group>"; };
+		18969A2C2063AA860098AFFF /* HomeAddPhaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeAddPhaseViewController.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeAddPhaseViewController.m"; sourceTree = "<group>"; };
 		838D3402585F4CD83025EA95 /* Pods-TargetFarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetFarm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm.debug.xcconfig"; sourceTree = "<group>"; };
 		9FC92D377CA07A55A32D2D23 /* libPods-TargetFarm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TargetFarm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D0ED412AF8C131BDEC3FFE /* Pods-TargetFarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetFarm.release.xcconfig"; path = "Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm.release.xcconfig"; sourceTree = "<group>"; };
@@ -308,8 +320,6 @@
 				189699682061EBC90098AFFF /* Controller */,
 				189699692061EBC90098AFFF /* Model */,
 				1896996A2061EBC90098AFFF /* View */,
-				18969A1C206266AE0098AFFF /* myview.h */,
-				18969A1D206266AE0098AFFF /* myview.m */,
 			);
 			path = HOME;
 			sourceTree = "<group>";
@@ -321,6 +331,8 @@
 				1896997C2061EE930098AFFF /* HomeViewController.m */,
 				1896997E2061EEEA0098AFFF /* HomeTableViewController.h */,
 				1896997F2061EEEA0098AFFF /* HomeTableViewController.m */,
+				18969A25206372D20098AFFF /* HomeFoundTargetViewController.h */,
+				18969A26206372D20098AFFF /* HomeFoundTargetViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -347,6 +359,14 @@
 				18969A11206225940098AFFF /* HomeTableSectionHeadView.m */,
 				18969A1620625E8D0098AFFF /* HomeAddTargetView.h */,
 				18969A1720625E8D0098AFFF /* HomeAddTargetView.m */,
+				18969A1F206353640098AFFF /* HomeTableCellContainerView.h */,
+				18969A20206353640098AFFF /* HomeTableCellContainerView.m */,
+				18969A22206371AA0098AFFF /* HomeFoundTargetView.h */,
+				18969A23206371AA0098AFFF /* HomeFoundTargetView.m */,
+				18969A28206383A40098AFFF /* HomeFoundTargetSelectBar.h */,
+				18969A29206383A40098AFFF /* HomeFoundTargetSelectBar.m */,
+				18969A2B2063AA860098AFFF /* HomeAddPhaseViewController.h */,
+				18969A2C2063AA860098AFFF /* HomeAddPhaseViewController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -533,13 +553,17 @@
 				162DA2EE204FB71A009242DA /* main.m in Sources */,
 				18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */,
 				162DA331204FB7B3009242DA /* FarmTabBarVC.m in Sources */,
+				18969A21206353640098AFFF /* HomeTableCellContainerView.m in Sources */,
 				162DA336204FC6E3009242DA /* MyFarmVC.m in Sources */,
 				189699802061EEEA0098AFFF /* HomeTableViewController.m in Sources */,
 				18969A1820625E8D0098AFFF /* HomeAddTargetView.m in Sources */,
 				162DA323204FB742009242DA /* HomeCellModel.m in Sources */,
+				18969A27206372D20098AFFF /* HomeFoundTargetViewController.m in Sources */,
 				189699742061EDBA0098AFFF /* BasicNavigationController.m in Sources */,
 				162DA339204FC6F6009242DA /* BigFarmVC.m in Sources */,
+				18969A2D2063AA860098AFFF /* HomeAddPhaseViewController.m in Sources */,
 				18969A0F206210640098AFFF /* TargetModel.m in Sources */,
+				18969A2A206383A50098AFFF /* HomeFoundTargetSelectBar.m in Sources */,
 				162DA2E0204FB71A009242DA /* AppDelegate.m in Sources */,
 				162DA31C204FB728009242DA /* CommonTableViewHeaderFooterView.m in Sources */,
 				18969A0C206209B50098AFFF /* HomeTableViewCell.m in Sources */,
@@ -548,12 +572,12 @@
 				16C4B16820513A35003FB364 /* UITableViewCell+KJCategory.m in Sources */,
 				162DA319204FB728009242DA /* CommonTableViewTool.m in Sources */,
 				18969A00206206040098AFFF /* BasicTableView.m in Sources */,
-				18969A1E206266AE0098AFFF /* myview.m in Sources */,
 				18969A06206206620098AFFF /* HomeTableView.m in Sources */,
 				162DA315204FB728009242DA /* KJCell.m in Sources */,
 				162DA316204FB728009242DA /* KJCellModel.m in Sources */,
 				162DA329204FB776009242DA /* FarmScene.m in Sources */,
 				162DA32D204FB7A0009242DA /* HomeCell.m in Sources */,
+				18969A24206371AA0098AFFF /* HomeFoundTargetView.m in Sources */,
 				162DA31E204FB728009242DA /* TJWebVC.m in Sources */,
 				162DA38A20510962009242DA /* HomeSubCellModel.m in Sources */,
 				162DA314204FB728009242DA /* MBProgressHUD.m in Sources */,
