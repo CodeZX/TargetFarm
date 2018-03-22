@@ -1,0 +1,760 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		162DA2E0204FB71A009242DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2DF204FB71A009242DA /* AppDelegate.m */; };
+		162DA2E3204FB71A009242DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2E2204FB71A009242DA /* ViewController.m */; };
+		162DA2E8204FB71A009242DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162DA2E7204FB71A009242DA /* Assets.xcassets */; };
+		162DA2EB204FB71A009242DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 162DA2E9204FB71A009242DA /* LaunchScreen.storyboard */; };
+		162DA2EE204FB71A009242DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2ED204FB71A009242DA /* main.m */; };
+		162DA314204FB728009242DA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2F6204FB727009242DA /* MBProgressHUD.m */; };
+		162DA315204FB728009242DA /* KJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2F9204FB727009242DA /* KJCell.m */; };
+		162DA316204FB728009242DA /* KJCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2FB204FB727009242DA /* KJCellModel.m */; };
+		162DA317204FB728009242DA /* BaseTableViewToolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2FE204FB727009242DA /* BaseTableViewToolVC.m */; };
+		162DA318204FB728009242DA /* CommonSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA302204FB727009242DA /* CommonSectionModel.m */; };
+		162DA319204FB728009242DA /* CommonTableViewTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA303204FB727009242DA /* CommonTableViewTool.m */; };
+		162DA31A204FB728009242DA /* CommonTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA305204FB727009242DA /* CommonTableViewCellModel.m */; };
+		162DA31B204FB728009242DA /* CommonHeaderFooterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA308204FB727009242DA /* CommonHeaderFooterModel.m */; };
+		162DA31C204FB728009242DA /* CommonTableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA30A204FB727009242DA /* CommonTableViewHeaderFooterView.m */; };
+		162DA31D204FB728009242DA /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA30C204FB727009242DA /* CommonTableViewCell.m */; };
+		162DA31E204FB728009242DA /* TJWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA30F204FB727009242DA /* TJWebVC.m */; };
+		162DA31F204FB728009242DA /* noData.png in Resources */ = {isa = PBXBuildFile; fileRef = 162DA311204FB727009242DA /* noData.png */; };
+		162DA320204FB728009242DA /* TJLaunchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA312204FB727009242DA /* TJLaunchVC.m */; };
+		162DA323204FB742009242DA /* HomeCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA322204FB742009242DA /* HomeCellModel.m */; };
+		162DA326204FB75F009242DA /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA325204FB75F009242DA /* HomeVC.m */; };
+		162DA329204FB776009242DA /* FarmScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA328204FB776009242DA /* FarmScene.m */; };
+		162DA32D204FB7A0009242DA /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA32B204FB7A0009242DA /* HomeCell.m */; };
+		162DA32E204FB7A0009242DA /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162DA32C204FB7A0009242DA /* HomeCell.xib */; };
+		162DA331204FB7B3009242DA /* FarmTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA330204FB7B3009242DA /* FarmTabBarVC.m */; };
+		162DA333204FBC4F009242DA /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 162DA332204FBC4F009242DA /* FarmScene.sks */; };
+		162DA336204FC6E3009242DA /* MyFarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA335204FC6E3009242DA /* MyFarmVC.m */; };
+		162DA339204FC6F6009242DA /* BigFarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA338204FC6F6009242DA /* BigFarmVC.m */; };
+		162DA38620510439009242DA /* HomeSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA38420510439009242DA /* HomeSubCell.m */; };
+		162DA38720510439009242DA /* HomeSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162DA38520510439009242DA /* HomeSubCell.xib */; };
+		162DA38A20510962009242DA /* HomeSubCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA38920510961009242DA /* HomeSubCellModel.m */; };
+		16C4B16820513A35003FB364 /* UITableViewCell+KJCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C4B16720513A35003FB364 /* UITableViewCell+KJCategory.m */; };
+		189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699702061ED8E0098AFFF /* BasicTableViewController.m */; };
+		189699742061EDBA0098AFFF /* BasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699732061EDBA0098AFFF /* BasicNavigationController.m */; };
+		189699772061EE2C0098AFFF /* BasicTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699762061EE2C0098AFFF /* BasicTabBarController.m */; };
+		1896997A2061EE600098AFFF /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699792061EE600098AFFF /* BasicViewController.m */; };
+		1896997D2061EE930098AFFF /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896997C2061EE930098AFFF /* HomeViewController.m */; };
+		189699802061EEEA0098AFFF /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1896997F2061EEEA0098AFFF /* HomeTableViewController.m */; };
+		18969A00206206040098AFFF /* BasicTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699FF206206040098AFFF /* BasicTableView.m */; };
+		18969A032062062A0098AFFF /* BasicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A022062062A0098AFFF /* BasicView.m */; };
+		18969A06206206620098AFFF /* HomeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A05206206620098AFFF /* HomeTableView.m */; };
+		18969A09206209890098AFFF /* BasicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A08206209890098AFFF /* BasicTableViewCell.m */; };
+		18969A0C206209B50098AFFF /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A0B206209B50098AFFF /* HomeTableViewCell.m */; };
+		18969A0F206210640098AFFF /* TargetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A0E206210640098AFFF /* TargetModel.m */; };
+		18969A12206225940098AFFF /* HomeTableSectionHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A11206225940098AFFF /* HomeTableSectionHeadView.m */; };
+		18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A142062438A0098AFFF /* TargetScheduleModel.m */; };
+		18969A1820625E8D0098AFFF /* HomeAddTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A1720625E8D0098AFFF /* HomeAddTargetView.m */; };
+		18969A1E206266AE0098AFFF /* myview.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A1D206266AE0098AFFF /* myview.m */; };
+		6BF3EC4D13651AAB018159A5 /* libPods-TargetFarm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC92D377CA07A55A32D2D23 /* libPods-TargetFarm.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		162DA2DB204FB71A009242DA /* TargetFarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TargetFarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		162DA2DE204FB71A009242DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		162DA2DF204FB71A009242DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		162DA2E1204FB71A009242DA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		162DA2E2204FB71A009242DA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		162DA2E7204FB71A009242DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		162DA2EA204FB71A009242DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		162DA2EC204FB71A009242DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		162DA2ED204FB71A009242DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		162DA2F5204FB727009242DA /* TJLaunchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJLaunchVC.h; sourceTree = "<group>"; };
+		162DA2F6204FB727009242DA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		162DA2F9204FB727009242DA /* KJCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCell.m; sourceTree = "<group>"; };
+		162DA2FA204FB727009242DA /* KJCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCellModel.h; sourceTree = "<group>"; };
+		162DA2FB204FB727009242DA /* KJCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCellModel.m; sourceTree = "<group>"; };
+		162DA2FC204FB727009242DA /* KJCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCell.h; sourceTree = "<group>"; };
+		162DA2FE204FB727009242DA /* BaseTableViewToolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewToolVC.m; sourceTree = "<group>"; };
+		162DA2FF204FB727009242DA /* BaseTableViewToolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewToolVC.h; sourceTree = "<group>"; };
+		162DA301204FB727009242DA /* CommonTableViewCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewCellModel.h; sourceTree = "<group>"; };
+		162DA302204FB727009242DA /* CommonSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonSectionModel.m; sourceTree = "<group>"; };
+		162DA303204FB727009242DA /* CommonTableViewTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewTool.m; sourceTree = "<group>"; };
+		162DA304204FB727009242DA /* CommonHeaderFooterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonHeaderFooterModel.h; sourceTree = "<group>"; };
+		162DA305204FB727009242DA /* CommonTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewCellModel.m; sourceTree = "<group>"; };
+		162DA306204FB727009242DA /* CommonTableViewTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewTool.h; sourceTree = "<group>"; };
+		162DA307204FB727009242DA /* CommonSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonSectionModel.h; sourceTree = "<group>"; };
+		162DA308204FB727009242DA /* CommonHeaderFooterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonHeaderFooterModel.m; sourceTree = "<group>"; };
+		162DA30A204FB727009242DA /* CommonTableViewHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewHeaderFooterView.m; sourceTree = "<group>"; };
+		162DA30B204FB727009242DA /* CommonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewCell.h; sourceTree = "<group>"; };
+		162DA30C204FB727009242DA /* CommonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewCell.m; sourceTree = "<group>"; };
+		162DA30D204FB727009242DA /* CommonTableViewHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewHeaderFooterView.h; sourceTree = "<group>"; };
+		162DA30E204FB727009242DA /* TargetFarm-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TargetFarm-Bridging-Header.h"; sourceTree = "<group>"; };
+		162DA30F204FB727009242DA /* TJWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJWebVC.m; sourceTree = "<group>"; };
+		162DA310204FB727009242DA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		162DA311204FB727009242DA /* noData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noData.png; sourceTree = "<group>"; };
+		162DA312204FB727009242DA /* TJLaunchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJLaunchVC.m; sourceTree = "<group>"; };
+		162DA313204FB727009242DA /* TJWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJWebVC.h; sourceTree = "<group>"; };
+		162DA321204FB742009242DA /* HomeCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCellModel.h; sourceTree = "<group>"; };
+		162DA322204FB742009242DA /* HomeCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCellModel.m; sourceTree = "<group>"; };
+		162DA324204FB75F009242DA /* HomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
+		162DA325204FB75F009242DA /* HomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
+		162DA327204FB776009242DA /* FarmScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FarmScene.h; sourceTree = "<group>"; };
+		162DA328204FB776009242DA /* FarmScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarmScene.m; sourceTree = "<group>"; };
+		162DA32A204FB7A0009242DA /* HomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
+		162DA32B204FB7A0009242DA /* HomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
+		162DA32C204FB7A0009242DA /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
+		162DA32F204FB7B3009242DA /* FarmTabBarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FarmTabBarVC.h; sourceTree = "<group>"; };
+		162DA330204FB7B3009242DA /* FarmTabBarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarmTabBarVC.m; sourceTree = "<group>"; };
+		162DA332204FBC4F009242DA /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
+		162DA334204FC6E3009242DA /* MyFarmVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFarmVC.h; sourceTree = "<group>"; };
+		162DA335204FC6E3009242DA /* MyFarmVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFarmVC.m; sourceTree = "<group>"; };
+		162DA337204FC6F6009242DA /* BigFarmVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigFarmVC.h; sourceTree = "<group>"; };
+		162DA338204FC6F6009242DA /* BigFarmVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BigFarmVC.m; sourceTree = "<group>"; };
+		162DA38320510439009242DA /* HomeSubCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSubCell.h; sourceTree = "<group>"; };
+		162DA38420510439009242DA /* HomeSubCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSubCell.m; sourceTree = "<group>"; };
+		162DA38520510439009242DA /* HomeSubCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSubCell.xib; sourceTree = "<group>"; };
+		162DA38820510961009242DA /* HomeSubCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSubCellModel.h; sourceTree = "<group>"; };
+		162DA38920510961009242DA /* HomeSubCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSubCellModel.m; sourceTree = "<group>"; };
+		16C4B16620513A35003FB364 /* UITableViewCell+KJCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+KJCategory.h"; sourceTree = "<group>"; };
+		16C4B16720513A35003FB364 /* UITableViewCell+KJCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+KJCategory.m"; sourceTree = "<group>"; };
+		189699652061E8C50098AFFF /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		189699662061E9780098AFFF /* MacroDefinitionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinitionHeader.h; sourceTree = "<group>"; };
+		1896996F2061ED8E0098AFFF /* BasicTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTableViewController.h; sourceTree = "<group>"; };
+		189699702061ED8E0098AFFF /* BasicTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicTableViewController.m; sourceTree = "<group>"; };
+		189699722061EDBA0098AFFF /* BasicNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicNavigationController.h; sourceTree = "<group>"; };
+		189699732061EDBA0098AFFF /* BasicNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicNavigationController.m; sourceTree = "<group>"; };
+		189699752061EE2C0098AFFF /* BasicTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTabBarController.h; sourceTree = "<group>"; };
+		189699762061EE2C0098AFFF /* BasicTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicTabBarController.m; sourceTree = "<group>"; };
+		189699782061EE600098AFFF /* BasicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicViewController.h; sourceTree = "<group>"; };
+		189699792061EE600098AFFF /* BasicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
+		1896997B2061EE930098AFFF /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		1896997C2061EE930098AFFF /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		1896997E2061EEEA0098AFFF /* HomeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
+		1896997F2061EEEA0098AFFF /* HomeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
+		189699FE206206040098AFFF /* BasicTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTableView.h; sourceTree = "<group>"; };
+		189699FF206206040098AFFF /* BasicTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicTableView.m; sourceTree = "<group>"; };
+		18969A012062062A0098AFFF /* BasicView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicView.h; sourceTree = "<group>"; };
+		18969A022062062A0098AFFF /* BasicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicView.m; sourceTree = "<group>"; };
+		18969A04206206620098AFFF /* HomeTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableView.h; sourceTree = "<group>"; };
+		18969A05206206620098AFFF /* HomeTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableView.m; sourceTree = "<group>"; };
+		18969A07206209890098AFFF /* BasicTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTableViewCell.h; sourceTree = "<group>"; };
+		18969A08206209890098AFFF /* BasicTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicTableViewCell.m; sourceTree = "<group>"; };
+		18969A0A206209B50098AFFF /* HomeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
+		18969A0B206209B50098AFFF /* HomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
+		18969A0D206210640098AFFF /* TargetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TargetModel.h; sourceTree = "<group>"; };
+		18969A0E206210640098AFFF /* TargetModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TargetModel.m; sourceTree = "<group>"; };
+		18969A10206225930098AFFF /* HomeTableSectionHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableSectionHeadView.h; sourceTree = "<group>"; };
+		18969A11206225940098AFFF /* HomeTableSectionHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableSectionHeadView.m; sourceTree = "<group>"; };
+		18969A132062438A0098AFFF /* TargetScheduleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TargetScheduleModel.h; sourceTree = "<group>"; };
+		18969A142062438A0098AFFF /* TargetScheduleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TargetScheduleModel.m; sourceTree = "<group>"; };
+		18969A1620625E8D0098AFFF /* HomeAddTargetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeAddTargetView.h; sourceTree = "<group>"; };
+		18969A1720625E8D0098AFFF /* HomeAddTargetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeAddTargetView.m; sourceTree = "<group>"; };
+		18969A1C206266AE0098AFFF /* myview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myview.h; sourceTree = "<group>"; };
+		18969A1D206266AE0098AFFF /* myview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myview.m; sourceTree = "<group>"; };
+		838D3402585F4CD83025EA95 /* Pods-TargetFarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetFarm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm.debug.xcconfig"; sourceTree = "<group>"; };
+		9FC92D377CA07A55A32D2D23 /* libPods-TargetFarm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TargetFarm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4D0ED412AF8C131BDEC3FFE /* Pods-TargetFarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetFarm.release.xcconfig"; path = "Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		162DA2D8204FB71A009242DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BF3EC4D13651AAB018159A5 /* libPods-TargetFarm.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		162DA2D2204FB71A009242DA = {
+			isa = PBXGroup;
+			children = (
+				162DA2DD204FB71A009242DA /* TargetFarm */,
+				162DA2DC204FB71A009242DA /* Products */,
+				DFB6F19CBACDCBAAC220B5D2 /* Pods */,
+				A0D71116ED92A41F075F94AF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		162DA2DC204FB71A009242DA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				162DA2DB204FB71A009242DA /* TargetFarm.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		162DA2DD204FB71A009242DA /* TargetFarm */ = {
+			isa = PBXGroup;
+			children = (
+				189699FD206205AB0098AFFF /* BasicView */,
+				1896996E2061ED640098AFFF /* BasicController */,
+				189699672061EBC90098AFFF /* HOME */,
+				162DA2DE204FB71A009242DA /* AppDelegate.h */,
+				162DA2DF204FB71A009242DA /* AppDelegate.m */,
+				162DA321204FB742009242DA /* HomeCellModel.h */,
+				162DA322204FB742009242DA /* HomeCellModel.m */,
+				162DA324204FB75F009242DA /* HomeVC.h */,
+				162DA325204FB75F009242DA /* HomeVC.m */,
+				162DA32A204FB7A0009242DA /* HomeCell.h */,
+				162DA32B204FB7A0009242DA /* HomeCell.m */,
+				162DA32C204FB7A0009242DA /* HomeCell.xib */,
+				162DA38320510439009242DA /* HomeSubCell.h */,
+				162DA38420510439009242DA /* HomeSubCell.m */,
+				162DA38520510439009242DA /* HomeSubCell.xib */,
+				162DA38820510961009242DA /* HomeSubCellModel.h */,
+				162DA38920510961009242DA /* HomeSubCellModel.m */,
+				162DA32F204FB7B3009242DA /* FarmTabBarVC.h */,
+				162DA330204FB7B3009242DA /* FarmTabBarVC.m */,
+				162DA334204FC6E3009242DA /* MyFarmVC.h */,
+				162DA335204FC6E3009242DA /* MyFarmVC.m */,
+				162DA337204FC6F6009242DA /* BigFarmVC.h */,
+				162DA338204FC6F6009242DA /* BigFarmVC.m */,
+				162DA327204FB776009242DA /* FarmScene.h */,
+				162DA328204FB776009242DA /* FarmScene.m */,
+				162DA332204FBC4F009242DA /* FarmScene.sks */,
+				162DA2E1204FB71A009242DA /* ViewController.h */,
+				162DA2E2204FB71A009242DA /* ViewController.m */,
+				162DA2F4204FB727009242DA /* Objc */,
+				162DA2E7204FB71A009242DA /* Assets.xcassets */,
+				162DA2E9204FB71A009242DA /* LaunchScreen.storyboard */,
+				162DA2EC204FB71A009242DA /* Info.plist */,
+				162DA2ED204FB71A009242DA /* main.m */,
+				189699652061E8C50098AFFF /* PrefixHeader.pch */,
+				189699662061E9780098AFFF /* MacroDefinitionHeader.h */,
+			);
+			path = TargetFarm;
+			sourceTree = "<group>";
+		};
+		162DA2F4204FB727009242DA /* Objc */ = {
+			isa = PBXGroup;
+			children = (
+				162DA2F5204FB727009242DA /* TJLaunchVC.h */,
+				162DA2F6204FB727009242DA /* MBProgressHUD.m */,
+				16C4B16620513A35003FB364 /* UITableViewCell+KJCategory.h */,
+				16C4B16720513A35003FB364 /* UITableViewCell+KJCategory.m */,
+				162DA2F7204FB727009242DA /* KJTableViewTool */,
+				162DA30E204FB727009242DA /* TargetFarm-Bridging-Header.h */,
+				162DA30F204FB727009242DA /* TJWebVC.m */,
+				162DA310204FB727009242DA /* MBProgressHUD.h */,
+				162DA311204FB727009242DA /* noData.png */,
+				162DA312204FB727009242DA /* TJLaunchVC.m */,
+				162DA313204FB727009242DA /* TJWebVC.h */,
+			);
+			path = Objc;
+			sourceTree = "<group>";
+		};
+		162DA2F7204FB727009242DA /* KJTableViewTool */ = {
+			isa = PBXGroup;
+			children = (
+				162DA2F8204FB727009242DA /* CommonCell */,
+				162DA2FD204FB727009242DA /* Controller */,
+				162DA300204FB727009242DA /* Model */,
+				162DA309204FB727009242DA /* View */,
+			);
+			path = KJTableViewTool;
+			sourceTree = "<group>";
+		};
+		162DA2F8204FB727009242DA /* CommonCell */ = {
+			isa = PBXGroup;
+			children = (
+				162DA2F9204FB727009242DA /* KJCell.m */,
+				162DA2FA204FB727009242DA /* KJCellModel.h */,
+				162DA2FB204FB727009242DA /* KJCellModel.m */,
+				162DA2FC204FB727009242DA /* KJCell.h */,
+			);
+			path = CommonCell;
+			sourceTree = "<group>";
+		};
+		162DA2FD204FB727009242DA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				162DA2FE204FB727009242DA /* BaseTableViewToolVC.m */,
+				162DA2FF204FB727009242DA /* BaseTableViewToolVC.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		162DA300204FB727009242DA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				162DA301204FB727009242DA /* CommonTableViewCellModel.h */,
+				162DA302204FB727009242DA /* CommonSectionModel.m */,
+				162DA303204FB727009242DA /* CommonTableViewTool.m */,
+				162DA304204FB727009242DA /* CommonHeaderFooterModel.h */,
+				162DA305204FB727009242DA /* CommonTableViewCellModel.m */,
+				162DA306204FB727009242DA /* CommonTableViewTool.h */,
+				162DA307204FB727009242DA /* CommonSectionModel.h */,
+				162DA308204FB727009242DA /* CommonHeaderFooterModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		162DA309204FB727009242DA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				162DA30A204FB727009242DA /* CommonTableViewHeaderFooterView.m */,
+				162DA30B204FB727009242DA /* CommonTableViewCell.h */,
+				162DA30C204FB727009242DA /* CommonTableViewCell.m */,
+				162DA30D204FB727009242DA /* CommonTableViewHeaderFooterView.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		189699672061EBC90098AFFF /* HOME */ = {
+			isa = PBXGroup;
+			children = (
+				189699682061EBC90098AFFF /* Controller */,
+				189699692061EBC90098AFFF /* Model */,
+				1896996A2061EBC90098AFFF /* View */,
+				18969A1C206266AE0098AFFF /* myview.h */,
+				18969A1D206266AE0098AFFF /* myview.m */,
+			);
+			path = HOME;
+			sourceTree = "<group>";
+		};
+		189699682061EBC90098AFFF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1896997B2061EE930098AFFF /* HomeViewController.h */,
+				1896997C2061EE930098AFFF /* HomeViewController.m */,
+				1896997E2061EEEA0098AFFF /* HomeTableViewController.h */,
+				1896997F2061EEEA0098AFFF /* HomeTableViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		189699692061EBC90098AFFF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18969A0D206210640098AFFF /* TargetModel.h */,
+				18969A0E206210640098AFFF /* TargetModel.m */,
+				18969A132062438A0098AFFF /* TargetScheduleModel.h */,
+				18969A142062438A0098AFFF /* TargetScheduleModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1896996A2061EBC90098AFFF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18969A04206206620098AFFF /* HomeTableView.h */,
+				18969A05206206620098AFFF /* HomeTableView.m */,
+				18969A0A206209B50098AFFF /* HomeTableViewCell.h */,
+				18969A0B206209B50098AFFF /* HomeTableViewCell.m */,
+				18969A10206225930098AFFF /* HomeTableSectionHeadView.h */,
+				18969A11206225940098AFFF /* HomeTableSectionHeadView.m */,
+				18969A1620625E8D0098AFFF /* HomeAddTargetView.h */,
+				18969A1720625E8D0098AFFF /* HomeAddTargetView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1896996E2061ED640098AFFF /* BasicController */ = {
+			isa = PBXGroup;
+			children = (
+				1896996F2061ED8E0098AFFF /* BasicTableViewController.h */,
+				189699702061ED8E0098AFFF /* BasicTableViewController.m */,
+				189699722061EDBA0098AFFF /* BasicNavigationController.h */,
+				189699732061EDBA0098AFFF /* BasicNavigationController.m */,
+				189699752061EE2C0098AFFF /* BasicTabBarController.h */,
+				189699762061EE2C0098AFFF /* BasicTabBarController.m */,
+				189699782061EE600098AFFF /* BasicViewController.h */,
+				189699792061EE600098AFFF /* BasicViewController.m */,
+			);
+			path = BasicController;
+			sourceTree = "<group>";
+		};
+		189699FD206205AB0098AFFF /* BasicView */ = {
+			isa = PBXGroup;
+			children = (
+				189699FE206206040098AFFF /* BasicTableView.h */,
+				189699FF206206040098AFFF /* BasicTableView.m */,
+				18969A012062062A0098AFFF /* BasicView.h */,
+				18969A022062062A0098AFFF /* BasicView.m */,
+				18969A07206209890098AFFF /* BasicTableViewCell.h */,
+				18969A08206209890098AFFF /* BasicTableViewCell.m */,
+			);
+			name = BasicView;
+			path = TargetFarm/BasicView;
+			sourceTree = SOURCE_ROOT;
+		};
+		A0D71116ED92A41F075F94AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FC92D377CA07A55A32D2D23 /* libPods-TargetFarm.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFB6F19CBACDCBAAC220B5D2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				838D3402585F4CD83025EA95 /* Pods-TargetFarm.debug.xcconfig */,
+				F4D0ED412AF8C131BDEC3FFE /* Pods-TargetFarm.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		162DA2DA204FB71A009242DA /* TargetFarm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 162DA2F1204FB71A009242DA /* Build configuration list for PBXNativeTarget "TargetFarm" */;
+			buildPhases = (
+				4E6A65B7215D8E65D991134B /* [CP] Check Pods Manifest.lock */,
+				162DA2D7204FB71A009242DA /* Sources */,
+				162DA2D8204FB71A009242DA /* Frameworks */,
+				162DA2D9204FB71A009242DA /* Resources */,
+				EAABAE83307C1566EA306048 /* [CP] Embed Pods Frameworks */,
+				A47C6BA6CBC2258775E91F4F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TargetFarm;
+			productName = TargetFarm;
+			productReference = 162DA2DB204FB71A009242DA /* TargetFarm.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		162DA2D3204FB71A009242DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = chenkaijie;
+				TargetAttributes = {
+					162DA2DA204FB71A009242DA = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 162DA2D6204FB71A009242DA /* Build configuration list for PBXProject "TargetFarm" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 162DA2D2204FB71A009242DA;
+			productRefGroup = 162DA2DC204FB71A009242DA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				162DA2DA204FB71A009242DA /* TargetFarm */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		162DA2D9204FB71A009242DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				162DA333204FBC4F009242DA /* FarmScene.sks in Resources */,
+				162DA38720510439009242DA /* HomeSubCell.xib in Resources */,
+				162DA31F204FB728009242DA /* noData.png in Resources */,
+				162DA2EB204FB71A009242DA /* LaunchScreen.storyboard in Resources */,
+				162DA2E8204FB71A009242DA /* Assets.xcassets in Resources */,
+				162DA32E204FB7A0009242DA /* HomeCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4E6A65B7215D8E65D991134B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TargetFarm-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A47C6BA6CBC2258775E91F4F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAABAE83307C1566EA306048 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		162DA2D7204FB71A009242DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				162DA31A204FB728009242DA /* CommonTableViewCellModel.m in Sources */,
+				162DA2E3204FB71A009242DA /* ViewController.m in Sources */,
+				162DA31B204FB728009242DA /* CommonHeaderFooterModel.m in Sources */,
+				189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */,
+				18969A09206209890098AFFF /* BasicTableViewCell.m in Sources */,
+				162DA2EE204FB71A009242DA /* main.m in Sources */,
+				18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */,
+				162DA331204FB7B3009242DA /* FarmTabBarVC.m in Sources */,
+				162DA336204FC6E3009242DA /* MyFarmVC.m in Sources */,
+				189699802061EEEA0098AFFF /* HomeTableViewController.m in Sources */,
+				18969A1820625E8D0098AFFF /* HomeAddTargetView.m in Sources */,
+				162DA323204FB742009242DA /* HomeCellModel.m in Sources */,
+				189699742061EDBA0098AFFF /* BasicNavigationController.m in Sources */,
+				162DA339204FC6F6009242DA /* BigFarmVC.m in Sources */,
+				18969A0F206210640098AFFF /* TargetModel.m in Sources */,
+				162DA2E0204FB71A009242DA /* AppDelegate.m in Sources */,
+				162DA31C204FB728009242DA /* CommonTableViewHeaderFooterView.m in Sources */,
+				18969A0C206209B50098AFFF /* HomeTableViewCell.m in Sources */,
+				162DA38620510439009242DA /* HomeSubCell.m in Sources */,
+				18969A032062062A0098AFFF /* BasicView.m in Sources */,
+				16C4B16820513A35003FB364 /* UITableViewCell+KJCategory.m in Sources */,
+				162DA319204FB728009242DA /* CommonTableViewTool.m in Sources */,
+				18969A00206206040098AFFF /* BasicTableView.m in Sources */,
+				18969A1E206266AE0098AFFF /* myview.m in Sources */,
+				18969A06206206620098AFFF /* HomeTableView.m in Sources */,
+				162DA315204FB728009242DA /* KJCell.m in Sources */,
+				162DA316204FB728009242DA /* KJCellModel.m in Sources */,
+				162DA329204FB776009242DA /* FarmScene.m in Sources */,
+				162DA32D204FB7A0009242DA /* HomeCell.m in Sources */,
+				162DA31E204FB728009242DA /* TJWebVC.m in Sources */,
+				162DA38A20510962009242DA /* HomeSubCellModel.m in Sources */,
+				162DA314204FB728009242DA /* MBProgressHUD.m in Sources */,
+				162DA318204FB728009242DA /* CommonSectionModel.m in Sources */,
+				1896997D2061EE930098AFFF /* HomeViewController.m in Sources */,
+				1896997A2061EE600098AFFF /* BasicViewController.m in Sources */,
+				189699772061EE2C0098AFFF /* BasicTabBarController.m in Sources */,
+				162DA326204FB75F009242DA /* HomeVC.m in Sources */,
+				18969A12206225940098AFFF /* HomeTableSectionHeadView.m in Sources */,
+				162DA317204FB728009242DA /* BaseTableViewToolVC.m in Sources */,
+				162DA320204FB728009242DA /* TJLaunchVC.m in Sources */,
+				162DA31D204FB728009242DA /* CommonTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		162DA2E9204FB71A009242DA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				162DA2EA204FB71A009242DA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		162DA2EF204FB71A009242DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		162DA2F0204FB71A009242DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		162DA2F2204FB71A009242DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 838D3402585F4CD83025EA95 /* Pods-TargetFarm.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MN368D4UQP;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"/**",
+				);
+				INFOPLIST_FILE = TargetFarm/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.TargetFarm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
+			};
+			name = Debug;
+		};
+		162DA2F3204FB71A009242DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4D0ED412AF8C131BDEC3FFE /* Pods-TargetFarm.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MN368D4UQP;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"/**",
+				);
+				INFOPLIST_FILE = TargetFarm/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.TargetFarm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		162DA2D6204FB71A009242DA /* Build configuration list for PBXProject "TargetFarm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				162DA2EF204FB71A009242DA /* Debug */,
+				162DA2F0204FB71A009242DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		162DA2F1204FB71A009242DA /* Build configuration list for PBXNativeTarget "TargetFarm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				162DA2F2204FB71A009242DA /* Debug */,
+				162DA2F3204FB71A009242DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 162DA2D3204FB71A009242DA /* Project object */;
+}
