@@ -58,6 +58,11 @@
 		18969A27206372D20098AFFF /* HomeFoundTargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A26206372D20098AFFF /* HomeFoundTargetViewController.m */; };
 		18969A2A206383A50098AFFF /* HomeFoundTargetSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A29206383A40098AFFF /* HomeFoundTargetSelectBar.m */; };
 		18969A2D2063AA860098AFFF /* HomeAddPhaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A2C2063AA860098AFFF /* HomeAddPhaseViewController.m */; };
+		18969A3720648F320098AFFF /* WSDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18969A3320648F320098AFFF /* WSDatePickerView.xib */; };
+		18969A3820648F320098AFFF /* WSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A3420648F320098AFFF /* WSDatePickerView.m */; };
+		18969A3920648F320098AFFF /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A3520648F320098AFFF /* NSDate+Extension.m */; };
+		18969A3A20648F320098AFFF /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A3620648F320098AFFF /* UIView+Extension.m */; };
+		18969A492064CE940098AFFF /* HomeAddPhaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A482064CE940098AFFF /* HomeAddPhaseCell.m */; };
 		6BF3EC4D13651AAB018159A5 /* libPods-TargetFarm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC92D377CA07A55A32D2D23 /* libPods-TargetFarm.a */; };
 /* End PBXBuildFile section */
 
@@ -162,6 +167,15 @@
 		18969A29206383A40098AFFF /* HomeFoundTargetSelectBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeFoundTargetSelectBar.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetSelectBar.m"; sourceTree = "<group>"; };
 		18969A2B2063AA860098AFFF /* HomeAddPhaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeAddPhaseViewController.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeAddPhaseViewController.h"; sourceTree = "<group>"; };
 		18969A2C2063AA860098AFFF /* HomeAddPhaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeAddPhaseViewController.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeAddPhaseViewController.m"; sourceTree = "<group>"; };
+		18969A3020648F320098AFFF /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		18969A3120648F320098AFFF /* WSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSDatePickerView.h; sourceTree = "<group>"; };
+		18969A3220648F320098AFFF /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		18969A3320648F320098AFFF /* WSDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WSDatePickerView.xib; sourceTree = "<group>"; };
+		18969A3420648F320098AFFF /* WSDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSDatePickerView.m; sourceTree = "<group>"; };
+		18969A3520648F320098AFFF /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		18969A3620648F320098AFFF /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		18969A472064CE940098AFFF /* HomeAddPhaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeAddPhaseCell.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeAddPhaseCell.h"; sourceTree = "<group>"; };
+		18969A482064CE940098AFFF /* HomeAddPhaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeAddPhaseCell.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeAddPhaseCell.m"; sourceTree = "<group>"; };
 		838D3402585F4CD83025EA95 /* Pods-TargetFarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetFarm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm.debug.xcconfig"; sourceTree = "<group>"; };
 		9FC92D377CA07A55A32D2D23 /* libPods-TargetFarm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TargetFarm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D0ED412AF8C131BDEC3FFE /* Pods-TargetFarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetFarm.release.xcconfig"; path = "Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm.release.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +214,7 @@
 		162DA2DD204FB71A009242DA /* TargetFarm */ = {
 			isa = PBXGroup;
 			children = (
+				18969A2E20648F320098AFFF /* Other */,
 				189699FD206205AB0098AFFF /* BasicView */,
 				1896996E2061ED640098AFFF /* BasicController */,
 				189699672061EBC90098AFFF /* HOME */,
@@ -367,6 +382,8 @@
 				18969A29206383A40098AFFF /* HomeFoundTargetSelectBar.m */,
 				18969A2B2063AA860098AFFF /* HomeAddPhaseViewController.h */,
 				18969A2C2063AA860098AFFF /* HomeAddPhaseViewController.m */,
+				18969A472064CE940098AFFF /* HomeAddPhaseCell.h */,
+				18969A482064CE940098AFFF /* HomeAddPhaseCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -399,6 +416,28 @@
 			name = BasicView;
 			path = TargetFarm/BasicView;
 			sourceTree = SOURCE_ROOT;
+		};
+		18969A2E20648F320098AFFF /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				18969A2F20648F320098AFFF /* WSDaePickerView */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		18969A2F20648F320098AFFF /* WSDaePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				18969A3020648F320098AFFF /* NSDate+Extension.h */,
+				18969A3120648F320098AFFF /* WSDatePickerView.h */,
+				18969A3220648F320098AFFF /* UIView+Extension.h */,
+				18969A3320648F320098AFFF /* WSDatePickerView.xib */,
+				18969A3420648F320098AFFF /* WSDatePickerView.m */,
+				18969A3520648F320098AFFF /* NSDate+Extension.m */,
+				18969A3620648F320098AFFF /* UIView+Extension.m */,
+			);
+			path = WSDaePickerView;
+			sourceTree = "<group>";
 		};
 		A0D71116ED92A41F075F94AF /* Frameworks */ = {
 			isa = PBXGroup;
@@ -479,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				162DA333204FBC4F009242DA /* FarmScene.sks in Resources */,
+				18969A3720648F320098AFFF /* WSDatePickerView.xib in Resources */,
 				162DA38720510439009242DA /* HomeSubCell.xib in Resources */,
 				162DA31F204FB728009242DA /* noData.png in Resources */,
 				162DA2EB204FB71A009242DA /* LaunchScreen.storyboard in Resources */,
@@ -551,9 +591,11 @@
 				189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */,
 				18969A09206209890098AFFF /* BasicTableViewCell.m in Sources */,
 				162DA2EE204FB71A009242DA /* main.m in Sources */,
+				18969A3820648F320098AFFF /* WSDatePickerView.m in Sources */,
 				18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */,
 				162DA331204FB7B3009242DA /* FarmTabBarVC.m in Sources */,
 				18969A21206353640098AFFF /* HomeTableCellContainerView.m in Sources */,
+				18969A492064CE940098AFFF /* HomeAddPhaseCell.m in Sources */,
 				162DA336204FC6E3009242DA /* MyFarmVC.m in Sources */,
 				189699802061EEEA0098AFFF /* HomeTableViewController.m in Sources */,
 				18969A1820625E8D0098AFFF /* HomeAddTargetView.m in Sources */,
@@ -570,9 +612,11 @@
 				162DA38620510439009242DA /* HomeSubCell.m in Sources */,
 				18969A032062062A0098AFFF /* BasicView.m in Sources */,
 				16C4B16820513A35003FB364 /* UITableViewCell+KJCategory.m in Sources */,
+				18969A3920648F320098AFFF /* NSDate+Extension.m in Sources */,
 				162DA319204FB728009242DA /* CommonTableViewTool.m in Sources */,
 				18969A00206206040098AFFF /* BasicTableView.m in Sources */,
 				18969A06206206620098AFFF /* HomeTableView.m in Sources */,
+				18969A3A20648F320098AFFF /* UIView+Extension.m in Sources */,
 				162DA315204FB728009242DA /* KJCell.m in Sources */,
 				162DA316204FB728009242DA /* KJCellModel.m in Sources */,
 				162DA329204FB776009242DA /* FarmScene.m in Sources */,

@@ -24,6 +24,9 @@
 #define Screen_Width [UIScreen mainScreen].bounds.size.width
 #define Screen_Height [UIScreen mainScreen].bounds.size.height
 
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
 #define iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
 
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
@@ -112,7 +115,9 @@
 /** 字体的宏定义(px)*/
 #define fontPx(size) [UIFont systemFontOfSize:size/2 + 2]
 
+#define FONT_PT_FROM_PX(pixel) ([UIFont systemFontOfSize:pixel*3/4])
 
+#define UIFontFromPixel(pixel) ([UIFont systemFontOfSize:pixel*3/4])
 #pragma mark--  ------特殊的宏------
 /** 这个是第三方布局使用的 一个特殊宏*/ //https://github.com/SnapKit/Masonry
 #define MAS_SHORTHAND
@@ -168,6 +173,14 @@
 
 #endif
 
+
+#define D_INTERVAL_LEFT  15
+#define D_INTERVAL_RIGTH 15
+#define D_INTERVAL       10
+#define D_FONT_SIZE 17
+
+#define FONT_SIZE_LITTLE 12
+#define FONT_SIZE_BIG 25
 /***********以上为调试和打包相关固定写法勿动*******************/
 
 
