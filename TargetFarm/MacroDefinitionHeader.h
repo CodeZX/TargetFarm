@@ -157,21 +157,18 @@
 
 #endif
 
-#ifdef DEBUG
-#define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
-#else
-#define NSLog(format,...)
-#endif
+
 
 //5.自定义高效率的 NSLog
 #ifdef DEBUG
-#define ZXLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#define DEBUG_LOG(...) NSLog(@"%s 第%d行\n    %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
 #else
-#define ZXLog(...)
-
-
-
+#define DEBUG_LOG(...)
 #endif
+
+#define PATH_OF_APP_HOME    NSHomeDirectory()
+#define PATH_OF_TEMP        NSTemporaryDirectory()
+#define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 
 
 #define D_INTERVAL_LEFT  15

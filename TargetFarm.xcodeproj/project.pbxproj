@@ -38,6 +38,12 @@
 		162DA38720510439009242DA /* HomeSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162DA38520510439009242DA /* HomeSubCell.xib */; };
 		162DA38A20510962009242DA /* HomeSubCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA38920510961009242DA /* HomeSubCellModel.m */; };
 		16C4B16820513A35003FB364 /* UITableViewCell+KJCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C4B16720513A35003FB364 /* UITableViewCell+KJCategory.m */; };
+		1800951A206885C4003813C1 /* HomeFoundTargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18009518206885C4003813C1 /* HomeFoundTargetViewController.m */; };
+		1800951D206887CF003813C1 /* HomeTableCellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800951C206887CF003813C1 /* HomeTableCellContainerView.m */; };
+		180095202068882D003813C1 /* HomeFoundTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800951E2068882D003813C1 /* HomeFoundTargetView.m */; };
+		180095232068885C003813C1 /* HomeFoundTargetSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 180095212068885C003813C1 /* HomeFoundTargetSelectBar.m */; };
+		1800952620688917003813C1 /* HomeAddPhaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800952520688917003813C1 /* HomeAddPhaseViewController.m */; };
+		1800952920688954003813C1 /* HomeAddPhaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800952820688954003813C1 /* HomeAddPhaseCell.m */; };
 		189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699702061ED8E0098AFFF /* BasicTableViewController.m */; };
 		189699742061EDBA0098AFFF /* BasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699732061EDBA0098AFFF /* BasicNavigationController.m */; };
 		189699772061EE2C0098AFFF /* BasicTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699762061EE2C0098AFFF /* BasicTabBarController.m */; };
@@ -53,16 +59,10 @@
 		18969A12206225940098AFFF /* HomeTableSectionHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A11206225940098AFFF /* HomeTableSectionHeadView.m */; };
 		18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A142062438A0098AFFF /* TargetScheduleModel.m */; };
 		18969A1820625E8D0098AFFF /* HomeAddTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A1720625E8D0098AFFF /* HomeAddTargetView.m */; };
-		18969A21206353640098AFFF /* HomeTableCellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A20206353640098AFFF /* HomeTableCellContainerView.m */; };
-		18969A24206371AA0098AFFF /* HomeFoundTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A23206371AA0098AFFF /* HomeFoundTargetView.m */; };
-		18969A27206372D20098AFFF /* HomeFoundTargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A26206372D20098AFFF /* HomeFoundTargetViewController.m */; };
-		18969A2A206383A50098AFFF /* HomeFoundTargetSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A29206383A40098AFFF /* HomeFoundTargetSelectBar.m */; };
-		18969A2D2063AA860098AFFF /* HomeAddPhaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A2C2063AA860098AFFF /* HomeAddPhaseViewController.m */; };
 		18969A3720648F320098AFFF /* WSDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18969A3320648F320098AFFF /* WSDatePickerView.xib */; };
 		18969A3820648F320098AFFF /* WSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A3420648F320098AFFF /* WSDatePickerView.m */; };
 		18969A3920648F320098AFFF /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A3520648F320098AFFF /* NSDate+Extension.m */; };
 		18969A3A20648F320098AFFF /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A3620648F320098AFFF /* UIView+Extension.m */; };
-		18969A492064CE940098AFFF /* HomeAddPhaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A482064CE940098AFFF /* HomeAddPhaseCell.m */; };
 		6BF3EC4D13651AAB018159A5 /* libPods-TargetFarm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC92D377CA07A55A32D2D23 /* libPods-TargetFarm.a */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +125,18 @@
 		162DA38920510961009242DA /* HomeSubCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSubCellModel.m; sourceTree = "<group>"; };
 		16C4B16620513A35003FB364 /* UITableViewCell+KJCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+KJCategory.h"; sourceTree = "<group>"; };
 		16C4B16720513A35003FB364 /* UITableViewCell+KJCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+KJCategory.m"; sourceTree = "<group>"; };
+		18009518206885C4003813C1 /* HomeFoundTargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFoundTargetViewController.m; sourceTree = "<group>"; };
+		18009519206885C4003813C1 /* HomeFoundTargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFoundTargetViewController.h; sourceTree = "<group>"; };
+		1800951B206887CF003813C1 /* HomeTableCellContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableCellContainerView.h; sourceTree = "<group>"; };
+		1800951C206887CF003813C1 /* HomeTableCellContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableCellContainerView.m; sourceTree = "<group>"; };
+		1800951E2068882D003813C1 /* HomeFoundTargetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFoundTargetView.m; sourceTree = "<group>"; };
+		1800951F2068882D003813C1 /* HomeFoundTargetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFoundTargetView.h; sourceTree = "<group>"; };
+		180095212068885C003813C1 /* HomeFoundTargetSelectBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeFoundTargetSelectBar.m; sourceTree = "<group>"; };
+		180095222068885C003813C1 /* HomeFoundTargetSelectBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeFoundTargetSelectBar.h; sourceTree = "<group>"; };
+		1800952420688917003813C1 /* HomeAddPhaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeAddPhaseViewController.h; sourceTree = "<group>"; };
+		1800952520688917003813C1 /* HomeAddPhaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeAddPhaseViewController.m; sourceTree = "<group>"; };
+		1800952720688954003813C1 /* HomeAddPhaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeAddPhaseCell.h; sourceTree = "<group>"; };
+		1800952820688954003813C1 /* HomeAddPhaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeAddPhaseCell.m; sourceTree = "<group>"; };
 		189699652061E8C50098AFFF /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		189699662061E9780098AFFF /* MacroDefinitionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinitionHeader.h; sourceTree = "<group>"; };
 		1896996F2061ED8E0098AFFF /* BasicTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTableViewController.h; sourceTree = "<group>"; };
@@ -157,16 +169,6 @@
 		18969A142062438A0098AFFF /* TargetScheduleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TargetScheduleModel.m; sourceTree = "<group>"; };
 		18969A1620625E8D0098AFFF /* HomeAddTargetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeAddTargetView.h; sourceTree = "<group>"; };
 		18969A1720625E8D0098AFFF /* HomeAddTargetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeAddTargetView.m; sourceTree = "<group>"; };
-		18969A1F206353640098AFFF /* HomeTableCellContainerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeTableCellContainerView.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/HomeTableCellContainerView.h"; sourceTree = "<group>"; };
-		18969A20206353640098AFFF /* HomeTableCellContainerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeTableCellContainerView.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/HomeTableCellContainerView.m"; sourceTree = "<group>"; };
-		18969A22206371AA0098AFFF /* HomeFoundTargetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeFoundTargetView.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetView.h"; sourceTree = "<group>"; };
-		18969A23206371AA0098AFFF /* HomeFoundTargetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeFoundTargetView.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetView.m"; sourceTree = "<group>"; };
-		18969A25206372D20098AFFF /* HomeFoundTargetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeFoundTargetViewController.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetViewController.h"; sourceTree = "<group>"; };
-		18969A26206372D20098AFFF /* HomeFoundTargetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeFoundTargetViewController.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetViewController.m"; sourceTree = "<group>"; };
-		18969A28206383A40098AFFF /* HomeFoundTargetSelectBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeFoundTargetSelectBar.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetSelectBar.h"; sourceTree = "<group>"; };
-		18969A29206383A40098AFFF /* HomeFoundTargetSelectBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeFoundTargetSelectBar.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeFoundTargetSelectBar.m"; sourceTree = "<group>"; };
-		18969A2B2063AA860098AFFF /* HomeAddPhaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeAddPhaseViewController.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeAddPhaseViewController.h"; sourceTree = "<group>"; };
-		18969A2C2063AA860098AFFF /* HomeAddPhaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeAddPhaseViewController.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeAddPhaseViewController.m"; sourceTree = "<group>"; };
 		18969A3020648F320098AFFF /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		18969A3120648F320098AFFF /* WSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSDatePickerView.h; sourceTree = "<group>"; };
 		18969A3220648F320098AFFF /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
@@ -174,8 +176,6 @@
 		18969A3420648F320098AFFF /* WSDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSDatePickerView.m; sourceTree = "<group>"; };
 		18969A3520648F320098AFFF /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		18969A3620648F320098AFFF /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
-		18969A472064CE940098AFFF /* HomeAddPhaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeAddPhaseCell.h; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeAddPhaseCell.h"; sourceTree = "<group>"; };
-		18969A482064CE940098AFFF /* HomeAddPhaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HomeAddPhaseCell.m; path = "../../../../TargetFarm3月9日晚上cell完成/TargetFarm/HOME/Model/HomeAddPhaseCell.m"; sourceTree = "<group>"; };
 		838D3402585F4CD83025EA95 /* Pods-TargetFarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetFarm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm.debug.xcconfig"; sourceTree = "<group>"; };
 		9FC92D377CA07A55A32D2D23 /* libPods-TargetFarm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TargetFarm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D0ED412AF8C131BDEC3FFE /* Pods-TargetFarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetFarm.release.xcconfig"; path = "Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm.release.xcconfig"; sourceTree = "<group>"; };
@@ -346,8 +346,10 @@
 				1896997C2061EE930098AFFF /* HomeViewController.m */,
 				1896997E2061EEEA0098AFFF /* HomeTableViewController.h */,
 				1896997F2061EEEA0098AFFF /* HomeTableViewController.m */,
-				18969A25206372D20098AFFF /* HomeFoundTargetViewController.h */,
-				18969A26206372D20098AFFF /* HomeFoundTargetViewController.m */,
+				18009519206885C4003813C1 /* HomeFoundTargetViewController.h */,
+				18009518206885C4003813C1 /* HomeFoundTargetViewController.m */,
+				1800952420688917003813C1 /* HomeAddPhaseViewController.h */,
+				1800952520688917003813C1 /* HomeAddPhaseViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -374,16 +376,14 @@
 				18969A11206225940098AFFF /* HomeTableSectionHeadView.m */,
 				18969A1620625E8D0098AFFF /* HomeAddTargetView.h */,
 				18969A1720625E8D0098AFFF /* HomeAddTargetView.m */,
-				18969A1F206353640098AFFF /* HomeTableCellContainerView.h */,
-				18969A20206353640098AFFF /* HomeTableCellContainerView.m */,
-				18969A22206371AA0098AFFF /* HomeFoundTargetView.h */,
-				18969A23206371AA0098AFFF /* HomeFoundTargetView.m */,
-				18969A28206383A40098AFFF /* HomeFoundTargetSelectBar.h */,
-				18969A29206383A40098AFFF /* HomeFoundTargetSelectBar.m */,
-				18969A2B2063AA860098AFFF /* HomeAddPhaseViewController.h */,
-				18969A2C2063AA860098AFFF /* HomeAddPhaseViewController.m */,
-				18969A472064CE940098AFFF /* HomeAddPhaseCell.h */,
-				18969A482064CE940098AFFF /* HomeAddPhaseCell.m */,
+				1800951B206887CF003813C1 /* HomeTableCellContainerView.h */,
+				1800951C206887CF003813C1 /* HomeTableCellContainerView.m */,
+				1800951F2068882D003813C1 /* HomeFoundTargetView.h */,
+				1800951E2068882D003813C1 /* HomeFoundTargetView.m */,
+				180095222068885C003813C1 /* HomeFoundTargetSelectBar.h */,
+				180095212068885C003813C1 /* HomeFoundTargetSelectBar.m */,
+				1800952720688954003813C1 /* HomeAddPhaseCell.h */,
+				1800952820688954003813C1 /* HomeAddPhaseCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -586,26 +586,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				162DA31A204FB728009242DA /* CommonTableViewCellModel.m in Sources */,
+				1800951D206887CF003813C1 /* HomeTableCellContainerView.m in Sources */,
+				1800951A206885C4003813C1 /* HomeFoundTargetViewController.m in Sources */,
 				162DA2E3204FB71A009242DA /* ViewController.m in Sources */,
 				162DA31B204FB728009242DA /* CommonHeaderFooterModel.m in Sources */,
 				189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */,
 				18969A09206209890098AFFF /* BasicTableViewCell.m in Sources */,
 				162DA2EE204FB71A009242DA /* main.m in Sources */,
+				180095202068882D003813C1 /* HomeFoundTargetView.m in Sources */,
 				18969A3820648F320098AFFF /* WSDatePickerView.m in Sources */,
+				1800952920688954003813C1 /* HomeAddPhaseCell.m in Sources */,
 				18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */,
+				180095232068885C003813C1 /* HomeFoundTargetSelectBar.m in Sources */,
 				162DA331204FB7B3009242DA /* FarmTabBarVC.m in Sources */,
-				18969A21206353640098AFFF /* HomeTableCellContainerView.m in Sources */,
-				18969A492064CE940098AFFF /* HomeAddPhaseCell.m in Sources */,
 				162DA336204FC6E3009242DA /* MyFarmVC.m in Sources */,
 				189699802061EEEA0098AFFF /* HomeTableViewController.m in Sources */,
 				18969A1820625E8D0098AFFF /* HomeAddTargetView.m in Sources */,
 				162DA323204FB742009242DA /* HomeCellModel.m in Sources */,
-				18969A27206372D20098AFFF /* HomeFoundTargetViewController.m in Sources */,
 				189699742061EDBA0098AFFF /* BasicNavigationController.m in Sources */,
 				162DA339204FC6F6009242DA /* BigFarmVC.m in Sources */,
-				18969A2D2063AA860098AFFF /* HomeAddPhaseViewController.m in Sources */,
 				18969A0F206210640098AFFF /* TargetModel.m in Sources */,
-				18969A2A206383A50098AFFF /* HomeFoundTargetSelectBar.m in Sources */,
 				162DA2E0204FB71A009242DA /* AppDelegate.m in Sources */,
 				162DA31C204FB728009242DA /* CommonTableViewHeaderFooterView.m in Sources */,
 				18969A0C206209B50098AFFF /* HomeTableViewCell.m in Sources */,
@@ -621,8 +621,8 @@
 				162DA316204FB728009242DA /* KJCellModel.m in Sources */,
 				162DA329204FB776009242DA /* FarmScene.m in Sources */,
 				162DA32D204FB7A0009242DA /* HomeCell.m in Sources */,
-				18969A24206371AA0098AFFF /* HomeFoundTargetView.m in Sources */,
 				162DA31E204FB728009242DA /* TJWebVC.m in Sources */,
+				1800952620688917003813C1 /* HomeAddPhaseViewController.m in Sources */,
 				162DA38A20510962009242DA /* HomeSubCellModel.m in Sources */,
 				162DA314204FB728009242DA /* MBProgressHUD.m in Sources */,
 				162DA318204FB728009242DA /* CommonSectionModel.m in Sources */,
