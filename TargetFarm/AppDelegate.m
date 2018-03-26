@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TJLaunchVC.h"
+#import "TargetManage.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,8 @@
     self.window.rootViewController = [TJLaunchVC new];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+   
+    [[TargetManage sharedTargetManage] createDataBaseWithPath:nil];
     return YES;
 }
 

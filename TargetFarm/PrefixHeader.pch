@@ -23,6 +23,7 @@ typedef void (^NSDateCompletionBlock)(NSDate *date);
 #import "MacroDefinitionHeader.h"
 #import "Masonry.h"
 #import "JKCategories.h"
+#import "FMDB.h"
 
 #import "BasicNavigationController.h"
 #import "BasicViewController.h"

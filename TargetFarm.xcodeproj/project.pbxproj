@@ -44,6 +44,9 @@
 		180095232068885C003813C1 /* HomeFoundTargetSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 180095212068885C003813C1 /* HomeFoundTargetSelectBar.m */; };
 		1800952620688917003813C1 /* HomeAddPhaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800952520688917003813C1 /* HomeAddPhaseViewController.m */; };
 		1800952920688954003813C1 /* HomeAddPhaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800952820688954003813C1 /* HomeAddPhaseCell.m */; };
+		1800952E20688E9C003813C1 /* TargetManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800952D20688E9C003813C1 /* TargetManage.m */; };
+		180095312068EC9A003813C1 /* TargetPhaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180095302068EC9A003813C1 /* TargetPhaseModel.m */; };
+		180095352068F81F003813C1 /* ZXFMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 180095342068F81F003813C1 /* ZXFMDBManager.m */; };
 		189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699702061ED8E0098AFFF /* BasicTableViewController.m */; };
 		189699742061EDBA0098AFFF /* BasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699732061EDBA0098AFFF /* BasicNavigationController.m */; };
 		189699772061EE2C0098AFFF /* BasicTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699762061EE2C0098AFFF /* BasicTabBarController.m */; };
@@ -137,6 +140,12 @@
 		1800952520688917003813C1 /* HomeAddPhaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeAddPhaseViewController.m; sourceTree = "<group>"; };
 		1800952720688954003813C1 /* HomeAddPhaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeAddPhaseCell.h; sourceTree = "<group>"; };
 		1800952820688954003813C1 /* HomeAddPhaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeAddPhaseCell.m; sourceTree = "<group>"; };
+		1800952C20688E9C003813C1 /* TargetManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TargetManage.h; sourceTree = "<group>"; };
+		1800952D20688E9C003813C1 /* TargetManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TargetManage.m; sourceTree = "<group>"; };
+		1800952F2068EC9A003813C1 /* TargetPhaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TargetPhaseModel.h; sourceTree = "<group>"; };
+		180095302068EC9A003813C1 /* TargetPhaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TargetPhaseModel.m; sourceTree = "<group>"; };
+		180095332068F81F003813C1 /* ZXFMDBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXFMDBManager.h; sourceTree = "<group>"; };
+		180095342068F81F003813C1 /* ZXFMDBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFMDBManager.m; sourceTree = "<group>"; };
 		189699652061E8C50098AFFF /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		189699662061E9780098AFFF /* MacroDefinitionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinitionHeader.h; sourceTree = "<group>"; };
 		1896996F2061ED8E0098AFFF /* BasicTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTableViewController.h; sourceTree = "<group>"; };
@@ -329,9 +338,37 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1800952A20688E50003813C1 /* Othe */ = {
+			isa = PBXGroup;
+			children = (
+				180095322068F7EA003813C1 /* Tool */,
+				1800952B20688E50003813C1 /* TargetManage */,
+			);
+			path = Othe;
+			sourceTree = "<group>";
+		};
+		1800952B20688E50003813C1 /* TargetManage */ = {
+			isa = PBXGroup;
+			children = (
+				1800952C20688E9C003813C1 /* TargetManage.h */,
+				1800952D20688E9C003813C1 /* TargetManage.m */,
+			);
+			path = TargetManage;
+			sourceTree = "<group>";
+		};
+		180095322068F7EA003813C1 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				180095332068F81F003813C1 /* ZXFMDBManager.h */,
+				180095342068F81F003813C1 /* ZXFMDBManager.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		189699672061EBC90098AFFF /* HOME */ = {
 			isa = PBXGroup;
 			children = (
+				1800952A20688E50003813C1 /* Othe */,
 				189699682061EBC90098AFFF /* Controller */,
 				189699692061EBC90098AFFF /* Model */,
 				1896996A2061EBC90098AFFF /* View */,
@@ -361,6 +398,8 @@
 				18969A0E206210640098AFFF /* TargetModel.m */,
 				18969A132062438A0098AFFF /* TargetScheduleModel.h */,
 				18969A142062438A0098AFFF /* TargetScheduleModel.m */,
+				1800952F2068EC9A003813C1 /* TargetPhaseModel.h */,
+				180095302068EC9A003813C1 /* TargetPhaseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -588,6 +627,7 @@
 				162DA31A204FB728009242DA /* CommonTableViewCellModel.m in Sources */,
 				1800951D206887CF003813C1 /* HomeTableCellContainerView.m in Sources */,
 				1800951A206885C4003813C1 /* HomeFoundTargetViewController.m in Sources */,
+				1800952E20688E9C003813C1 /* TargetManage.m in Sources */,
 				162DA2E3204FB71A009242DA /* ViewController.m in Sources */,
 				162DA31B204FB728009242DA /* CommonHeaderFooterModel.m in Sources */,
 				189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */,
@@ -596,6 +636,7 @@
 				180095202068882D003813C1 /* HomeFoundTargetView.m in Sources */,
 				18969A3820648F320098AFFF /* WSDatePickerView.m in Sources */,
 				1800952920688954003813C1 /* HomeAddPhaseCell.m in Sources */,
+				180095352068F81F003813C1 /* ZXFMDBManager.m in Sources */,
 				18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */,
 				180095232068885C003813C1 /* HomeFoundTargetSelectBar.m in Sources */,
 				162DA331204FB7B3009242DA /* FarmTabBarVC.m in Sources */,
@@ -617,6 +658,7 @@
 				18969A00206206040098AFFF /* BasicTableView.m in Sources */,
 				18969A06206206620098AFFF /* HomeTableView.m in Sources */,
 				18969A3A20648F320098AFFF /* UIView+Extension.m in Sources */,
+				180095312068EC9A003813C1 /* TargetPhaseModel.m in Sources */,
 				162DA315204FB728009242DA /* KJCell.m in Sources */,
 				162DA316204FB728009242DA /* KJCellModel.m in Sources */,
 				162DA329204FB776009242DA /* FarmScene.m in Sources */,

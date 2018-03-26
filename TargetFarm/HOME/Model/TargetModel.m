@@ -41,4 +41,10 @@
     
     return _scheduleAry;
 }
+
+
+-(NSString*)description{
+    
+    return [NSString stringWithFormat:@"<%@: %p>\n{\n   Id:%d,\n   targetName:%@,\n   phaseTableName:%@,\n   beginDate:%@\n}",[self class],self,self.ID,self.targetName,self.phaseTableName,self.beginDate];
+}
 @end

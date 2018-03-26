@@ -12,6 +12,7 @@
 //#import "WSDatePickerView.h"
 //#import "XHDatePickerView.h"
 #import "HomeAddPhaseCell.h"
+#import "TargetManage.h"
 
 #define HEADER_HEIGHE   400
 #define FOOTER_HEIGHE   0
@@ -129,11 +130,36 @@
 // 取消
 - (void)leftClick:(id)sender {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    TargetManage *targetManage = [TargetManage sharedTargetManage];
+    NSLog(@"%@",[targetManage getTarget]);
 }
 
 // 确定
 - (void)rigthClick:(id)sender {
+    
+    
+    
+
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.timeZone = [NSTimeZone systemTimeZone];
+    dateFormatter.dateFormat = @"YYYY-MM-dd HH:mm:ss";
+    DEBUG_LOG(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
+    TargetModel *model = [TargetModel new];
+    model.targetName = @"吃饭";
+    model.phaseTableName = @"lalal";
+    model.beginDate = [NSDate date];
+    model.endDate = [NSDate alloc];
+    TargetManage *targetManage = [TargetManage sharedTargetManage];
+    [targetManage createDataBaseWithPath:nil];
+
+    [targetManage addTargetWithTargetModel:model];
+    
+
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     
 }

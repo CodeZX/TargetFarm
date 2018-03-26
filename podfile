@@ -6,7 +6,7 @@ target 'TargetFarm' do
   # use_frameworks!
   pod 'Masonry'
   pod 'JKCategories'
-#  pod 'XHDatePicker'
+  pod 'FMDB'
   # Pods for TargetFarm
 
 end

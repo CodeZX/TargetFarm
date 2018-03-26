@@ -161,7 +161,7 @@
 
 //5.自定义高效率的 NSLog
 #ifdef DEBUG
-#define DEBUG_LOG(...) NSLog(@"%s 第%d行\n    %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#define DEBUG_LOG(...) NSLog(@"%s 第%d行\n  %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
 #else
 #define DEBUG_LOG(...)
 #endif
@@ -178,6 +178,41 @@
 
 #define FONT_SIZE_LITTLE 12
 #define FONT_SIZE_BIG 25
+
+
+
+
+// .h文件
+#define WMSingletonH(name) + (instancetype)shared##name;
+
+// .m文件
+#define WMSingletonM(name) \
+static id _instance; \
+\
++ (instancetype)allocWithZone:(struct _NSZone *)zone \
+{ \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+_instance = [super allocWithZone:zone]; \
+}); \
+return _instance; \
+} \
+\
++ (instancetype)shared##name \
+{ \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+_instance = [[self alloc] init]; \
+}); \
+return _instance; \
+} \
+\
+- (id)copyWithZone:(NSZone *)zone \
+{ \
+return _instance; \
+}
+
+
 /***********以上为调试和打包相关固定写法勿动*******************/
 
 
