@@ -8,8 +8,19 @@
 
 #import "TargetManage.h"
 
+#define CREAT_TABLE_IFNOT_EXISTS             @"create table if not exists %@ (key text primary key, data blob)"
+#define DELETE_DATA_WITH_PRIMARYKEY          @"delete from %@ where key = ?"
+#define INSERT_TO_TABLE                      @"insert into %@ (key, data) values (?, ?)"
+#define READ_DATA_TABLE_WITH_PRIMARYKEY      @"select data from %@ where key = ?"
+#define READ_ALL_DATA                        @"select data from %@"
+#define UPDATE_DATA_WHTH_PRIMARYKEY          @"update %@ set data = ? where key = ?"
+#define CLEAR_ALL_DATA                       @"DELETE FROM %@"
 
 
+#define CREATE_TARGET_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS t_target (id integer PRIMARY KEY AUTOINCREMENT, targetName text NOT NULL, beginDate datetime NOT NULL,endDate datetime NOT NULL, phaseName text NOT NULL);"
+#define CREATE_PHASE_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY AUTOINCREMENT, title text NOT NULL, content text NOT NULL,beginDate datetime NOT NULL,endDate datetime NOT NULL, accomplish BOOL NOT NULL);"
+#define INSERT_TO_TABLE_TARGET @"INSERT INTO t_target (targetName,beginDate,endDate, phaseName) VALUES (?,?,?,?);"
+#define INSERT_TO_TABLE_PHASE
 @interface TargetManage ()
 
 
@@ -52,7 +63,7 @@ WMSingletonM(TargetManage)
 
 - (BOOL)createTarget {
     
-    BOOL result = [db executeUpdate:@"CREATE TABLE IF NOT EXISTS t_target (id integer PRIMARY KEY AUTOINCREMENT, targetName text NOT NULL, beginDate datetime NOT NULL,endDate datetime NOT NULL, phaseName text NOT NULL);"];
+    BOOL result = [db executeUpdate:CREATE_TARGET_TABLE_IF_NOT_EXISTS];
     if (!result) {
         DEBUG_LOG(@"创建表失败");
     } else {
@@ -70,7 +81,7 @@ WMSingletonM(TargetManage)
     
     [self createTarget];
     
-   BOOL result =  [db executeUpdate:@"INSERT INTO t_target (targetName,beginDate,endDate, phaseName) VALUES (?,?,?,?);",targetModel.targetName,targetModel.beginDate,targetModel.endDate,targetModel.phaseTableName];
+   BOOL result =  [db executeUpdate:INSERT_TO_TABLE_TARGET,targetModel.targetName,targetModel.beginDate,targetModel.endDate,targetModel.phaseTableName];
     
     if (!result) {
         
@@ -110,7 +121,7 @@ WMSingletonM(TargetManage)
     
     NSString *phaseName = [NSString stringWithFormat:@"t_phase_100%ld",id];
     
-    NSString *sqlStr = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY AUTOINCREMENT, title text NOT NULL, content text NOT NULL,beginDate datetime NOT NULL,endDate datetime NOT NULL, accomplish BOOL NOT NULL);",phaseName];
+    NSString *sqlStr = [NSString stringWithFormat:CREATE_PHASE_TABLE_IF_NOT_EXISTS,phaseName];
     BOOL result = [db executeUpdate:sqlStr];
     if (!result) {
         DEBUG_LOG(@"创建表失败");
@@ -132,6 +143,9 @@ WMSingletonM(TargetManage)
     
     return YES;
 }
+
+
+
 
 //- (BOOL)insertPhase:(TargetPhaseModel *)phase {
 //

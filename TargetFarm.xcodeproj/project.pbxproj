@@ -67,6 +67,9 @@
 		18969A3920648F320098AFFF /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A3520648F320098AFFF /* NSDate+Extension.m */; };
 		18969A3A20648F320098AFFF /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 18969A3620648F320098AFFF /* UIView+Extension.m */; };
 		6BF3EC4D13651AAB018159A5 /* libPods-TargetFarm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC92D377CA07A55A32D2D23 /* libPods-TargetFarm.a */; };
+		FB241FEA20694BEA00631B17 /* UIAlertController+custom.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FE920694BEA00631B17 /* UIAlertController+custom.m */; };
+		FB241FED20694D0C00631B17 /* UIWindow+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FEC20694D0C00631B17 /* UIWindow+PresentViewController.m */; };
+		FB241FF0206951F400631B17 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FEF206951F400631B17 /* UIViewController+HUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -188,6 +191,12 @@
 		838D3402585F4CD83025EA95 /* Pods-TargetFarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetFarm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm.debug.xcconfig"; sourceTree = "<group>"; };
 		9FC92D377CA07A55A32D2D23 /* libPods-TargetFarm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TargetFarm.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D0ED412AF8C131BDEC3FFE /* Pods-TargetFarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TargetFarm.release.xcconfig"; path = "Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm.release.xcconfig"; sourceTree = "<group>"; };
+		FB241FE820694BEA00631B17 /* UIAlertController+custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+custom.h"; sourceTree = "<group>"; };
+		FB241FE920694BEA00631B17 /* UIAlertController+custom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+custom.m"; sourceTree = "<group>"; };
+		FB241FEB20694D0C00631B17 /* UIWindow+PresentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+PresentViewController.h"; sourceTree = "<group>"; };
+		FB241FEC20694D0C00631B17 /* UIWindow+PresentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+PresentViewController.m"; sourceTree = "<group>"; };
+		FB241FEE206951F400631B17 /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
+		FB241FEF206951F400631B17 /* UIViewController+HUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,6 +468,7 @@
 		18969A2E20648F320098AFFF /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				FB241FE720694B2F00631B17 /* Category */,
 				18969A2F20648F320098AFFF /* WSDaePickerView */,
 			);
 			path = Other;
@@ -493,6 +503,19 @@
 				F4D0ED412AF8C131BDEC3FFE /* Pods-TargetFarm.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB241FE720694B2F00631B17 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FB241FE820694BEA00631B17 /* UIAlertController+custom.h */,
+				FB241FE920694BEA00631B17 /* UIAlertController+custom.m */,
+				FB241FEB20694D0C00631B17 /* UIWindow+PresentViewController.h */,
+				FB241FEC20694D0C00631B17 /* UIWindow+PresentViewController.m */,
+				FB241FEE206951F400631B17 /* UIViewController+HUD.h */,
+				FB241FEF206951F400631B17 /* UIViewController+HUD.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -650,6 +673,7 @@
 				162DA2E0204FB71A009242DA /* AppDelegate.m in Sources */,
 				162DA31C204FB728009242DA /* CommonTableViewHeaderFooterView.m in Sources */,
 				18969A0C206209B50098AFFF /* HomeTableViewCell.m in Sources */,
+				FB241FED20694D0C00631B17 /* UIWindow+PresentViewController.m in Sources */,
 				162DA38620510439009242DA /* HomeSubCell.m in Sources */,
 				18969A032062062A0098AFFF /* BasicView.m in Sources */,
 				16C4B16820513A35003FB364 /* UITableViewCell+KJCategory.m in Sources */,
@@ -672,6 +696,8 @@
 				1896997A2061EE600098AFFF /* BasicViewController.m in Sources */,
 				189699772061EE2C0098AFFF /* BasicTabBarController.m in Sources */,
 				162DA326204FB75F009242DA /* HomeVC.m in Sources */,
+				FB241FEA20694BEA00631B17 /* UIAlertController+custom.m in Sources */,
+				FB241FF0206951F400631B17 /* UIViewController+HUD.m in Sources */,
 				18969A12206225940098AFFF /* HomeTableSectionHeadView.m in Sources */,
 				162DA317204FB728009242DA /* BaseTableViewToolVC.m in Sources */,
 				162DA320204FB728009242DA /* TJLaunchVC.m in Sources */,

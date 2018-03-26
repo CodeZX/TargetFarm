@@ -132,8 +132,10 @@
     
 //    [self dismissViewControllerAnimated:YES completion:nil];
     
-    TargetManage *targetManage = [TargetManage sharedTargetManage];
-    NSLog(@"%@",[targetManage getTarget]);
+//    TargetManage *targetManage = [TargetManage sharedTargetManage];
+//    NSLog(@"%@",[targetManage getTarget]);
+    
+    [self showSuccess:@"124"];
 }
 
 // 确定
@@ -150,7 +152,7 @@
     model.targetName = @"吃饭";
     model.phaseTableName = @"lalal";
     model.beginDate = [NSDate date];
-    model.endDate = [NSDate alloc];
+    model.endDate = [NSDate date];
     TargetManage *targetManage = [TargetManage sharedTargetManage];
     [targetManage createDataBaseWithPath:nil];
 
