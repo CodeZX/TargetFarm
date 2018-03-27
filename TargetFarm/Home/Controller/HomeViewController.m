@@ -45,22 +45,43 @@
     homeTableView.delegate = self;
     [self.view addSubview:homeTableView];
     self.homeTableView = homeTableView;
-    [self.homeTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(0);
-        make.left.equalTo(0);
-        make.size.equalTo(self.view);
-    }];
+//    [self.homeTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(0);
+//        make.left.equalTo(0);
+//        make.size.equalTo(self.view);
+//    }];
+    self.homeTableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
+    
+    self.homeTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    self.homeTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     
 }
 
+- (void)loadNewData {
+    
+    DEBUG_LOG(@"加载数据");
+    [self.homeTableView.mj_header endRefreshing];
+    [self.homeTableView.mj_footer endRefreshing];
+    
+    
+
+}
+
+- (void)loadMoreData {
+    
+    DEBUG_LOG(@"加载数据");
+    [self.homeTableView.mj_header endRefreshing];
+    [self.homeTableView.mj_footer endRefreshing];
+}
 - (void)rightClick:(id )sender {
     
     HomeFoundTargetViewController *foundTargetVC = [HomeFoundTargetViewController new];
     BasicNavigationController *NavVC = [[BasicNavigationController alloc]initWithRootViewController:foundTargetVC];
     [self presentViewController:NavVC animated:YES completion:nil] ;
+//
     
-    
+   
 }
 - (void)getData {
     

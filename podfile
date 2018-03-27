@@ -7,7 +7,9 @@ target 'TargetFarm' do
   pod 'Masonry'
   pod 'JKCategories'
   pod 'FMDB'
-#  pod 'MBProgressHUD'
+  pod 'MBProgressHUD'
+  pod 'MJRefresh'
+  pod 'TYAlertController'
   # Pods for TargetFarm
 
 end

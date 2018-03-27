@@ -11,7 +11,6 @@
 		162DA2E8204FB71A009242DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162DA2E7204FB71A009242DA /* Assets.xcassets */; };
 		162DA2EB204FB71A009242DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 162DA2E9204FB71A009242DA /* LaunchScreen.storyboard */; };
 		162DA2EE204FB71A009242DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2ED204FB71A009242DA /* main.m */; };
-		162DA314204FB728009242DA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2F6204FB727009242DA /* MBProgressHUD.m */; };
 		162DA315204FB728009242DA /* KJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2F9204FB727009242DA /* KJCell.m */; };
 		162DA316204FB728009242DA /* KJCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2FB204FB727009242DA /* KJCellModel.m */; };
 		162DA317204FB728009242DA /* BaseTableViewToolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA2FE204FB727009242DA /* BaseTableViewToolVC.m */; };
@@ -82,7 +81,6 @@
 		162DA2EC204FB71A009242DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		162DA2ED204FB71A009242DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		162DA2F5204FB727009242DA /* TJLaunchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJLaunchVC.h; sourceTree = "<group>"; };
-		162DA2F6204FB727009242DA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		162DA2F9204FB727009242DA /* KJCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCell.m; sourceTree = "<group>"; };
 		162DA2FA204FB727009242DA /* KJCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCellModel.h; sourceTree = "<group>"; };
 		162DA2FB204FB727009242DA /* KJCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCellModel.m; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 		162DA30D204FB727009242DA /* CommonTableViewHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewHeaderFooterView.h; sourceTree = "<group>"; };
 		162DA30E204FB727009242DA /* TargetFarm-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TargetFarm-Bridging-Header.h"; sourceTree = "<group>"; };
 		162DA30F204FB727009242DA /* TJWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJWebVC.m; sourceTree = "<group>"; };
-		162DA310204FB727009242DA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		162DA311204FB727009242DA /* noData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noData.png; sourceTree = "<group>"; };
 		162DA312204FB727009242DA /* TJLaunchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJLaunchVC.m; sourceTree = "<group>"; };
 		162DA313204FB727009242DA /* TJWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJWebVC.h; sourceTree = "<group>"; };
@@ -274,13 +271,11 @@
 			isa = PBXGroup;
 			children = (
 				162DA2F5204FB727009242DA /* TJLaunchVC.h */,
-				162DA2F6204FB727009242DA /* MBProgressHUD.m */,
 				16C4B16620513A35003FB364 /* UITableViewCell+KJCategory.h */,
 				16C4B16720513A35003FB364 /* UITableViewCell+KJCategory.m */,
 				162DA2F7204FB727009242DA /* KJTableViewTool */,
 				162DA30E204FB727009242DA /* TargetFarm-Bridging-Header.h */,
 				162DA30F204FB727009242DA /* TJWebVC.m */,
-				162DA310204FB727009242DA /* MBProgressHUD.h */,
 				162DA311204FB727009242DA /* noData.png */,
 				162DA312204FB727009242DA /* TJLaunchVC.m */,
 				162DA313204FB727009242DA /* TJWebVC.h */,
@@ -669,9 +664,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TargetFarm/Pods-TargetFarm-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -741,7 +739,6 @@
 				162DA31E204FB728009242DA /* TJWebVC.m in Sources */,
 				1800952620688917003813C1 /* HomeAddPhaseViewController.m in Sources */,
 				162DA38A20510962009242DA /* HomeSubCellModel.m in Sources */,
-				162DA314204FB728009242DA /* MBProgressHUD.m in Sources */,
 				162DA318204FB728009242DA /* CommonSectionModel.m in Sources */,
 				180095392069D1DC003813C1 /* AppDelegate.m in Sources */,
 				18009547206A2786003813C1 /* MyFarmVC.m in Sources */,
@@ -884,7 +881,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MN368D4UQP;
+				DEVELOPMENT_TEAM = 484G6WE6BR;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -907,7 +904,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MN368D4UQP;
+				DEVELOPMENT_TEAM = 484G6WE6BR;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
