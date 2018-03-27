@@ -17,9 +17,9 @@
 #define CLEAR_ALL_DATA                       @"DELETE FROM %@"
 
 
-#define CREATE_TARGET_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS t_target (id integer PRIMARY KEY AUTOINCREMENT, targetName text NOT NULL, beginDate datetime NOT NULL,endDate datetime NOT NULL, phaseName text NOT NULL);"
+#define CREATE_TARGET_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS t_target (id integer PRIMARY KEY AUTOINCREMENT, targetName text NOT NULL, beginDate datetime NOT NULL,endDate datetime NOT NULL,awokeDate datetime NOT NULL,phaseName text NOT NULL);"
 #define CREATE_PHASE_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY AUTOINCREMENT, title text NOT NULL, content text NOT NULL,beginDate datetime NOT NULL,endDate datetime NOT NULL, accomplish BOOL NOT NULL);"
-#define INSERT_TO_TABLE_TARGET @"INSERT INTO t_target (targetName,beginDate,endDate, phaseName) VALUES (?,?,?,?);"
+#define INSERT_TO_TABLE_TARGET @"INSERT INTO t_target (targetName,beginDate,endDate,awokeDate,phaseName) VALUES (?,?,?,?,?);"
 #define INSERT_TO_TABLE_PHASE
 @interface TargetManage ()
 
@@ -32,19 +32,13 @@ WMSingletonM(TargetManage)
 
 - (BOOL)createDataBaseWithPath:(NSString *)path {
     
-    if (!path) {
+    if (!path || [path isEqualToString:@""]) {
         
         DEBUG_LOG(@"路径无效,使用默认路径");
         NSString* docsdir = PATH_OF_DOCUMENT;
         path = [docsdir stringByAppendingPathComponent:@"target.sqlite"];
        
-    }else {
-        
-//        NSString* docsdir = PATH_OF_DOCUMENT;
-//        path = [docsdir stringByAppendingPathComponent:@"target.sqlite"];
-        
     }
-    
     
     db = [FMDatabase databaseWithPath:path];
     if (![db open]) {
@@ -81,7 +75,7 @@ WMSingletonM(TargetManage)
     
     [self createTarget];
     
-   BOOL result =  [db executeUpdate:INSERT_TO_TABLE_TARGET,targetModel.targetName,targetModel.beginDate,targetModel.endDate,targetModel.phaseTableName];
+   BOOL result =  [db executeUpdate:INSERT_TO_TABLE_TARGET,targetModel.targetName,targetModel.beginDate,targetModel.endDate,targetModel.awokeDate,targetModel.phaseTableName];
     
     if (!result) {
         
@@ -116,6 +110,31 @@ WMSingletonM(TargetManage)
     return  model;
 }
 
+
+- (NSArray *)allTarget {
+    
+    //查询整个表
+    FMResultSet * resultSet = [db executeQuery:@"select * from t_target"];
+    NSMutableArray *mutableAry = [NSMutableArray new];
+    
+    while ([resultSet next]) {
+        
+        TargetModel *model = [TargetModel new];
+        model.ID = [resultSet intForColumn:@"id"];
+        model.targetName = [resultSet stringForColumn:@"targetName"];
+        model.phaseTableName = [resultSet stringForColumn:@"phaseName"];
+        model.beginDate = [resultSet dateForColumn:@"beginDate"];
+        model.endDate = [resultSet dateForColumn:@"endDate"];
+        model.awokeDate = [resultSet dateForColumn:@"awokeDate"];
+//        NSLog(@"id：%@ 目标：%@ 阶段：%@ 开始时间：%@ 结束时间：%@",@( model.ID),model.targetName,model.phaseTableName,model.beginDate,model.endDate);
+        [mutableAry addObject:model];
+    }
+    
+    
+    return mutableAry;
+    
+}
+
 - (BOOL)addPhaseWithPhase:(TargetPhaseModel *)phase TargetID:(NSInteger)id {
     
     
@@ -146,7 +165,13 @@ WMSingletonM(TargetManage)
 
 
 
-
+- (void)close {
+    
+    if ([db close]) { DEBUG_LOG(@"数据库关闭！");return;}
+        
+    DEBUG_LOG(@"数据库关闭失败！");
+    
+}
 //- (BOOL)insertPhase:(TargetPhaseModel *)phase {
 //
 //    BOOL result =  [db executeUpdate:@"INSERT INTO t_target (targetName,beginDate,endDate, phaseName) VALUES (?,?,?,?);",targetModel.targetName,targetModel.beginDate,targetModel.endDate,targetModel.phaseTableName];

@@ -9,6 +9,7 @@
 #import "MyFarmVC.h"
 #import "FarmScene.h"
 
+
 @interface MyFarmVC ()
 
 @end
@@ -33,6 +34,12 @@
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     self.view = skView;
+    
+    TargetManage *targetManage= [TargetManage sharedTargetManage];
+    
+    NSArray *ary = [targetManage allTarget];
+    
+    DEBUG_LOG(@"%d",ary.count);
 }
 
 - (void)didReceiveMemoryWarning {

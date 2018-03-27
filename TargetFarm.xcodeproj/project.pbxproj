@@ -26,12 +26,9 @@
 		162DA320204FB728009242DA /* TJLaunchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA312204FB727009242DA /* TJLaunchVC.m */; };
 		162DA323204FB742009242DA /* HomeCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA322204FB742009242DA /* HomeCellModel.m */; };
 		162DA326204FB75F009242DA /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA325204FB75F009242DA /* HomeVC.m */; };
-		162DA329204FB776009242DA /* FarmScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA328204FB776009242DA /* FarmScene.m */; };
 		162DA32D204FB7A0009242DA /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA32B204FB7A0009242DA /* HomeCell.m */; };
 		162DA32E204FB7A0009242DA /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162DA32C204FB7A0009242DA /* HomeCell.xib */; };
 		162DA331204FB7B3009242DA /* FarmTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA330204FB7B3009242DA /* FarmTabBarVC.m */; };
-		162DA333204FBC4F009242DA /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 162DA332204FBC4F009242DA /* FarmScene.sks */; };
-		162DA336204FC6E3009242DA /* MyFarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA335204FC6E3009242DA /* MyFarmVC.m */; };
 		162DA339204FC6F6009242DA /* BigFarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA338204FC6F6009242DA /* BigFarmVC.m */; };
 		162DA38620510439009242DA /* HomeSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA38420510439009242DA /* HomeSubCell.m */; };
 		162DA38720510439009242DA /* HomeSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162DA38520510439009242DA /* HomeSubCell.xib */; };
@@ -47,6 +44,10 @@
 		180095312068EC9A003813C1 /* TargetPhaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180095302068EC9A003813C1 /* TargetPhaseModel.m */; };
 		180095352068F81F003813C1 /* ZXFMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 180095342068F81F003813C1 /* ZXFMDBManager.m */; };
 		180095392069D1DC003813C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 180095382069D1DC003813C1 /* AppDelegate.m */; };
+		1800953C2069D868003813C1 /* ZXDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800953B2069D868003813C1 /* ZXDatePickerView.m */; };
+		18009547206A2786003813C1 /* MyFarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18009541206A2786003813C1 /* MyFarmVC.m */; };
+		18009548206A2786003813C1 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18009545206A2786003813C1 /* FarmScene.sks */; };
+		18009549206A2786003813C1 /* FarmScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 18009546206A2786003813C1 /* FarmScene.m */; };
 		189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699702061ED8E0098AFFF /* BasicTableViewController.m */; };
 		189699742061EDBA0098AFFF /* BasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699732061EDBA0098AFFF /* BasicNavigationController.m */; };
 		189699772061EE2C0098AFFF /* BasicTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699762061EE2C0098AFFF /* BasicTabBarController.m */; };
@@ -110,16 +111,11 @@
 		162DA322204FB742009242DA /* HomeCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCellModel.m; sourceTree = "<group>"; };
 		162DA324204FB75F009242DA /* HomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
 		162DA325204FB75F009242DA /* HomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
-		162DA327204FB776009242DA /* FarmScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FarmScene.h; sourceTree = "<group>"; };
-		162DA328204FB776009242DA /* FarmScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarmScene.m; sourceTree = "<group>"; };
 		162DA32A204FB7A0009242DA /* HomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
 		162DA32B204FB7A0009242DA /* HomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
 		162DA32C204FB7A0009242DA /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		162DA32F204FB7B3009242DA /* FarmTabBarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FarmTabBarVC.h; sourceTree = "<group>"; };
 		162DA330204FB7B3009242DA /* FarmTabBarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarmTabBarVC.m; sourceTree = "<group>"; };
-		162DA332204FBC4F009242DA /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
-		162DA334204FC6E3009242DA /* MyFarmVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFarmVC.h; sourceTree = "<group>"; };
-		162DA335204FC6E3009242DA /* MyFarmVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFarmVC.m; sourceTree = "<group>"; };
 		162DA337204FC6F6009242DA /* BigFarmVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigFarmVC.h; sourceTree = "<group>"; };
 		162DA338204FC6F6009242DA /* BigFarmVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BigFarmVC.m; sourceTree = "<group>"; };
 		162DA38320510439009242DA /* HomeSubCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSubCell.h; sourceTree = "<group>"; };
@@ -149,6 +145,13 @@
 		180095342068F81F003813C1 /* ZXFMDBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXFMDBManager.m; sourceTree = "<group>"; };
 		180095372069D1DC003813C1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		180095382069D1DC003813C1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1800953A2069D868003813C1 /* ZXDatePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXDatePickerView.h; sourceTree = "<group>"; };
+		1800953B2069D868003813C1 /* ZXDatePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXDatePickerView.m; sourceTree = "<group>"; };
+		18009540206A2786003813C1 /* MyFarmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFarmVC.h; sourceTree = "<group>"; };
+		18009541206A2786003813C1 /* MyFarmVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFarmVC.m; sourceTree = "<group>"; };
+		18009544206A2786003813C1 /* FarmScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FarmScene.h; sourceTree = "<group>"; };
+		18009545206A2786003813C1 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
+		18009546206A2786003813C1 /* FarmScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FarmScene.m; sourceTree = "<group>"; };
 		189699652061E8C50098AFFF /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		189699662061E9780098AFFF /* MacroDefinitionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinitionHeader.h; sourceTree = "<group>"; };
 		1896996F2061ED8E0098AFFF /* BasicTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTableViewController.h; sourceTree = "<group>"; };
@@ -232,6 +235,7 @@
 		162DA2DD204FB71A009242DA /* TargetFarm */ = {
 			isa = PBXGroup;
 			children = (
+				1800953D206A2786003813C1 /* MyFarm */,
 				180095362069D1DC003813C1 /* AppDelegate */,
 				18969A2E20648F320098AFFF /* Other */,
 				189699FD206205AB0098AFFF /* BasicView */,
@@ -251,13 +255,8 @@
 				162DA38920510961009242DA /* HomeSubCellModel.m */,
 				162DA32F204FB7B3009242DA /* FarmTabBarVC.h */,
 				162DA330204FB7B3009242DA /* FarmTabBarVC.m */,
-				162DA334204FC6E3009242DA /* MyFarmVC.h */,
-				162DA335204FC6E3009242DA /* MyFarmVC.m */,
 				162DA337204FC6F6009242DA /* BigFarmVC.h */,
 				162DA338204FC6F6009242DA /* BigFarmVC.m */,
-				162DA327204FB776009242DA /* FarmScene.h */,
-				162DA328204FB776009242DA /* FarmScene.m */,
-				162DA332204FBC4F009242DA /* FarmScene.sks */,
 				162DA2E1204FB71A009242DA /* ViewController.h */,
 				162DA2E2204FB71A009242DA /* ViewController.m */,
 				162DA2F4204FB727009242DA /* Objc */,
@@ -369,6 +368,8 @@
 			children = (
 				180095332068F81F003813C1 /* ZXFMDBManager.h */,
 				180095342068F81F003813C1 /* ZXFMDBManager.m */,
+				1800953A2069D868003813C1 /* ZXDatePickerView.h */,
+				1800953B2069D868003813C1 /* ZXDatePickerView.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -380,6 +381,50 @@
 				180095382069D1DC003813C1 /* AppDelegate.m */,
 			);
 			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		1800953D206A2786003813C1 /* MyFarm */ = {
+			isa = PBXGroup;
+			children = (
+				1800953E206A2786003813C1 /* Othe */,
+				1800953F206A2786003813C1 /* Controller */,
+				18009542206A2786003813C1 /* Model */,
+				18009543206A2786003813C1 /* View */,
+			);
+			path = MyFarm;
+			sourceTree = "<group>";
+		};
+		1800953E206A2786003813C1 /* Othe */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Othe;
+			sourceTree = "<group>";
+		};
+		1800953F206A2786003813C1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18009540206A2786003813C1 /* MyFarmVC.h */,
+				18009541206A2786003813C1 /* MyFarmVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		18009542206A2786003813C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18009543206A2786003813C1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18009544206A2786003813C1 /* FarmScene.h */,
+				18009545206A2786003813C1 /* FarmScene.sks */,
+				18009546206A2786003813C1 /* FarmScene.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		189699672061EBC90098AFFF /* Home */ = {
@@ -587,9 +632,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				162DA333204FBC4F009242DA /* FarmScene.sks in Resources */,
 				18969A3720648F320098AFFF /* WSDatePickerView.xib in Resources */,
 				162DA38720510439009242DA /* HomeSubCell.xib in Resources */,
+				18009548206A2786003813C1 /* FarmScene.sks in Resources */,
 				162DA31F204FB728009242DA /* noData.png in Resources */,
 				162DA2EB204FB71A009242DA /* LaunchScreen.storyboard in Resources */,
 				162DA2E8204FB71A009242DA /* Assets.xcassets in Resources */,
@@ -669,9 +714,9 @@
 				1800952920688954003813C1 /* HomeAddPhaseCell.m in Sources */,
 				180095352068F81F003813C1 /* ZXFMDBManager.m in Sources */,
 				18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */,
+				1800953C2069D868003813C1 /* ZXDatePickerView.m in Sources */,
 				180095232068885C003813C1 /* HomeFoundTargetSelectBar.m in Sources */,
 				162DA331204FB7B3009242DA /* FarmTabBarVC.m in Sources */,
-				162DA336204FC6E3009242DA /* MyFarmVC.m in Sources */,
 				189699802061EEEA0098AFFF /* HomeTableViewController.m in Sources */,
 				18969A1820625E8D0098AFFF /* HomeAddTargetView.m in Sources */,
 				162DA323204FB742009242DA /* HomeCellModel.m in Sources */,
@@ -692,7 +737,6 @@
 				180095312068EC9A003813C1 /* TargetPhaseModel.m in Sources */,
 				162DA315204FB728009242DA /* KJCell.m in Sources */,
 				162DA316204FB728009242DA /* KJCellModel.m in Sources */,
-				162DA329204FB776009242DA /* FarmScene.m in Sources */,
 				162DA32D204FB7A0009242DA /* HomeCell.m in Sources */,
 				162DA31E204FB728009242DA /* TJWebVC.m in Sources */,
 				1800952620688917003813C1 /* HomeAddPhaseViewController.m in Sources */,
@@ -700,11 +744,13 @@
 				162DA314204FB728009242DA /* MBProgressHUD.m in Sources */,
 				162DA318204FB728009242DA /* CommonSectionModel.m in Sources */,
 				180095392069D1DC003813C1 /* AppDelegate.m in Sources */,
+				18009547206A2786003813C1 /* MyFarmVC.m in Sources */,
 				1896997D2061EE930098AFFF /* HomeViewController.m in Sources */,
 				1896997A2061EE600098AFFF /* BasicViewController.m in Sources */,
 				189699772061EE2C0098AFFF /* BasicTabBarController.m in Sources */,
 				162DA326204FB75F009242DA /* HomeVC.m in Sources */,
 				FB241FEA20694BEA00631B17 /* UIAlertController+custom.m in Sources */,
+				18009549206A2786003813C1 /* FarmScene.m in Sources */,
 				FB241FF0206951F400631B17 /* UIViewController+HUD.m in Sources */,
 				18969A12206225940098AFFF /* HomeTableSectionHeadView.m in Sources */,
 				162DA317204FB728009242DA /* BaseTableViewToolVC.m in Sources */,

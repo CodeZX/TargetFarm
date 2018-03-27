@@ -15,6 +15,7 @@
 @property (nonatomic,weak) UILabel *titleLabel;
 @property (nonatomic,weak) UIButton *selectBtn;
 @property (nonatomic,strong) NSString *BtnImageName;
+@property (nonatomic,weak) UILabel *contentLabel;
 @end
 @implementation HomeFoundTargetSelectBar
 
@@ -46,6 +47,17 @@
         make.centerY.equalTo(self);
     }];
     
+    
+    UILabel *contentLabel = [UILabel new];
+//    contentLabel.text = self.title;
+    [self addSubview:contentLabel];
+    self.contentLabel = contentLabel;
+    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.titleLabel.right).offset(5);
+        make.centerY.equalTo(self);
+    }];
+    
+    
     UIButton *selectBtn  = [UIButton new];
 //    selectBtn.backgroundColor = RandomColor;
     
@@ -76,4 +88,14 @@
     self.action();
     
 }
+
+
+- (void)setContent:(NSString *)content {
+    
+    _content = content;
+    
+    self.contentLabel.text = content;
+    
+}
+
 @end

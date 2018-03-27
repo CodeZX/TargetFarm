@@ -16,10 +16,22 @@
     if (self) {
         
         
+       
+        
+    }
+    
+    return self;
+}
+- (instancetype)initWithFrame:(CGRect)frame {
+    
+    self= [super initWithFrame:frame];
+    if (self) {
+        
         self.backgroundColor = RandomColor;
     }
     
     return self;
 }
+
 
 @end

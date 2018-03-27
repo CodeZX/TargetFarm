@@ -9,7 +9,7 @@
 #import "BasicView.h"
 
 @interface HomeFoundTargetSelectBar : BasicView
-
+@property (nonatomic,weak) NSString *content;
 - (instancetype)initWithTitle:(NSString *)title ImagName:(NSString *)imagName Action:(VoidCompletionBlock)action;
 
 

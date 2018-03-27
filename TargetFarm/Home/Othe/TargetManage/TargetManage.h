@@ -42,6 +42,12 @@ WMSingletonH(TargetManage)
 
 
 /**
+ all target
+
+ @return <#return value description#>
+ */
+-(NSArray *)allTarget;
+/**
  add  phase
 
  @return <#return value description#>

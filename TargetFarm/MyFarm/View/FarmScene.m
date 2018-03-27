@@ -14,6 +14,7 @@
 //@property (strong, nonatomic) NSArray *<#UILabel#>;
 
 @property (weak, nonatomic) SKSpriteNode *apple;
+@property (nonatomic,strong) NSMutableArray *apples;
 
 @end
 
@@ -21,17 +22,33 @@
 
 /** 做一些初始化的操作 */
 - (void)didMoveToView:(SKView *)view {
-    _apple = (SKSpriteNode *)[self childNodeWithName:@"//apple1"];
-    SKAction *wind = [SKAction runBlock:^{
-        // 进行推力
-        NSLog(@"%@ ", @"进行风的推力");
-        CGVector vector = CGVectorMake(3, 0);
-        [_apple.physicsBody applyForce:vector atPoint:CGPointZero];
-    }];
-    SKAction *wait = [SKAction waitForDuration:20];
-    SKAction *forever = [SKAction repeatActionForever:[SKAction sequence:@[wait, wind]]];
-    [_apple runAction:forever];
     
+    
+    self.apples = [NSMutableArray new];
+    
+    
+    
+    for (int index = 1; index < 4; index++) {
+
+        NSString *appleName = [NSString stringWithFormat:@"//apple%d",index];
+         SKSpriteNode *apple = (SKSpriteNode *)[self childNodeWithName:appleName];
+
+        SKAction *wind = [SKAction runBlock:^{
+            // 进行推力
+            NSLog(@"%@ ", @"进行风的推力");
+            CGVector vector = CGVectorMake(3, 0);
+            [apple.physicsBody applyForce:vector atPoint:CGPointZero];
+        }];
+        SKAction *wait = [SKAction waitForDuration:20];
+        SKAction *forever = [SKAction repeatActionForever:[SKAction sequence:@[wait, wind]]];
+        [apple runAction:forever];
+         [self.apples addObject:apple];
+
+    }
+
+    SKSpriteNode *redApple = [[SKSpriteNode alloc]initWithImageNamed:@"hongpingguo"];
+    redApple.position = CGPointMake(100, 100);
+    [self addChild:redApple];
     
     UISwipeGestureRecognizer *swiperight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
     swiperight.direction = UISwipeGestureRecognizerDirectionRight;
