@@ -45,7 +45,7 @@
     [childItemsArray enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
         UIViewController *vc = [NSClassFromString(dict[kClassKey]) new];
         vc.title = dict[kTitleKey];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        BasicNavigationController *nav = [[BasicNavigationController alloc] initWithRootViewController:vc];
         UITabBarItem *item = nav.tabBarItem;
         item.title = dict[kTitleKey];
         item.image = [UIImage imageNamed:dict[kImgKey]];

@@ -17,6 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    self.navigationBar  = MotifColor;
+    [self.navigationBar setBackgroundImage:[UIImage jk_imageWithColor:MotifColor] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationBar setTintColor:UIColorFromRGB(0x7a776b)];
+    
+
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

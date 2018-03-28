@@ -34,7 +34,7 @@
 
 - (void)setupUI {
     
-    self.backgroundColor  = RandomColor;
+    self.backgroundColor  = MotifColor;
     
     UIImageView *backgroundImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"beijing22"]];
     [self addSubview:backgroundImg];
@@ -71,7 +71,7 @@
 - (void)setTargetModel:(TargetModel *)targetModel {
     
     _targetModel = targetModel;
-    self.contentLable.text = targetModel.targetStr;
+    self.contentLable.text = targetModel.targetName;
     
     if (_targetModel.unfold) {
         

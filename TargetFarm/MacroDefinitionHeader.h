@@ -86,7 +86,7 @@
 #define GlobalBg  RGBCOLOR(243,243,243)
 
 /**主题颜色*/
-#define MotifColor RGBCOLOR(106,206,208)
+#define MotifColor UIColorFromRGB(0xfdf3d1)
 
 
 #define BackgroundColor RGBCOLOR(243,243,243)

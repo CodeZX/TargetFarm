@@ -14,6 +14,7 @@
 #import "HomeAddPhaseCell.h"
 #import "ZXDatePickerView.h"
 
+
 #define HEADER_HEIGHE   400
 #define FOOTER_HEIGHE   0
 #define CELL_HEIGHE     88
@@ -62,12 +63,13 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 - (void)setupUI {
     
     self.title = @"创建目标";
-    self.view.backgroundColor = WhiteColor;
+    self.view.backgroundColor = MotifColor;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(leftClick:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"确定" style:UIBarButtonItemStyleDone target:self action:@selector(rigthClick:)];
     
     self.tableHeaderView = [BasicView new];
+    self.tableHeaderView.backgroundColor = ClearColor;
     self.tableHeaderView.frame = CGRectMake(0, 0, Screen_Width, 400);
    
     UILabel *targetNameLabel = [UILabel new];
@@ -106,6 +108,7 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     BasicTableView *tableView = [BasicTableView new];
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.backgroundColor = MotifColor;
     tableView.tableHeaderView = self.tableHeaderView;
     [self.view addSubview:tableView];
     self.tableView = tableView;
@@ -131,10 +134,11 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     
     
     TargetManage *targetManage = [TargetManage sharedTargetManage];
-    if (![targetManage createDataBaseWithPath:nil])                                     { return; }
+//    if (![targetManage createDataBaseWithPath:nil])                                     { return; }
     if (![targetManage addTargetWithTargetModel:[self getTargetModelofCurrentlyController]])  { return; }
 
-    
+    [self showSuccess:@"新建成功"];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 //    NSDateFormatter *dateFormatter = [NSDateFormatter new];
 //    dateFormatter.timeZone = [NSTimeZone systemTimeZone];
@@ -157,7 +161,7 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     
     DATE_FORMATTER(df)
     TargetModel *targetModel = [TargetModel new];
-    targetModel.targetName = self.targetNameLabel.text;
+    targetModel.targetName = self.targetNameTextField.text;
     targetModel.beginDate = [df dateFromString:self.startSelectBar.content];
     targetModel.endDate = [df dateFromString:self.endSelectBar.content];
     targetModel.awokeDate= [df dateFromString:self.awokeSelectBar.content];
@@ -167,29 +171,21 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-    
-}
+
 
 - (void)addSelectBar {
    
-    
     Weak_Self(weakSelf);
-    
-    
-    
     self.startSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"起始日期" ImagName:nil Action:^{
         
         NSLog(@"起始日期");
-
+        [self.targetNameTextField  resignFirstResponder];
         
         weakSelf.pickerView = [[ZXDatePickerView alloc]initWithAction:^(NSDate *date) {
             
             DATE_FORMATTER(df)
             weakSelf.startSelectBar.content = [df stringFromDate:date];
             [weakSelf.pickerView removeFromSuperview];
-//
         }];
         weakSelf.pickerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         [self.view addSubview:weakSelf.pickerView];
@@ -212,7 +208,8 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     
    self.endSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"截止日期" ImagName:nil Action:^{
 
-            NSLog(@"截止日期");
+        NSLog(@"截止日期");
+        [self.targetNameTextField  resignFirstResponder];
            weakSelf.pickerView = [[ZXDatePickerView alloc]initWithAction:^(NSDate *date) {
                
            DATE_FORMATTER(df)
@@ -237,7 +234,8 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 
     self.awokeSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"提醒" ImagName:nil Action:^{
 
-               NSLog(@"提醒");
+          NSLog(@"提醒");
+          [self.targetNameTextField  resignFirstResponder];
            weakSelf.pickerView = [[ZXDatePickerView alloc]initWithAction:^(NSDate *date) {
             
             DATE_FORMATTER(df)
@@ -265,6 +263,9 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 
             HomeAddPhaseViewController *addPhaseVC = [HomeAddPhaseViewController new];
             [self.navigationController pushViewController:addPhaseVC animated:YES];
+        
+        
+        
 
         }];
 
@@ -324,6 +325,11 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     // Dispose of any resources that can be recreated.
 }
 
+
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//
+//     [self.targetNameTextField  resignFirstResponder];
+//}
 /*
 #pragma mark - Navigation
 

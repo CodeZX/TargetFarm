@@ -12,6 +12,7 @@
 #import "HomeTableSectionHeadView.h"
 #import "HomeFoundTargetView.h"
 #import "HomeFoundTargetViewController.h"
+#import "HomeMyTargetController.h"
 
 #import "TargetModel.h"
 
@@ -43,6 +44,8 @@
     HomeTableView *homeTableView = [HomeTableView new];
     homeTableView.dataSource = self;
     homeTableView.delegate = self;
+    homeTableView.separatorStyle = UITableViewCellEditingStyleNone;
+   
     [self.view addSubview:homeTableView];
     self.homeTableView = homeTableView;
 //    [self.homeTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -61,8 +64,18 @@
 - (void)loadNewData {
     
     DEBUG_LOG(@"加载数据");
-    [self.homeTableView.mj_header endRefreshing];
-    [self.homeTableView.mj_footer endRefreshing];
+     TargetManage *targetManage = [TargetManage sharedTargetManage];
+    self.targetAry = [targetManage allTarget];
+    if (self.targetAry.count != 0) {
+        
+        [self.homeTableView reloadData];
+        [self.homeTableView.mj_header endRefreshing];
+        return ;
+       
+        
+    }
+   
+     DEBUG_LOG(@"暂无目标");
     
     
 
@@ -85,8 +98,7 @@
 }
 - (void)getData {
     
-//    NSMutableArray *targetAry = [NSMutableArray new];
-//    self.targetAry = targetAry;
+    [self.homeTableView.mj_header beginRefreshing];
     
     
     
@@ -126,9 +138,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    TargetModel *targetModel = self.targetAry[indexPath.row];
-    targetModel.unfold = YES;
-    [self.homeTableView reloadData];
+//    TargetModel *targetModel = self.targetAry[indexPath.row];
+//    targetModel.unfold = YES;
+//    [self.homeTableView reloadData];
+    
+    HomeMyTargetController *myTargerVC = [HomeMyTargetController new];
+    myTargerVC.targerModel = self.targetAry[indexPath.row];
+    [self.navigationController pushViewController:myTargerVC animated:YES];
 }
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 //
@@ -150,8 +166,43 @@
 //
 //}
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return UITableViewCellEditingStyleDelete;
+}
 
 
+//- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    return @"删除";
+//}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+}
+
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewRowAction *action0 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"修改" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+        NSLog(@"点击了。。%ld",indexPath.row);
+        
+        // 收回左滑出现的按钮(退出编辑模式)
+        tableView.editing = NO;
+    }];
+    action0.backgroundColor = GrayColor;
+    
+    
+    UITableViewRowAction *action1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+        
+        NSLog(@"删除。。%ld",indexPath.row);
+        tableView.editing = NO;
+    }];
+    action1.backgroundColor = RedColor;;
+    
+    return @[action1, action0];
+    
+}
 //- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
 //
 //
@@ -164,38 +215,38 @@
 }
 #pragma mark -------------------------- lazy loading ----------------------------------------
 
-- (NSMutableArray *)targetAry {
-    
-    if (!_targetAry) {
-        
-        _targetAry = [NSMutableArray new];
-        TargetModel *model1 =  [TargetModel new];
-        model1.targetStr = @"早上 6：00 去跑步";
-        [_targetAry addObject:model1];
-        
-        TargetModel *model2 =  [TargetModel new];
-        model2.targetStr = @"早上 7：00 早读";
-        [_targetAry addObject:model2];
-        
-        TargetModel *model3 =  [TargetModel new];
-        model3.targetStr = @"上午11：00 开会";
-        [_targetAry addObject:model3];
-        
-        TargetModel *model4 =  [TargetModel new];
-        model4.targetStr = @"中午12：00 午饭";
-        [_targetAry addObject:model4];
-        
-        TargetModel *model5 =  [TargetModel new];
-        model5.targetStr = @"下午1：00 整理文件";
-        [_targetAry addObject:model5];
-        
-        TargetModel *model6 =  [TargetModel new];
-        model6.targetStr = @"下午7：00 聚会";
-        [_targetAry addObject:model6];
-    }
-    
-    return _targetAry;
-}
+//- (NSMutableArray *)targetAry {
+//    
+//    if (!_targetAry) {
+//        
+//        _targetAry = [NSMutableArray new];
+//        TargetModel *model1 =  [TargetModel new];
+//        model1.targetStr = @"早上 6：00 去跑步";
+//        [_targetAry addObject:model1];
+//        
+//        TargetModel *model2 =  [TargetModel new];
+//        model2.targetStr = @"早上 7：00 早读";
+//        [_targetAry addObject:model2];
+//        
+//        TargetModel *model3 =  [TargetModel new];
+//        model3.targetStr = @"上午11：00 开会";
+//        [_targetAry addObject:model3];
+//        
+//        TargetModel *model4 =  [TargetModel new];
+//        model4.targetStr = @"中午12：00 午饭";
+//        [_targetAry addObject:model4];
+//        
+//        TargetModel *model5 =  [TargetModel new];
+//        model5.targetStr = @"下午1：00 整理文件";
+//        [_targetAry addObject:model5];
+//        
+//        TargetModel *model6 =  [TargetModel new];
+//        model6.targetStr = @"下午7：00 聚会";
+//        [_targetAry addObject:model6];
+//    }
+//    
+//    return _targetAry;
+//}
 /*
 #pragma mark - Navigation
 

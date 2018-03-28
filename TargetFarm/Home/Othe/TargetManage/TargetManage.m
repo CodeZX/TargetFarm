@@ -17,10 +17,23 @@
 #define CLEAR_ALL_DATA                       @"DELETE FROM %@"
 
 
+// create
 #define CREATE_TARGET_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS t_target (id integer PRIMARY KEY AUTOINCREMENT, targetName text NOT NULL, beginDate datetime NOT NULL,endDate datetime NOT NULL,awokeDate datetime NOT NULL,phaseName text NOT NULL);"
 #define CREATE_PHASE_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY AUTOINCREMENT, title text NOT NULL, content text NOT NULL,beginDate datetime NOT NULL,endDate datetime NOT NULL, accomplish BOOL NOT NULL);"
+
+
+// add
 #define INSERT_TO_TABLE_TARGET @"INSERT INTO t_target (targetName,beginDate,endDate,awokeDate,phaseName) VALUES (?,?,?,?,?);"
-#define INSERT_TO_TABLE_PHASE
+#define INSERT_TO_TABLE_PHASE  @"INSERT INTO %@ (title,content,beginDate,endDate,phaseName,accomplish) VALUES (?,?,?,?,?,?);"
+
+
+// delete
+
+
+// update
+
+// select
+
 @interface TargetManage ()
 
 
@@ -58,15 +71,22 @@ WMSingletonM(TargetManage)
 - (BOOL)createTarget {
     
     BOOL result = [db executeUpdate:CREATE_TARGET_TABLE_IF_NOT_EXISTS];
-    if (!result) {
-        DEBUG_LOG(@"创建表失败");
-    } else {
-        DEBUG_LOG(@"创建表成功");
-    }
+    if (!result) { DEBUG_LOG(@"创建表失败");return NO;}
     
-   
+    DEBUG_LOG(@"创建表成功");
+    return YES;
+}
+
+
+- (BOOL)createPhase {
+    
+    NSString *tableName =  @"12";
+    NSString *sql = [NSString stringWithFormat:CREATE_PHASE_TABLE_IF_NOT_EXISTS,tableName];
+    BOOL result = [db executeUpdate:sql];
+    if (!result) { DEBUG_LOG(@"创建表失败"); return NO;}
     
     
+    DEBUG_LOG(@"创建表成功");
     return YES;
 }
 
@@ -111,7 +131,7 @@ WMSingletonM(TargetManage)
 }
 
 
-- (NSArray *)allTarget {
+- (NSMutableArray *)allTarget {
     
     //查询整个表
     FMResultSet * resultSet = [db executeQuery:@"select * from t_target"];

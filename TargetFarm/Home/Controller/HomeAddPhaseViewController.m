@@ -7,9 +7,30 @@
 //
 
 #import "HomeAddPhaseViewController.h"
+#import "ZXDatePickerView.h"
+#import "HomeFoundTargetSelectBar.h"
 
+
+#define HEADER_HEIGHE   400
+#define FOOTER_HEIGHE   0
+#define CELL_HEIGHE     88
+#define SELECTBAR_HEIGHE 44
+
+#define DATE_FORMATTER(df)  NSDateFormatter *df  =   [NSDateFormatter new]; \
+df.timeZone = [NSTimeZone systemTimeZone];\
+df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 
 @interface HomeAddPhaseViewController ()
+
+@property (nonatomic,weak) UILabel *targetNameLabel;
+@property (nonatomic,weak) UITextField *targetNameTextField;
+@property (nonatomic,weak) UIView *line;
+
+@property (nonatomic,strong) ZXDatePickerView *pickerView;
+@property (nonatomic,strong) HomeFoundTargetSelectBar *startSelectBar;
+@property (nonatomic,strong) HomeFoundTargetSelectBar *endSelectBar;
+@property (nonatomic,strong) HomeFoundTargetSelectBar *awokeSelectBar;
+@property (nonatomic,strong) HomeFoundTargetSelectBar *phaseSelectBar;
 
 @end
 
@@ -22,14 +43,47 @@
 
 - (void)setupUI  {
     
-    [super setupUI];
-    self.title = @"我的目标";
-    self.view.backgroundColor = WhiteColor;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(rightBtnClick:)];
+    self.title = @"增加阶段";
+    self.view.backgroundColor = MotifColor;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(rightBtnClick:)];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancelClick:)];
     
+
+    UILabel *targetNameLabel = [UILabel new];
+    targetNameLabel.text = @"目标名称";
+    [self.view addSubview:targetNameLabel];
+    self.targetNameLabel = targetNameLabel;
+    [self.targetNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(25);
+        make.left.equalTo(self.view).offset(20);
+    }];
+    
+    
+    UITextField *targetNameTextField = [UITextField new];
+    //    targetNameTextField.keyboardType = UIKeyboardTypeNumberPad;
+    targetNameTextField.placeholder = @"输入你的目标计划";
+    [self.view addSubview:targetNameTextField];
+    self.targetNameTextField = targetNameTextField;
+    [self.targetNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.targetNameLabel.bottom).offset(30);
+    }];
+    
+    UIView *line = [UIView new];
+    line.backgroundColor = BlackColor;
+    [self.view addSubview:line];
+    self.line = line;
+    [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(1);
+        make.left.equalTo(10);
+        make.right.equalTo(-10);
+        make.top.equalTo(self.targetNameTextField.bottom).offset(5);
+    }];
+    
+    [self addSelectBar];
 }
 
 
@@ -40,41 +94,119 @@
 }
 - (void)rightBtnClick:(id)sender {
     
-    //显示弹出框列表选择
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil
-                                                                   message:nil
-                                                            preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel
-                                                         handler:^(UIAlertAction * action) {
-                                                             //响应事件
-                                                             NSLog(@"action = %@", action);
-                                                         }];
-    UIAlertAction* deleteAction = [UIAlertAction actionWithTitle:@"删除目标" style:UIAlertActionStyleDestructive
-                                                         handler:^(UIAlertAction * action) {
-                                                             //响应事件
-                                                             NSLog(@"action = %@", action);
-                                                         }];
-    UIAlertAction* modificationAction = [UIAlertAction actionWithTitle:@"修改目标" style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action) {
-                                                           //响应事件
-                                                           NSLog(@"action = %@", action);
-                                                       }];
 
-    UIAlertAction* abandonAction = [UIAlertAction actionWithTitle:@"放弃目标" style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * action) {
-                                                             //响应事件
-                                                             NSLog(@"action = %@", action);
-                                                         }];
-    [alert addAction:modificationAction];
-    [alert addAction:cancelAction];
-    [alert addAction:abandonAction];
-    [alert addAction:deleteAction];
-    [self presentViewController:alert animated:YES completion:nil];
-    
+    DEBUG_LOG(@"保存");
     
 }
 
+
+- (void)addSelectBar {
+    
+    Weak_Self(weakSelf);
+    self.startSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"起始日期" ImagName:nil Action:^{
+        
+        NSLog(@"起始日期");
+        [self.targetNameTextField  resignFirstResponder];
+        
+        weakSelf.pickerView = [[ZXDatePickerView alloc]initWithAction:^(NSDate *date) {
+            
+            DATE_FORMATTER(df)
+            weakSelf.startSelectBar.content = [df stringFromDate:date];
+            [weakSelf.pickerView removeFromSuperview];
+        }];
+        weakSelf.pickerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        [self.view addSubview:weakSelf.pickerView];
+        
+        
+        
+    }];
+    [self.view addSubview:self.startSelectBar];
+    [self.startSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.line.bottom).offset(50);
+        make.left.equalTo(20);
+        make.right.equalTo(-20);
+        make.height.equalTo(SELECTBAR_HEIGHE);
+    }];
+    
+    
+    
+    
+    
+    
+    self.endSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"截止日期" ImagName:nil Action:^{
+        
+        NSLog(@"截止日期");
+        [self.targetNameTextField  resignFirstResponder];
+        weakSelf.pickerView = [[ZXDatePickerView alloc]initWithAction:^(NSDate *date) {
+            
+            DATE_FORMATTER(df)
+            weakSelf.endSelectBar.content = [df stringFromDate:date];
+            [weakSelf.pickerView removeFromSuperview];
+            //
+        }];
+        weakSelf.pickerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        [self.view addSubview:weakSelf.pickerView];
+        
+    }];
+    
+    
+    [self.view addSubview:self.endSelectBar];
+    [self.endSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.startSelectBar.bottom).offset(10);
+        make.left.equalTo(20);
+        make.right.equalTo(-20);
+        make.height.equalTo(SELECTBAR_HEIGHE);
+    }];
+    
+    
+    self.awokeSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"提醒" ImagName:nil Action:^{
+        
+        NSLog(@"提醒");
+        [self.targetNameTextField  resignFirstResponder];
+        weakSelf.pickerView = [[ZXDatePickerView alloc]initWithAction:^(NSDate *date) {
+            
+            DATE_FORMATTER(df)
+            weakSelf.awokeSelectBar.content = [df stringFromDate:date];
+            [weakSelf.pickerView removeFromSuperview];
+            //
+        }];
+        weakSelf.pickerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        [self.view addSubview:weakSelf.pickerView];
+        
+    }];
+    
+    [self.view addSubview:self.awokeSelectBar];
+    [self.awokeSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.endSelectBar.bottom).offset(10);
+        make.left.equalTo(20);
+        make.right.equalTo(-20);
+        make.height.equalTo(SELECTBAR_HEIGHE);
+    }];
+    
+    
+    
+//    self.phaseSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"阶段" ImagName:@"anniu" Action:^{
+//        
+//        
+//        HomeAddPhaseViewController *addPhaseVC = [HomeAddPhaseViewController new];
+//        [self.navigationController pushViewController:addPhaseVC animated:YES];
+//        
+//        
+//        
+//        
+//    }];
+//    
+//    
+//    [self.view addSubview:self.phaseSelectBar];
+//    [self.phaseSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.awokeSelectBar.bottom).offset(10);
+//        make.left.equalTo(20);
+//        make.right.equalTo(-20);
+//        make.height.equalTo(SELECTBAR_HEIGHE);
+//    }];
+    
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

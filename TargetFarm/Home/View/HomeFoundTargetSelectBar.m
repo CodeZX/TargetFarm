@@ -38,6 +38,7 @@
 
 - (void)setupUI {
     
+    self.backgroundColor = ClearColor;
     UILabel *titleLabel = [UILabel new];
     titleLabel.text = self.title;
     [self addSubview:titleLabel];

@@ -47,6 +47,7 @@
 		18009547206A2786003813C1 /* MyFarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18009541206A2786003813C1 /* MyFarmVC.m */; };
 		18009548206A2786003813C1 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 18009545206A2786003813C1 /* FarmScene.sks */; };
 		18009549206A2786003813C1 /* FarmScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 18009546206A2786003813C1 /* FarmScene.m */; };
+		1800959C206B7ACB003813C1 /* HomeMyTargetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800959B206B7ACB003813C1 /* HomeMyTargetController.m */; };
 		189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699702061ED8E0098AFFF /* BasicTableViewController.m */; };
 		189699742061EDBA0098AFFF /* BasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699732061EDBA0098AFFF /* BasicNavigationController.m */; };
 		189699772061EE2C0098AFFF /* BasicTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699762061EE2C0098AFFF /* BasicTabBarController.m */; };
@@ -149,6 +150,8 @@
 		18009544206A2786003813C1 /* FarmScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FarmScene.h; sourceTree = "<group>"; };
 		18009545206A2786003813C1 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		18009546206A2786003813C1 /* FarmScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FarmScene.m; sourceTree = "<group>"; };
+		1800959A206B7ACB003813C1 /* HomeMyTargetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeMyTargetController.h; sourceTree = "<group>"; };
+		1800959B206B7ACB003813C1 /* HomeMyTargetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeMyTargetController.m; sourceTree = "<group>"; };
 		189699652061E8C50098AFFF /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		189699662061E9780098AFFF /* MacroDefinitionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinitionHeader.h; sourceTree = "<group>"; };
 		1896996F2061ED8E0098AFFF /* BasicTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTableViewController.h; sourceTree = "<group>"; };
@@ -444,6 +447,8 @@
 				18009518206885C4003813C1 /* HomeFoundTargetViewController.m */,
 				1800952420688917003813C1 /* HomeAddPhaseViewController.h */,
 				1800952520688917003813C1 /* HomeAddPhaseViewController.m */,
+				1800959A206B7ACB003813C1 /* HomeMyTargetController.h */,
+				1800959B206B7ACB003813C1 /* HomeMyTargetController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -669,7 +674,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -711,6 +716,7 @@
 				18969A3820648F320098AFFF /* WSDatePickerView.m in Sources */,
 				1800952920688954003813C1 /* HomeAddPhaseCell.m in Sources */,
 				180095352068F81F003813C1 /* ZXFMDBManager.m in Sources */,
+				1800959C206B7ACB003813C1 /* HomeMyTargetController.m in Sources */,
 				18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */,
 				1800953C2069D868003813C1 /* ZXDatePickerView.m in Sources */,
 				180095232068885C003813C1 /* HomeFoundTargetSelectBar.m in Sources */,
@@ -881,7 +887,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 484G6WE6BR;
+				DEVELOPMENT_TEAM = MN368D4UQP;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -904,7 +910,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 484G6WE6BR;
+				DEVELOPMENT_TEAM = MN368D4UQP;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

@@ -21,7 +21,7 @@
 
 - (void)setup {
     
-    self.estimatedRowHeight = 300;
+    self.estimatedRowHeight = 140;
     self.rowHeight = UITableViewAutomaticDimension;
     
     

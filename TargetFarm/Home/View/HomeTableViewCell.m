@@ -60,7 +60,8 @@
 
 - (void)setupUI {
     
-//    self.backgroundColor = RandomColor;
+    self.contentView.backgroundColor = MotifColor;
+   
     
     
     HomeTableCellContainerView *containerView = [HomeTableCellContainerView new];

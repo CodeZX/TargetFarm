@@ -8,6 +8,6 @@
 
 #import "HomeFoundTargetViewController.h"
 
-@interface HomeAddPhaseViewController : HomeFoundTargetViewController
+@interface HomeAddPhaseViewController : BasicViewController
 
 @end
