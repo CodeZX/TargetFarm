@@ -19,49 +19,99 @@ WMSingletonH(TargetManage)
 
 
 /**
-  add target
+ 初始化目标表
 
  @return <#return value description#>
  */
-//- (BOOL)createTarget;
+- (BOOL)createTargetTable;
 
+
+/**
+ 添加目标
+
+ @param targetModel 目标模型
+ @return <#return value description#>
+ */
 - (BOOL)addTargetWithTargetModel:(TargetModel *)targetModel;
+
+
+/**
+ 获取所有的目标
+
+ @return <#return value description#>
+ */
+- (NSMutableArray *)allTarget;
+
+
+
+/**
+ 更新目标
+
+ @param option <#data description#>
+ @param primaryKey <#key description#>
+ @return <#return value description#>
+ */
+- (BOOL)updateTargetWithPrimaryKey:(int)primaryKey Option:(NSDictionary *)option;
+
+
 /**
  delete target
 
  @return <#return value description#>
  */
-- (BOOL)deleteTarget;
+//- (BOOL)deleteTarget;
 
 /**
  get target
 
  @return <#return value description#>
  */
-- (TargetModel *)getTarget;
+//- (TargetModel *)getTarget;
+
 
 
 /**
- all target
+ 新建阶段表
 
- @return <#return value description#>
+ @return 阶段表名 —— 当前时间
  */
--(NSMutableArray *)allTarget;
+- (NSString *)createPhaseTable;
+
 /**
- add  phase
+ 添加阶段到目标中
 
+ @param phase <#phase description#>
+ @param phaseName <#phaseName description#>
  @return <#return value description#>
  */
-- (BOOL)addPhaseWithPhase:(TargetPhaseModel *)phase TargetID:(NSInteger)id;
+- (BOOL)addPhaseWithPhase:(TargetPhaseModel *)phase PhaseName:(NSString *)phaseName;
+
+/**
+ 获取目标的所有阶段
+
+ @param phaseName <#phaseName description#>
+ @return <#return value description#>
+ */
+- (NSMutableArray *)allPhaseFromPhaseName:(NSString *)phaseName;
 
 
+
+/**
+ 更新阶段
+
+ @param phaseName <#phaseName description#>
+ @param primaryKey <#data description#>
+ @param option <#key description#>
+ @return <#return value description#>
+ */
+- (BOOL)upDatePhaseWithPhaseName:(NSString *)phaseName  PrimaryKey:(int)primaryKey Option:(NSDictionary *)option;
 /**
   delete phase
 
  @param phase <#phase description#>
  @return <#return value description#>
  */
-- (BOOL)deletePhaseWithPhase:(TargetScheduleModel *)phase;
+//- (BOOL)deletePhaseWithPhase:(TargetScheduleModel *)phase;
 
 
 

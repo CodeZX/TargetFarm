@@ -8,29 +8,36 @@
 
 #import "TargetManage.h"
 
-#define CREAT_TABLE_IFNOT_EXISTS             @"create table if not exists %@ (key text primary key, data blob)"
-#define DELETE_DATA_WITH_PRIMARYKEY          @"delete from %@ where key = ?"
-#define INSERT_TO_TABLE                      @"insert into %@ (key, data) values (?, ?)"
-#define READ_DATA_TABLE_WITH_PRIMARYKEY      @"select data from %@ where key = ?"
-#define READ_ALL_DATA                        @"select data from %@"
-#define UPDATE_DATA_WHTH_PRIMARYKEY          @"update %@ set data = ? where key = ?"
-#define CLEAR_ALL_DATA                       @"DELETE FROM %@"
+#define DATE_FORMATTER(df)  NSDateFormatter *df  =   [NSDateFormatter new]; \
+df.timeZone = [NSTimeZone systemTimeZone];\
+df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
+
+
+//#define CREAT_TABLE_IFNOT_EXISTS             @"create table if not exists %@ (key text primary key, data blob)"
+//#define DELETE_DATA_WITH_PRIMARYKEY          @"delete from %@ where key = ?"
+//#define INSERT_TO_TABLE                      @"insert into %@ (key, data) values (?, ?)"
+//#define READ_DATA_TABLE_WITH_PRIMARYKEY      @"select data from %@ where key = ?"
+//#define READ_ALL_DATA                        @"select data from %@"
+//#define UPDATE_DATA_WHTH_PRIMARYKEY          @"update %@ set data = ? where key = ?"
+//#define CLEAR_ALL_DATA                       @"DELETE FROM %@"
 
 
 // create
 #define CREATE_TARGET_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS t_target (id integer PRIMARY KEY AUTOINCREMENT, targetName text NOT NULL, beginDate datetime NOT NULL,endDate datetime NOT NULL,awokeDate datetime NOT NULL,phaseName text NOT NULL);"
-#define CREATE_PHASE_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY AUTOINCREMENT, title text NOT NULL, content text NOT NULL,beginDate datetime NOT NULL,endDate datetime NOT NULL, accomplish BOOL NOT NULL);"
+#define CREATE_PHASE_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY AUTOINCREMENT, title text NOT NULL, content text NOT NULL,beginDate datetime NOT NULL,endDate datetime NOT NULL,awokeDate datetime NOT NULL accomplish BOOL NOT NULL);"
 
 
 // add
-#define INSERT_TO_TABLE_TARGET @"INSERT INTO t_target (targetName,beginDate,endDate,awokeDate,phaseName) VALUES (?,?,?,?,?);"
-#define INSERT_TO_TABLE_PHASE  @"INSERT INTO %@ (title,content,beginDate,endDate,phaseName,accomplish) VALUES (?,?,?,?,?,?);"
+#define INSERT_INTO_TABLE_TARGET @"INSERT INTO t_target (targetName,beginDate,endDate,awokeDate,phaseName) VALUES (?,?,?,?,?);"
+#define INSERT_INTO_TABLE_PHASE  @"INSERT INTO %@ (title,content,beginDate,endDate,awokeDate,accomplish) VALUES (?,?,?,?,?,?);"
 
 
 // delete
 
 
 // update
+#define UPDATE_TARGET @"update t_target set %@ = ? where id = ?;"
+#define UPDATE_PHASE  @"update %@ set %@ = ? where id = ?;"
 
 // select
 
@@ -68,7 +75,7 @@ WMSingletonM(TargetManage)
     return YES;
 }
 
-- (BOOL)createTarget {
+- (BOOL)createTargetTable {
     
     BOOL result = [db executeUpdate:CREATE_TARGET_TABLE_IF_NOT_EXISTS];
     if (!result) { DEBUG_LOG(@"创建表失败");return NO;}
@@ -78,24 +85,23 @@ WMSingletonM(TargetManage)
 }
 
 
-- (BOOL)createPhase {
+- (NSString *)createPhaseTable {
     
-    NSString *tableName =  @"12";
+    DATE_FORMATTER(df)
+    NSString *tableName =  [df stringFromDate:[NSDate date]];
     NSString *sql = [NSString stringWithFormat:CREATE_PHASE_TABLE_IF_NOT_EXISTS,tableName];
     BOOL result = [db executeUpdate:sql];
-    if (!result) { DEBUG_LOG(@"创建表失败"); return NO;}
-    
-    
+    if (!result) { DEBUG_LOG(@"创建表失败"); return @"";}
     DEBUG_LOG(@"创建表成功");
-    return YES;
+    return tableName;
 }
 
 
 - (BOOL)addTargetWithTargetModel:(TargetModel *)targetModel {
     
-    [self createTarget];
+    [self createTargetTable];
     
-   BOOL result =  [db executeUpdate:INSERT_TO_TABLE_TARGET,targetModel.targetName,targetModel.beginDate,targetModel.endDate,targetModel.awokeDate,targetModel.phaseTableName];
+   BOOL result =  [db executeUpdate:INSERT_INTO_TABLE_TARGET,targetModel.targetName,targetModel.beginDate,targetModel.endDate,targetModel.awokeDate,targetModel.phaseTableName];
     
     if (!result) {
         
@@ -106,6 +112,17 @@ WMSingletonM(TargetManage)
         DEBUG_LOG(@"插入成功");
     }
     return YES;
+}
+
+- (BOOL)addPhaseWithPhase:(TargetPhaseModel *)phase PhaseName:(NSString *)phaseName {
+    
+    NSString *sql = [NSString stringWithFormat:INSERT_INTO_TABLE_PHASE,phaseName];
+    BOOL result = [db executeUpdate:sql,phase.title,phase.content,phase.beginDate,phase.endDate,phase.awokeDate,phase.accomplish];
+    if (!result) { DEBUG_LOG(@"插入失败");return NO; }
+    
+    DEBUG_LOG(@"插入成功");
+    return YES;
+   
 }
 
 - (TargetModel *)getTarget {
@@ -155,35 +172,64 @@ WMSingletonM(TargetManage)
     
 }
 
-- (BOOL)addPhaseWithPhase:(TargetPhaseModel *)phase TargetID:(NSInteger)id {
+- (NSMutableArray *)allPhaseFromPhaseName:(NSString *)phaseName {
     
     
-    NSString *phaseName = [NSString stringWithFormat:@"t_phase_100%ld",id];
+    //查询整个表
+    NSString *sql = [NSString stringWithFormat:@"select * from %@",phaseName];
+    FMResultSet * resultSet = [db executeQuery:sql];
+    NSMutableArray *mutableAry = [NSMutableArray new];
     
-    NSString *sqlStr = [NSString stringWithFormat:CREATE_PHASE_TABLE_IF_NOT_EXISTS,phaseName];
-    BOOL result = [db executeUpdate:sqlStr];
-    if (!result) {
-        DEBUG_LOG(@"创建表失败");
-    } else {
+    while ([resultSet next]) {
         
-        DEBUG_LOG(@"创建表成功");
-        
-        BOOL result =  [db executeUpdate:@"INSERT INTO t_target (title,content,beginDate, endDate,accomplish) VALUES (?,?,?,?);",phase.title,phase.content,phase.beginDate,phase.endDate,phase.accomplish];
-        
-            if (!result) {
-        
-                DEBUG_LOG(@"插入失败");
-        
-            }else {
-        
-                DEBUG_LOG(@"插入成功");
-            }
+        TargetPhaseModel *model = [TargetPhaseModel new];
+        model.id = [resultSet intForColumn:@"id"];
+        model.title = [resultSet stringForColumn:@"title"];
+        model.content = [resultSet stringForColumn:@"content"];
+        model.beginDate = [resultSet dateForColumn:@"beginDate"];
+        model.endDate = [resultSet dateForColumn:@"endDate"];
+        model.awokeDate = [resultSet dateForColumn:@"awokeDate"];
+        model.accomplish = [resultSet boolForColumn:@"accomplish"];
+        //        NSLog(@"id：%@ 目标：%@ 阶段：%@ 开始时间：%@ 结束时间：%@",@( model.ID),model.targetName,model.phaseTableName,model.beginDate,model.endDate);
+        [mutableAry addObject:model];
     }
     
-    return YES;
+    
+    return mutableAry;
 }
 
 
+
+- (BOOL)updateTargetWithPrimaryKey:(int)primaryKey Option:(NSDictionary *)option {
+    
+    NSString *key = [option allKeys].lastObject;
+    NSString *sql = [NSString stringWithFormat:UPDATE_TARGET,key];
+                     BOOL result = [db executeUpdate:sql,[option valueForKey:key],@(primaryKey)];
+                     if (!result) { DEBUG_LOG(@"更新失败"); return NO;}
+                     
+                     DEBUG_LOG(@"更新失败");
+                     return YES;
+}
+
+
+- (BOOL)upDatePhaseWithPhaseName:(NSString *)phaseName  PrimaryKey:(int)primaryKey Option:(NSDictionary *)option {
+    
+     NSString *key = [option allKeys].lastObject;
+    NSString *sql = [NSString stringWithFormat:UPDATE_PHASE,phaseName,key];
+    BOOL result = [db executeUpdate:sql,[option valueForKey:key],@(primaryKey)];
+    if (!result) { DEBUG_LOG(@"更新失败"); return NO;}
+    
+    DEBUG_LOG(@"更新失败");
+    return YES;
+    
+    
+}
+
+
+- (void)open {
+    
+    [self createDataBaseWithPath:nil];
+}
 
 - (void)close {
     
@@ -192,20 +238,6 @@ WMSingletonM(TargetManage)
     DEBUG_LOG(@"数据库关闭失败！");
     
 }
-//- (BOOL)insertPhase:(TargetPhaseModel *)phase {
-//
-//    BOOL result =  [db executeUpdate:@"INSERT INTO t_target (targetName,beginDate,endDate, phaseName) VALUES (?,?,?,?);",targetModel.targetName,targetModel.beginDate,targetModel.endDate,targetModel.phaseTableName];
-//
-//    if (!result) {
-//
-//        DEBUG_LOG(@"插入失败");
-//
-//    }else {
-//
-//        DEBUG_LOG(@"插入成功");
-//    }
-//
-//    return YES;
-//}
+
 
 @end

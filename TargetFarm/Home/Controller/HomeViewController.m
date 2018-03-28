@@ -66,10 +66,11 @@
     DEBUG_LOG(@"加载数据");
      TargetManage *targetManage = [TargetManage sharedTargetManage];
     self.targetAry = [targetManage allTarget];
+    [self.homeTableView.mj_header endRefreshing];
     if (self.targetAry.count != 0) {
         
         [self.homeTableView reloadData];
-        [self.homeTableView.mj_header endRefreshing];
+        
         return ;
        
         
