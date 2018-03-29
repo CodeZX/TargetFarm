@@ -7,7 +7,8 @@
 //
 
 #import "HomeTableCellContainerView.h"
-
+#import "HomePhaseBar.h"
+#import "HomeTableViewCell.h"
 
 @interface HomeTableCellContainerView ()
 
@@ -15,10 +16,10 @@
 @property (nonatomic,weak) UIImageView *tagImg;
 @property (nonatomic,weak) UILabel *contentLable;
 @property (nonatomic,weak) UIImageView *backgroundImg;
-@property (nonatomic,weak) UILabel *label;
-@property (nonatomic,weak) UILabel *lastLabel;
+//@property (nonatomic,weak) UILabel *targetName;
+@property (nonatomic,weak) HomePhaseBar *lastPhaseBar;
 
-@property (nonatomic,strong) NSMutableArray *lableAry;
+@property (nonatomic,strong) NSMutableArray *phaseBarAry;
 @end
 @implementation HomeTableCellContainerView
 
@@ -59,10 +60,7 @@
     contentLable.textColor = RandomColor;
     [self addSubview:contentLable];
     self.contentLable = contentLable;
-    //    self.contentLable.text    = @"1111";
     [self.contentLable mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.equalTo(self);
-//        make.top.equalTo(self.top).offset(50);
         
         make.center.equalTo(self);
     }];
@@ -70,7 +68,7 @@
     UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentLableClick)];
     // 2. 将点击事件添加到label上
      [contentLable addGestureRecognizer:labelTapGestureRecognizer];
-     contentLable.userInteractionEnabled = YES; // 可以理解为设置label可被点击
+     contentLable.userInteractionEnabled = YES;
 }
 
 
@@ -80,10 +78,12 @@
 - (void)contentLableClick {
     
     self.targetModel.unfold = !self.targetModel.unfold;
-   [[NSNotificationCenter defaultCenter] postNotificationName:@"update" object:nil];
-    if (self.lableAry.count == 0) { return ;}
+    HomeTableViewCell *cell = (HomeTableViewCell *)[[self superview] superview];
+    NSNotification *notification = [[NSNotification alloc]initWithName:@"update" object:nil userInfo:@{@"cell":cell}];
+   [[NSNotificationCenter defaultCenter] postNotification:notification];
+    if (self.phaseBarAry.count == 0) { return ;}
         
-    for (UILabel *label in self.lableAry) {
+    for (UILabel *label in self.phaseBarAry) {
             
             [label removeFromSuperview];
             
@@ -96,68 +96,67 @@
     
     _targetModel = targetModel;
     self.contentLable.text = targetModel.targetName;
-    self.lableAry = [NSMutableArray new];
+    self.phaseBarAry = [NSMutableArray new];
+    
     if (_targetModel.unfold) {
         
        
-        
-        for (int index = 0; index <  _targetModel.scheduleAry.count; index++) {
+        //_targetModel.scheduleAry.count
+        for (int index = 0; index < 3 ; index++) {
 
-            UILabel *label = [UILabel new];
-            label.text = @"阶段一：";
-            [self addSubview:label];
-            if (!self.lastLabel) {
-                [label mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.top.equalTo(self.contentLable.bottom);
-                    make.left.equalTo(self.contentLable);
+            HomePhaseBar *phaseBar = [HomePhaseBar new];
+            phaseBar.alpha = 0;
+            [self addSubview:phaseBar];
+            
+            if (!self.lastPhaseBar) {
+                
+                [phaseBar mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(self.contentLable.bottom).offset(30);
+                    make.left.equalTo(self.tagImg).offset(10);
+                    make.right.equalTo(self.tagImg).offset(-10);
+                    make.height.equalTo(44);
                 }];
+            
             }else {
                 
-                [label mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.top.equalTo(self.lastLabel.bottom);
-                    make.left.equalTo(self.contentLable);
+                [phaseBar mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(self.lastPhaseBar.bottom);
+                    make.left.right.equalTo(self.lastPhaseBar);
+                    make.height.equalTo(44);
                 }];
                 
             }
-            self.lastLabel = label;
+            self.lastPhaseBar = phaseBar;
            
-            [self.lableAry addObject:label];
+            [self.phaseBarAry addObject:phaseBar];
         }
         
         
-        
+        self.backgroundImg.image = [UIImage jk_resizableHalfImage:@"beijing22"];
         [self.backgroundImg mas_updateConstraints:^(MASConstraintMaker *make) {
             
             make.height.equalTo(400);
         }];
         
-//        [UIView animateWithDuration:1 animations:^{
-//            [self layoutIfNeeded];//这里是关键
-//            //            self.backView.alpha = 0.35;//透明度的变化依然和老方法一样
-//        } completion:^(BOOL finished) {
-//            //动画完成后的代码
-//
-//
-//        }];
-        
-       
         [self.contentLable mas_updateConstraints:^(MASConstraintMaker *make) {
-            
-            
-            make.centerY.equalTo(self.centerY).offset(-100);
+            make.centerY.equalTo(self).offset(-100);
         }];
+        [self layoutIfNeeded];
+        [UIView animateWithDuration:1 animations:^{
+            
+            for (HomePhaseBar *phaseBar in self.phaseBarAry) {
+                
+                phaseBar.alpha = 1;
+            }
+           
+        } completion:nil];
         
-//        [UIView animateWithDuration:0.5f animations:^{
-//            [self layoutIfNeeded];//这里是关键
-//            //            self.backView.alpha = 0.35;//透明度的变化依然和老方法一样
-//        } completion:^(BOOL finished) {
-//            //动画完成后的代码
-//        }];
         
         
     
     }else {
         
+        self.backgroundImg.image = [UIImage imageNamed:@"beijing22"];
         [self.backgroundImg mas_updateConstraints:^(MASConstraintMaker *make) {
             
             make.height.equalTo(140);
@@ -170,11 +169,8 @@
             make.centerY.equalTo(self.centerY);
         }];
         
+        [self layoutIfNeeded];
        
-       
-        
-       
-        
-    }
+        }
 }
 @end

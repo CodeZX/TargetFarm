@@ -29,18 +29,17 @@
     [super viewDidLoad];
     
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"update" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:@"update" object:nil];
     [self setupUI];
     [self getData];
 }
 
-- (void)reloadData {
+- (void)reloadData:(NSNotification *)notification {
     
-    
-    [UIView animateWithDuration:1 animations:^{
-         [self.homeTableView reloadData];
-    }];
-   
+    HomeTableViewCell *cell = [notification.userInfo valueForKey:@"cell"];
+    NSIndexPath *indexpath = [self.homeTableView indexPathForCell:cell];
+    [self.homeTableView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationBottom];
+
 }
 
 - (void)setupUI {
@@ -141,11 +140,11 @@
     HomeTableViewCell *cell = [HomeTableViewCell cellWithTableView:tableView Identifier:@"homeTableView"];
     TargetModel *targetModel = self.targetAry[indexPath.row];
     cell.targetModel = targetModel;
-    [UIView animateWithDuration:9 animations:^{
-        cell.transform =CGAffineTransformMakeTranslation(100, 0);
-    } completion:^(BOOL finished) {
-//        cell.transform =CGAffineTransformIdentity;
-    }];
+//    [UIView animateWithDuration:9 animations:^{
+//        cell.transform =CGAffineTransformMakeTranslation(100, 0);
+//    } completion:^(BOOL finished) {
+////        cell.transform =CGAffineTransformIdentity;
+//    }];
     
 //    cell.transform =CGAffineTransformMakeScale(1, 2);
     
@@ -158,7 +157,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
  
-    UITableViewCell *c = [tableView cellForRowAtIndexPath:indexPath];
+//    UITableViewCell *c = [tableView cellForRowAtIndexPath:indexPath];
     
 }
 
@@ -170,9 +169,12 @@
 //    targetModel.unfold = YES;
 //    [self.homeTableView reloadData];
     
-    HomeMyTargetController *myTargerVC = [HomeMyTargetController new];
-    myTargerVC.targerModel = self.targetAry[indexPath.row];
-    [self.navigationController pushViewController:myTargerVC animated:YES];
+//    HomeMyTargetController *myTargerVC = [HomeMyTargetController new];
+//    myTargerVC.targerModel = self.targetAry[indexPath.row];
+//    [self.navigationController pushViewController:myTargerVC animated:YES];
+    
+//    TargetModel *model = self.targetAry[indexPath.row];model.unfold = YES;
+//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
 }
 
 

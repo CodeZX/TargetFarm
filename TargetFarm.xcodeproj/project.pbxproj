@@ -71,6 +71,7 @@
 		FB241FEA20694BEA00631B17 /* UIAlertController+custom.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FE920694BEA00631B17 /* UIAlertController+custom.m */; };
 		FB241FED20694D0C00631B17 /* UIWindow+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FEC20694D0C00631B17 /* UIWindow+PresentViewController.m */; };
 		FB241FF0206951F400631B17 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FEF206951F400631B17 /* UIViewController+HUD.m */; };
+		FB241FF3206D325B00631B17 /* HomePhaseBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FF2206D325B00631B17 /* HomePhaseBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -200,6 +201,8 @@
 		FB241FEC20694D0C00631B17 /* UIWindow+PresentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+PresentViewController.m"; sourceTree = "<group>"; };
 		FB241FEE206951F400631B17 /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
 		FB241FEF206951F400631B17 /* UIViewController+HUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
+		FB241FF1206D325B00631B17 /* HomePhaseBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePhaseBar.h; sourceTree = "<group>"; };
+		FB241FF2206D325B00631B17 /* HomePhaseBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePhaseBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -485,6 +488,8 @@
 				180095212068885C003813C1 /* HomeFoundTargetSelectBar.m */,
 				1800952720688954003813C1 /* HomeAddPhaseCell.h */,
 				1800952820688954003813C1 /* HomeAddPhaseCell.m */,
+				FB241FF1206D325B00631B17 /* HomePhaseBar.h */,
+				FB241FF2206D325B00631B17 /* HomePhaseBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -730,6 +735,7 @@
 				162DA31C204FB728009242DA /* CommonTableViewHeaderFooterView.m in Sources */,
 				18969A0C206209B50098AFFF /* HomeTableViewCell.m in Sources */,
 				FB241FED20694D0C00631B17 /* UIWindow+PresentViewController.m in Sources */,
+				FB241FF3206D325B00631B17 /* HomePhaseBar.m in Sources */,
 				162DA38620510439009242DA /* HomeSubCell.m in Sources */,
 				18969A032062062A0098AFFF /* BasicView.m in Sources */,
 				16C4B16820513A35003FB364 /* UITableViewCell+KJCategory.m in Sources */,
