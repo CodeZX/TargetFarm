@@ -105,6 +105,14 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
    BOOL result =  [targetManage addPhaseWithPhase:[self getTargetPhaseModelofCurrentlyController] PhaseName:phaseTableName];
    if (!result) {  DEBUG_LOG(@"插入失败"); return; }
    DEBUG_LOG(@"插入成功");
+    
+    
+    if ([self.delegate respondsToSelector:@selector(homeAddPhase:didAddInPhase:)]) {
+         [self.delegate homeAddPhase:self didAddInPhase:phaseTableName];
+    }
+   
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

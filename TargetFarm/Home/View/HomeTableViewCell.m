@@ -62,8 +62,6 @@
     
     self.contentView.backgroundColor = MotifColor;
    
-    
-    
     HomeTableCellContainerView *containerView = [HomeTableCellContainerView new];
     [self.contentView addSubview:containerView];
     self.containerView = containerView;
@@ -71,33 +69,7 @@
         make.edges.equalTo(UIEdgeInsetsMake(10, 10, 10, 10));
     }];
     
-//    UIImageView *backgroundImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"beijing22"]];
-//    [self.containerView addSubview:backgroundImg];
-//    self.backgroundImg = backgroundImg;
-//    [self.backgroundImg mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(0);
-//    }];
-//
-//    UIImageView *tagImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"beijing1"]];
-//    [self.containerView addSubview:tagImg];
-//    self.tagImg = tagImg;
-//    [self.tagImg mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(UIEdgeInsetsMake(30, 30, 30, 30));
-//    }];
-//
-//    UILabel *contentLable = [UILabel new];
-////    contentLable.backgroundColor = RandomColor;
-//    contentLable.textColor = RandomColor;
-//    [self.containerView addSubview:contentLable];
-//    self.contentLable = contentLable;
-////    self.contentLable.text    = @"1111";
-//    [self.contentLable mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.equalTo(self.containerView);
-//
-//    }];
-    
-    
-    
+
 }
 
 - (void)setTargetModel:(TargetModel *)targetModel {

@@ -8,6 +8,11 @@
 
 #import "HomeFoundTargetViewController.h"
 
-@interface HomeAddPhaseViewController : BasicViewController
+@class HomeAddPhaseViewController;
+@protocol  HomeAddPhaseDelegate <NSObject>
 
+- (void)homeAddPhase:(HomeAddPhaseViewController *)homeAddPhase didAddInPhase:(NSString *)phase;
+@end
+@interface HomeAddPhaseViewController : BasicViewController
+@property (nonatomic,weak) id <HomeAddPhaseDelegate>delegate;
 @end

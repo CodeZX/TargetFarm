@@ -28,10 +28,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"update" object:nil];
     [self setupUI];
     [self getData];
 }
 
+- (void)reloadData {
+    
+    
+    [UIView animateWithDuration:1 animations:^{
+         [self.homeTableView reloadData];
+    }];
+   
+}
 
 - (void)setupUI {
     
@@ -131,10 +141,27 @@
     HomeTableViewCell *cell = [HomeTableViewCell cellWithTableView:tableView Identifier:@"homeTableView"];
     TargetModel *targetModel = self.targetAry[indexPath.row];
     cell.targetModel = targetModel;
+    [UIView animateWithDuration:9 animations:^{
+        cell.transform =CGAffineTransformMakeTranslation(100, 0);
+    } completion:^(BOOL finished) {
+//        cell.transform =CGAffineTransformIdentity;
+    }];
+    
+//    cell.transform =CGAffineTransformMakeScale(1, 2);
+    
+
 //    cell.targetScheduleModel = targetScheduleModel;
 //    cell.textLabel.text = @"首页";
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+ 
+    UITableViewCell *c = [tableView cellForRowAtIndexPath:indexPath];
+    
+}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -147,6 +174,8 @@
     myTargerVC.targerModel = self.targetAry[indexPath.row];
     [self.navigationController pushViewController:myTargerVC animated:YES];
 }
+
+
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 //
 //    return 100;
@@ -257,5 +286,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+}
+
+
 
 @end

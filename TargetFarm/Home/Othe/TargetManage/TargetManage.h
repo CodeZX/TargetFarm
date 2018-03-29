@@ -108,10 +108,10 @@ WMSingletonH(TargetManage)
 /**
   delete phase
 
- @param phase <#phase description#>
+ @param phaseName <#phase description#>
  @return <#return value description#>
  */
-//- (BOOL)deletePhaseWithPhase:(TargetScheduleModel *)phase;
+- (BOOL)deletePhaseTableWithPhaseName:(NSString *)phaseName;
 
 
 

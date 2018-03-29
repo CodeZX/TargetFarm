@@ -33,7 +33,7 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 
 
 // delete
-
+#define DELETE_PHASE_TABLE @"drop table %@;"
 
 // update
 #define UPDATE_TARGET @"update t_target set %@ = ? where id = ?;"
@@ -225,7 +225,17 @@ WMSingletonM(TargetManage)
     
 }
 
-
+- (BOOL)deletePhaseTableWithPhaseName:(NSString *)phaseName {
+    
+    
+    NSString *sql = [NSString stringWithFormat:DELETE_PHASE_TABLE,phaseName];
+    BOOL result = [db executeUpdate:sql];
+    if (!result) { DEBUG_LOG(@"删除失败"); return NO;}
+    
+    DEBUG_LOG(@"删除成功");
+    return YES;
+    
+}
 - (void)open {
     
     [self createDataBaseWithPath:nil];

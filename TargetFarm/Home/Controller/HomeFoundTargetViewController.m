@@ -28,7 +28,7 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 
 
 
-@interface HomeFoundTargetViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface HomeFoundTargetViewController ()<UITableViewDelegate,UITableViewDataSource,HomeAddPhaseDelegate>
 @property (nonatomic,weak) UILabel *targetNameLabel;
 @property (nonatomic,weak) UITextField *targetNameTextField;
 @property (nonatomic,weak) UIView *line;
@@ -43,22 +43,34 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 @property (nonatomic,strong) HomeFoundTargetSelectBar *awokeSelectBar;
 @property (nonatomic,strong) HomeFoundTargetSelectBar *phaseSelectBar;
 
-
+@property (nonatomic,strong) TargetModel *targetModel;
+@property (nonatomic,strong) NSArray *phaseAry;
 
 
 //@property (nonatomic,strong) WSDatePickerView *datePickerView;
 @end
 
-@implementation HomeFoundTargetViewController
 
+@implementation HomeFoundTargetViewController
+{
+    
+    TargetManage *TM;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.targetModel = [TargetModel new];
+    TM = [TargetManage sharedTargetManage];
     [self setupUI];
     
     
 }
-
+- (void)viewWillAppear:(BOOL)animated {
+    
+    if (!self.targetModel.phaseTableName) { return ;}
+   self.phaseAry  = [TM allPhaseFromPhaseName:self.targetModel.phaseTableName];
+    [self.tableView reloadData];
+}
 
 - (void)setupUI {
     
@@ -121,7 +133,16 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 // 取消
 - (void)leftClick:(id)sender {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+     [self dismissViewControllerAnimated:YES completion:nil];
+    if ([self.targetModel.phaseTableName isEqualToString:@""]) { return;}
+  
+        
+        // 删除phaae
+        TargetManage *TM = [TargetManage sharedTargetManage];
+        if (![TM deletePhaseTableWithPhaseName:self.targetModel.phaseTableName]) { DEBUG_LOG(@"删除失败"); }
+
+        DEBUG_LOG(@"删除成功");
+    
     
 //    TargetManage *targetManage = [TargetManage sharedTargetManage];
 //    NSLog(@"%@",[targetManage getTarget]);
@@ -160,14 +181,14 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 - (TargetModel *)getTargetModelofCurrentlyController {
     
     DATE_FORMATTER(df)
-    TargetModel *targetModel = [TargetModel new];
-    targetModel.targetName = self.targetNameTextField.text;
-    targetModel.beginDate = [df dateFromString:self.startSelectBar.content];
-    targetModel.endDate = [df dateFromString:self.endSelectBar.content];
-    targetModel.awokeDate= [df dateFromString:self.awokeSelectBar.content];
-    targetModel.phaseTableName = @"";
-    targetModel.awoke = NO;
-    return targetModel;
+    self.targetModel = [TargetModel new];
+    self.targetModel.targetName = self.targetNameTextField.text;
+    self.targetModel.beginDate = [df dateFromString:self.startSelectBar.content];
+    self.targetModel.endDate = [df dateFromString:self.endSelectBar.content];
+    self.targetModel.awokeDate= [df dateFromString:self.awokeSelectBar.content];
+    self.targetModel.phaseTableName = @"";
+    self.targetModel.awoke = NO;
+    return self.targetModel;
     
 }
 
@@ -262,6 +283,7 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 
 
             HomeAddPhaseViewController *addPhaseVC = [HomeAddPhaseViewController new];
+            addPhaseVC.delegate = self;
             [self.navigationController pushViewController:addPhaseVC animated:YES];
         
         
@@ -302,7 +324,7 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 3;
+    return self.phaseAry.count;
     
     
 }
@@ -320,6 +342,23 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     return cell;
     
 }
+
+- (void)homeAddPhase:(HomeAddPhaseViewController *)homeAddPhase didAddInPhase:(NSString *)phase {
+    
+//    // 更新
+//    DEBUG_LOG(@"%@",phase);
+//
+//    TargetManage *TM= [TargetManage sharedTargetManage];
+//
+//    BOOL result =[TM updateTargetWithPrimaryKey:3 Option:@{@"PhaseName":phase}];
+//    if (!result) { DEBUG_LOG(@"更新失败");return ; }
+//    DEBUG_LOG(@"更新成功");
+    
+    
+    self.targetModel.phaseTableName = phase;
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
