@@ -96,7 +96,15 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     
 
     DEBUG_LOG(@"保存");
+    TargetManage *targetManage = [TargetManage sharedTargetManage];
+    NSString *phaseTableName = [targetManage createPhaseTable];
+    if ([phaseTableName isEqualToString:@""]) { DEBUG_LOG(@"创建失败");return;}
+    DEBUG_LOG(@"创建成功");
+    NSLog(@"%@",phaseTableName);
     
+   BOOL result =  [targetManage addPhaseWithPhase:[self getTargetPhaseModelofCurrentlyController] PhaseName:phaseTableName];
+   if (!result) {  DEBUG_LOG(@"插入失败"); return; }
+   DEBUG_LOG(@"插入成功");
 }
 
 
@@ -208,7 +216,19 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     
 }
 
-
+- (TargetPhaseModel *)getTargetPhaseModelofCurrentlyController {
+    
+    DATE_FORMATTER(df)
+    TargetPhaseModel *targetPhaseModel = [TargetPhaseModel new];
+    targetPhaseModel.title = @"阶段";
+    targetPhaseModel.content = self.targetNameTextField.text;
+    targetPhaseModel.beginDate = [df dateFromString:self.startSelectBar.content];
+    targetPhaseModel.endDate = [df dateFromString:self.endSelectBar.content];
+    targetPhaseModel.awokeDate= [df dateFromString:self.awokeSelectBar.content];
+    targetPhaseModel.accomplish = 0;
+    return targetPhaseModel;
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

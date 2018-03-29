@@ -15,6 +15,6 @@
 @property (nonatomic,copy) NSDate *beginDate;
 @property (nonatomic,copy) NSDate *endDate;
 @property (nonatomic,copy) NSDate *awokeDate;
-@property (nonatomic,assign,getter=isAccomplish) BOOL accomplish;
+@property (nonatomic,assign) int accomplish;
 
 @end

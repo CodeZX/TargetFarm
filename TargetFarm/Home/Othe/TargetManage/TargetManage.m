@@ -24,7 +24,7 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 
 // create
 #define CREATE_TARGET_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS t_target (id integer PRIMARY KEY AUTOINCREMENT, targetName text NOT NULL, beginDate datetime NOT NULL,endDate datetime NOT NULL,awokeDate datetime NOT NULL,phaseName text NOT NULL);"
-#define CREATE_PHASE_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY AUTOINCREMENT, title text NOT NULL, content text NOT NULL,beginDate datetime NOT NULL,endDate datetime NOT NULL,awokeDate datetime NOT NULL accomplish BOOL NOT NULL);"
+#define CREATE_PHASE_TABLE_IF_NOT_EXISTS @"CREATE TABLE IF NOT EXISTS %@ (id integer PRIMARY KEY AUTOINCREMENT, title text NOT NULL, content text NOT NULL,beginDate datetime NOT NULL,endDate datetime NOT NULL,awokeDate datetime NOT NULL,accomplish int NOT NULL);"
 
 
 // add
@@ -88,7 +88,7 @@ WMSingletonM(TargetManage)
 - (NSString *)createPhaseTable {
     
     DATE_FORMATTER(df)
-    NSString *tableName =  [df stringFromDate:[NSDate date]];
+    NSString *tableName =  [NSString stringWithFormat:@"t_phase_%@",[NSString jk_UUIDTimestamp]];
     NSString *sql = [NSString stringWithFormat:CREATE_PHASE_TABLE_IF_NOT_EXISTS,tableName];
     BOOL result = [db executeUpdate:sql];
     if (!result) { DEBUG_LOG(@"创建表失败"); return @"";}
@@ -115,9 +115,9 @@ WMSingletonM(TargetManage)
 }
 
 - (BOOL)addPhaseWithPhase:(TargetPhaseModel *)phase PhaseName:(NSString *)phaseName {
-    
+
     NSString *sql = [NSString stringWithFormat:INSERT_INTO_TABLE_PHASE,phaseName];
-    BOOL result = [db executeUpdate:sql,phase.title,phase.content,phase.beginDate,phase.endDate,phase.awokeDate,phase.accomplish];
+    BOOL result = [db executeUpdate:sql,phase.title,phase.content,phase.beginDate,phase.endDate,phase.awokeDate,@(phase.accomplish)];
     if (!result) { DEBUG_LOG(@"插入失败");return NO; }
     
     DEBUG_LOG(@"插入成功");
@@ -214,7 +214,7 @@ WMSingletonM(TargetManage)
 
 - (BOOL)upDatePhaseWithPhaseName:(NSString *)phaseName  PrimaryKey:(int)primaryKey Option:(NSDictionary *)option {
     
-     NSString *key = [option allKeys].lastObject;
+    NSString *key = [option allKeys].lastObject;
     NSString *sql = [NSString stringWithFormat:UPDATE_PHASE,phaseName,key];
     BOOL result = [db executeUpdate:sql,[option valueForKey:key],@(primaryKey)];
     if (!result) { DEBUG_LOG(@"更新失败"); return NO;}
