@@ -10,6 +10,15 @@
 #import "HomePhaseBar.h"
 #import "HomeTableViewCell.h"
 
+
+static int backgroundImgEdge = 5;
+static int tagImgEdge = 33;
+static int contentLableFont = 24;
+static int phaseBarHeight = 60;
+static int phaseBarEdge = 44;
+static int backgroundImgHeight = 150;
+
+
 @interface HomeTableCellContainerView ()
 
 
@@ -38,12 +47,12 @@
 - (void)setupUI {
     
     self.backgroundColor  = MotifColor;
-    
+    self.phaseBarAry = [NSMutableArray new];
     UIImageView *backgroundImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"beijing22"]];
     [self addSubview:backgroundImg];
     self.backgroundImg = backgroundImg;
     [self.backgroundImg mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(UIEdgeInsetsMake(5, 5, 5, 5));
+        make.edges.equalTo(UIEdgeInsetsMake(backgroundImgEdge,backgroundImgEdge,backgroundImgEdge,backgroundImgEdge));
 
     }];
     
@@ -51,13 +60,13 @@
     [self addSubview:tagImg];
     self.tagImg = tagImg;
     [self.tagImg mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(UIEdgeInsetsMake(30, 30, 30, 30));
+        make.edges.equalTo(UIEdgeInsetsMake(tagImgEdge, tagImgEdge, tagImgEdge, tagImgEdge));
 //        make.top.left.equalTo(30);
     }];
     
     UILabel *contentLable = [UILabel new];
-    //    contentLable.backgroundColor = RandomColor;
-    contentLable.textColor = RandomColor;
+    contentLable.textColor = UIColorFromRGB(0x2d2d2d);
+    contentLable.font = [UIFont systemFontOfSize:contentLableFont*3/4];
     [self addSubview:contentLable];
     self.contentLable = contentLable;
     [self.contentLable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -83,12 +92,18 @@
    [[NSNotificationCenter defaultCenter] postNotification:notification];
     if (self.phaseBarAry.count == 0) { return ;}
         
-    for (UILabel *label in self.phaseBarAry) {
-            
-            [label removeFromSuperview];
-            
-        }
+    [self deletePhaseBar];
     
+    
+}
+
+- (void)deletePhaseBar {
+    
+    for (UILabel *label in self.phaseBarAry) {
+        
+        [label removeFromSuperview];
+        
+    }
     
 }
 
@@ -96,7 +111,8 @@
     
     _targetModel = targetModel;
     self.contentLable.text = targetModel.targetName;
-    self.phaseBarAry = [NSMutableArray new];
+     [self deletePhaseBar];
+    
     
     if (_targetModel.unfold) {
         
@@ -111,10 +127,10 @@
             if (!self.lastPhaseBar) {
                 
                 [phaseBar mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.top.equalTo(self.contentLable.bottom).offset(30);
-                    make.left.equalTo(self.tagImg).offset(10);
-                    make.right.equalTo(self.tagImg).offset(-10);
-                    make.height.equalTo(44);
+                    make.top.equalTo(self.contentLable.bottom).offset(45);
+                    make.left.equalTo(self).offset(phaseBarEdge);
+                    make.right.equalTo(self).offset(-phaseBarEdge);
+                    make.height.equalTo(phaseBarHeight);
                 }];
             
             }else {
@@ -122,7 +138,7 @@
                 [phaseBar mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.top.equalTo(self.lastPhaseBar.bottom);
                     make.left.right.equalTo(self.lastPhaseBar);
-                    make.height.equalTo(44);
+                    make.height.equalTo(phaseBarHeight);
                 }];
                 
             }
@@ -135,7 +151,7 @@
         self.backgroundImg.image = [UIImage jk_resizableHalfImage:@"beijing22"];
         [self.backgroundImg mas_updateConstraints:^(MASConstraintMaker *make) {
             
-            make.height.equalTo(400);
+            make.height.equalTo(phaseBarHeight * 4 + backgroundImgHeight);
         }];
         
         [self.contentLable mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -159,7 +175,7 @@
         self.backgroundImg.image = [UIImage imageNamed:@"beijing22"];
         [self.backgroundImg mas_updateConstraints:^(MASConstraintMaker *make) {
             
-            make.height.equalTo(140);
+            make.height.equalTo(backgroundImgHeight);
             
         }];
         

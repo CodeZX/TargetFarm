@@ -15,4 +15,5 @@
 @end
 @interface HomeAddPhaseViewController : BasicViewController
 @property (nonatomic,weak) id <HomeAddPhaseDelegate>delegate;
+
 @end

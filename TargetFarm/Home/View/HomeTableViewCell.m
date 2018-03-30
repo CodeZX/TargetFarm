@@ -75,6 +75,7 @@
 - (void)setTargetModel:(TargetModel *)targetModel {
     
     _targetModel = targetModel;
+    
     self.containerView.targetModel = targetModel;
 }
 

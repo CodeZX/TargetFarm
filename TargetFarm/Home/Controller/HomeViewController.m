@@ -54,7 +54,7 @@
     homeTableView.dataSource = self;
     homeTableView.delegate = self;
     homeTableView.separatorStyle = UITableViewCellEditingStyleNone;
-   
+    homeTableView.backgroundColor= MotifColor;
     [self.view addSubview:homeTableView];
     self.homeTableView = homeTableView;
 //    [self.homeTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,16 +76,10 @@
      TargetManage *targetManage = [TargetManage sharedTargetManage];
     self.targetAry = [targetManage allTarget];
     [self.homeTableView.mj_header endRefreshing];
-    if (self.targetAry.count != 0) {
-        
-        [self.homeTableView reloadData];
-        
-        return ;
-       
-        
-    }
+    if (self.targetAry.count == 0) {  DEBUG_LOG(@"暂无目标");return; }
    
-     DEBUG_LOG(@"暂无目标");
+    [self.homeTableView reloadData];
+    
     
     
 
@@ -100,10 +94,10 @@
 - (void)rightClick:(id )sender {
     
     HomeFoundTargetViewController *foundTargetVC = [HomeFoundTargetViewController new];
-    BasicNavigationController *NavVC = [[BasicNavigationController alloc]initWithRootViewController:foundTargetVC];
-    [self presentViewController:NavVC animated:YES completion:nil] ;
+//    BasicNavigationController *NavVC = [[BasicNavigationController alloc]initWithRootViewController:foundTargetVC];
+//    [self presentViewController:NavVC animated:YES completion:nil] ;
 //
-    
+    [self.navigationController pushViewController:foundTargetVC animated:YES];
    
 }
 - (void)getData {

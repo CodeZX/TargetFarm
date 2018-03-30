@@ -50,7 +50,8 @@
     
     
     UILabel *contentLabel = [UILabel new];
-//    contentLabel.text = self.title;
+    contentLabel.textColor = UIColorFromRGB(0x333333);
+    contentLabel.font = FONT_PT_FROM_PX(26);
     [self addSubview:contentLabel];
     self.contentLabel = contentLabel;
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -58,11 +59,19 @@
         make.centerY.equalTo(self);
     }];
     
-    
+   
     UIButton *selectBtn  = [UIButton new];
 //    selectBtn.backgroundColor = RandomColor;
+//    706f6d
     
-    [selectBtn setTitleColor:RandomColor forState:UIControlStateNormal];
+    
+    [selectBtn setTitleColor:UIColorFromRGB(0x706f6d) forState:UIControlStateNormal];
+    selectBtn.titleLabel.font =  FONT_PT_FROM_PX(20);
+    if (self.BtnImageName) {
+        
+        [selectBtn setTitle:@"+" forState:UIControlStateNormal];
+        selectBtn.titleLabel.font =  FONT_PT_FROM_PX(30);
+    }
     [selectBtn addTarget:self action:@selector(selectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:selectBtn];
     self.selectBtn = selectBtn;

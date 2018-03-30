@@ -24,7 +24,11 @@
 df.timeZone = [NSTimeZone systemTimeZone];\
 df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 
-
+typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
+    TapPhaseBarStyleStartSelectBar = 0,
+    TapPhaseBarStyleEndSelectBar,
+    TapPhaseBarStyleAwokeSelectBar
+};
 
 
 
@@ -32,9 +36,9 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 @property (nonatomic,weak) UILabel *targetNameLabel;
 @property (nonatomic,weak) UITextField *targetNameTextField;
 @property (nonatomic,weak) UIView *line;
-@property (nonatomic,weak) UIDatePicker *datePicker;
 @property (nonatomic,weak) BasicTableView *tableView;
 @property (nonatomic,strong) BasicView *tableHeaderView;
+@property (nonatomic,strong) UIDatePicker *datePicker;
 
 
 @property (nonatomic,strong) ZXDatePickerView *pickerView;
@@ -45,7 +49,7 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 
 @property (nonatomic,strong) TargetModel *targetModel;
 @property (nonatomic,strong) NSArray *phaseAry;
-
+@property (nonatomic,assign) TapPhaseBarStyle tapPhaseBarStyle;
 
 //@property (nonatomic,strong) WSDatePickerView *datePickerView;
 @end
@@ -67,9 +71,9 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 }
 - (void)viewWillAppear:(BOOL)animated {
     
-    if (!self.targetModel.phaseTableName) { return ;}
-   self.phaseAry  = [TM allPhaseFromPhaseName:self.targetModel.phaseTableName];
-    [self.tableView reloadData];
+//    if (!self.targetModel.phaseTableName) { return ;}
+//   self.phaseAry  = [TM allPhaseFromPhaseName:self.targetModel.phaseTableName];
+//    [self.tableView reloadData];
 }
 
 - (void)setupUI {
@@ -86,6 +90,8 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
    
     UILabel *targetNameLabel = [UILabel new];
     targetNameLabel.text = @"目标名称";
+    targetNameLabel.textColor = UIColorFromRGB(0x28282a);
+    targetNameLabel.font = FONT_PT_FROM_PX(20);
     [self.tableHeaderView addSubview:targetNameLabel];
     self.targetNameLabel = targetNameLabel;
     [self.targetNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,6 +103,8 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     UITextField *targetNameTextField = [UITextField new];
 //    targetNameTextField.keyboardType = UIKeyboardTypeNumberPad;
     targetNameTextField.placeholder = @"输入你的目标计划";
+    [targetNameTextField setFont:FONT_PT_FROM_PX(26)];
+    [targetNameTextField setTextColor:UIColorFromRGB(0x969797)];
     [self.tableHeaderView addSubview:targetNameTextField];
     self.targetNameTextField = targetNameTextField;
     [self.targetNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -105,7 +113,7 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     }];
     
     UIView *line = [UIView new];
-    line.backgroundColor = BlackColor;
+    line.backgroundColor = UIColorFromRGB(0xe7dfc5);
     [self.tableHeaderView addSubview:line];
     self.line = line;
     [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -115,7 +123,7 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
         make.top.equalTo(self.targetNameTextField.bottom).offset(5);
     }];
 
-    [self addSelectBar];
+    
     
     BasicTableView *tableView = [BasicTableView new];
     tableView.delegate = self;
@@ -127,50 +135,87 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
+    
+    UIDatePicker  *datePicker = [UIDatePicker new];
+    datePicker.backgroundColor = WhiteColor;
+    datePicker.locale = [[NSLocale alloc]initWithLocaleIdentifier:@"zh_ch"];
+    // 设置时区，中国在东八区
+    //    datePicker.timeZone = [NSTimeZone timeZoneWithName:@"GTM+8"];
+    datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    [datePicker addTarget:self action:@selector(seletedBirthyDate:) forControlEvents:UIControlEventValueChanged];
+    self.datePicker = datePicker;
+    datePicker.frame = CGRectMake(0, 0, SCREEN_WIDTH, 216);
+    
+    [self addSelectBar];
 }
-
+- (void)seletedBirthyDate:(UIDatePicker *)datePicker {
+    
+    DATE_FORMATTER(df)
+    
+    switch (self.tapPhaseBarStyle) {
+        case TapPhaseBarStyleStartSelectBar:
+            self.startSelectBar.content = [df stringFromDate:datePicker.date];
+            break;
+        case TapPhaseBarStyleEndSelectBar:
+            self.endSelectBar.content = [df stringFromDate:datePicker.date];
+            break;
+        case TapPhaseBarStyleAwokeSelectBar:
+            self.awokeSelectBar.content = [df stringFromDate:datePicker.date];
+            break;
+        default:
+            break;
+    }
+    
+    
+}
 
 // 取消
 - (void)leftClick:(id)sender {
     
-     [self dismissViewControllerAnimated:YES completion:nil];
-    if ([self.targetModel.phaseTableName isEqualToString:@""]) { return;}
-  
-        
+    
+   if (![self.targetModel.phaseTableName isEqualToString:@""]) {
+
+
         // 删除phaae
         TargetManage *TM = [TargetManage sharedTargetManage];
-        if (![TM deletePhaseTableWithPhaseName:self.targetModel.phaseTableName]) { DEBUG_LOG(@"删除失败"); }
+       if (![TM deletePhaseTableWithPhaseName:self.targetModel.phaseTableName])
+       {
+           DEBUG_LOG(@"删除失败"); return;
+           
+       }else  {
+           
+            DEBUG_LOG(@"删除成功");
+       }
+       
 
-        DEBUG_LOG(@"删除成功");
+
+   }
     
-    
-//    TargetManage *targetManage = [TargetManage sharedTargetManage];
-//    NSLog(@"%@",[targetManage getTarget]);
-    
-//    [self showSuccess:@"124"];
+     [self.navigationController popViewControllerAnimated:YES];
 }
 
 // 确定
 - (void)rigthClick:(id)sender {
     
-    
+    [self showSaving];
+//    [self showWaiting];
     TargetManage *targetManage = [TargetManage sharedTargetManage];
 //    if (![targetManage createDataBaseWithPath:nil])                                     { return; }
     if (![targetManage addTargetWithTargetModel:[self getTargetModelofCurrentlyController]])  { return; }
 
-    [self showSuccess:@"新建成功"];
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self showSuccess:@"新建成功"];
     
-//    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-//    dateFormatter.timeZone = [NSTimeZone systemTimeZone];
-//    dateFormatter.dateFormat = @"YYYY-MM-dd HH:mm:ss";
-//    DEBUG_LOG(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
-//    TargetModel *model = [TargetModel new];
-//    model.targetName = @"吃饭";
-//    model.phaseTableName = @"lalal";
-//    model.beginDate = [NSDate date];
-//    model.endDate = [NSDate date];
-    
+    [NSTimer scheduledTimerWithTimeInterval:1.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
+        
+        [self hideHUD];
+        [self showMessage:@"保存成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+       
+    }];
+   
+   
+   
+
     
    
     
@@ -181,12 +226,12 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 - (TargetModel *)getTargetModelofCurrentlyController {
     
     DATE_FORMATTER(df)
-    self.targetModel = [TargetModel new];
+   
     self.targetModel.targetName = self.targetNameTextField.text;
     self.targetModel.beginDate = [df dateFromString:self.startSelectBar.content];
     self.targetModel.endDate = [df dateFromString:self.endSelectBar.content];
     self.targetModel.awokeDate= [df dateFromString:self.awokeSelectBar.content];
-    self.targetModel.phaseTableName = @"";
+//    self.targetModel.phaseTableName = @"";
     self.targetModel.awoke = NO;
     return self.targetModel;
     
@@ -200,95 +245,61 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     self.startSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"起始日期" ImagName:nil Action:^{
         
         NSLog(@"起始日期");
-        [self.targetNameTextField  resignFirstResponder];
-        
-        weakSelf.pickerView = [[ZXDatePickerView alloc]initWithAction:^(NSDate *date) {
-            
-            DATE_FORMATTER(df)
-            weakSelf.startSelectBar.content = [df stringFromDate:date];
-            [weakSelf.pickerView removeFromSuperview];
-        }];
-        weakSelf.pickerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        [self.view addSubview:weakSelf.pickerView];
-        
-
+        self.tapPhaseBarStyle = TapPhaseBarStyleStartSelectBar;
+        [weakSelf showDatePicker];
         
     }];
-    [self.tableHeaderView addSubview:self.startSelectBar];
+    [self.view addSubview:self.startSelectBar];
     [self.startSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
-             make.top.equalTo(self.line.bottom).offset(50);
-             make.left.equalTo(20);
-             make.right.equalTo(-20);
-             make.height.equalTo(SELECTBAR_HEIGHE);
-        }];
-    
-    
-
-
-
-    
-   self.endSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"截止日期" ImagName:nil Action:^{
-
-        NSLog(@"截止日期");
-        [self.targetNameTextField  resignFirstResponder];
-           weakSelf.pickerView = [[ZXDatePickerView alloc]initWithAction:^(NSDate *date) {
-               
-           DATE_FORMATTER(df)
-           weakSelf.endSelectBar.content = [df stringFromDate:date];
-           [weakSelf.pickerView removeFromSuperview];
-           //
-       }];
-       weakSelf.pickerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-       [self.view addSubview:weakSelf.pickerView];
-
+        make.top.equalTo(self.line.bottom).offset(50);
+        make.left.equalTo(20);
+        make.right.equalTo(-20);
+        make.height.equalTo(SELECTBAR_HEIGHE);
     }];
-
-
-    [self.tableHeaderView addSubview:self.endSelectBar];
+    
+    
+    self.endSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"截止日期" ImagName:nil Action:^{
+        
+        NSLog(@"截止日期");
+        self.tapPhaseBarStyle = TapPhaseBarStyleEndSelectBar;
+        [weakSelf showDatePicker];
+    }];
+    [self.view addSubview:self.endSelectBar];
     [self.endSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.startSelectBar.bottom).offset(10);
         make.left.equalTo(20);
         make.right.equalTo(-20);
         make.height.equalTo(SELECTBAR_HEIGHE);
     }];
-
-
+    
+    
     self.awokeSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"提醒" ImagName:nil Action:^{
-
-          NSLog(@"提醒");
-          [self.targetNameTextField  resignFirstResponder];
-           weakSelf.pickerView = [[ZXDatePickerView alloc]initWithAction:^(NSDate *date) {
-            
-            DATE_FORMATTER(df)
-            weakSelf.awokeSelectBar.content = [df stringFromDate:date];
-            [weakSelf.pickerView removeFromSuperview];
-            //
-        }];
-        weakSelf.pickerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        [self.view addSubview:weakSelf.pickerView];
-
+        
+        NSLog(@"提醒");
+        self.tapPhaseBarStyle = TapPhaseBarStyleAwokeSelectBar;
+        [weakSelf showDatePicker];
     }];
-
-    [self.tableHeaderView addSubview:self.awokeSelectBar];
+    [self.view addSubview:self.awokeSelectBar];
     [self.awokeSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.endSelectBar.bottom).offset(10);
         make.left.equalTo(20);
         make.right.equalTo(-20);
         make.height.equalTo(SELECTBAR_HEIGHE);
     }];
+    
+    
+    
 
 
 
-    self.phaseSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"阶段" ImagName:@"anniu" Action:^{
-
+    self.phaseSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"阶段" ImagName:@"" Action:^{
 
             HomeAddPhaseViewController *addPhaseVC = [HomeAddPhaseViewController new];
             addPhaseVC.delegate = self;
-            [self.navigationController pushViewController:addPhaseVC animated:YES];
+        BasicNavigationController *NaV = [[BasicNavigationController alloc]initWithRootViewController:addPhaseVC];
+        [self presentViewController:NaV animated:YES completion:nil];
         
         
-        
-
         }];
 
 
@@ -343,21 +354,31 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
     
 }
 
+
+#pragma mark --------------------------  增加阶段的控制器代理方法  ----------------------------------------
 - (void)homeAddPhase:(HomeAddPhaseViewController *)homeAddPhase didAddInPhase:(NSString *)phase {
     
-//    // 更新
-//    DEBUG_LOG(@"%@",phase);
-//
+    // 更新
+    DEBUG_LOG(@"%@",phase);
+
+    self.targetModel.phaseTableName = phase;
 //    TargetManage *TM= [TargetManage sharedTargetManage];
-//
+
 //    BOOL result =[TM updateTargetWithPrimaryKey:3 Option:@{@"PhaseName":phase}];
 //    if (!result) { DEBUG_LOG(@"更新失败");return ; }
 //    DEBUG_LOG(@"更新成功");
     
     
-    self.targetModel.phaseTableName = phase;
+    
 }
 
+
+- (void)showDatePicker {
+    
+    [self.targetNameTextField  resignFirstResponder];
+    [self.datePicker setDate:[NSDate date]];
+    [self.datePicker showInController:self preferredStyle:TYAlertControllerStyleActionSheet backgoundTapDismissEnable:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

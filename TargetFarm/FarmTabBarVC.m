@@ -25,6 +25,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.tabBar.backgroundImage = [UIImage jk_imageWithColor:MotifColor];
+    self.tabBar.shadowImage = [UIImage jk_imageWithColor:WhiteColor];
+    self.tabBar.backgroundColor = MotifColor;
+
+    
+  
+    
+    
+    
+    [self.tabBar setBackgroundImage:[[UIImage alloc]init]];
+//    [self.tabBar setBackgroundImage:[UIImage jk_imageWithColor:MotifColor]];
+//    [self.tabBar setShadowImage:[UIImage jk_imageWithColor:MotifColor]];
     NSArray *childItemsArray = @[
                                  @{kClassKey  : @"HomeViewController",
                                    kTitleKey  : @"首页",

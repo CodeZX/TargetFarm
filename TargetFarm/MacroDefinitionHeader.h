@@ -115,7 +115,7 @@
 /** 字体的宏定义(px)*/
 #define fontPx(size) [UIFont systemFontOfSize:size/2 + 2]
 
-#define FONT_PT_FROM_PX(pixel) ([UIFont systemFontOfSize:pixel*3/4])
+#define FONT_PT_FROM_PX(pixel) ([UIFont systemFontOfSize:pixel*3/4.0])
 
 #define UIFontFromPixel(pixel) ([UIFont systemFontOfSize:pixel*3/4])
 #pragma mark--  ------特殊的宏------
