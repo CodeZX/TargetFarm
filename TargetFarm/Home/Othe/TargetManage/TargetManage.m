@@ -34,6 +34,7 @@ df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
 
 // delete
 #define DELETE_PHASE_TABLE @"drop table %@;"
+#define DELETE_TARGET @"delete from t_target where id = %d;"
 
 // update
 #define UPDATE_TARGET @"update t_target set %@ = ? where id = ?;"
@@ -169,6 +170,17 @@ WMSingletonM(TargetManage)
     
     
     return mutableAry;
+    
+}
+
+- (BOOL)deleteTarget:(TargetModel *)targetModel {
+    
+    NSString *sql = [NSString stringWithFormat:DELETE_TARGET,targetModel.ID];
+    BOOL result = [db executeUpdate:sql];
+    if (!result) { DEBUG_LOG(@"删除失败"); return NO;}
+    
+    DEBUG_LOG(@"删除成功");
+    return YES;
     
 }
 

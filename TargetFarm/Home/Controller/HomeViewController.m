@@ -15,12 +15,13 @@
 #import "HomeMyTargetController.h"
 
 #import "TargetModel.h"
-
+#import <AVFoundation/AVFoundation.h>
 
 
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,HomeTableSectionHeadViewDelegate>
 @property (nonatomic,weak) HomeTableView *homeTableView;
 @property (nonatomic,strong) NSMutableArray *targetAry;
+@property (nonatomic,strong) AVAudioPlayer *bgmPlayer;
 @end
 
 @implementation HomeViewController
@@ -28,6 +29,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:@"MainBGM" withExtension:@"mp3"];
+    self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileUrl error:nil];
+//    NSString *bgmPath = [[NSBundle mainBundle] pathForResource:@"Afternoon_Zoom" ofType:@"wav"];
+//    self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:bgmPath] error:NULL];
+    self.bgmPlayer.numberOfLoops = -1;
+    [self.bgmPlayer play];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:@"update" object:nil];
     [self setupUI];
@@ -77,7 +84,11 @@
     self.targetAry = [targetManage allTarget];
     [self.homeTableView.mj_header endRefreshing];
     if (self.targetAry.count == 0) {  DEBUG_LOG(@"暂无目标");return; }
-   
+    for (TargetModel *targerModel in self.targetAry) {
+        
+        targerModel.phaseAry  = [targetManage allPhaseFromPhaseName:targerModel.phaseTableName];
+        
+    }
     [self.homeTableView reloadData];
     
     
@@ -159,16 +170,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-//    TargetModel *targetModel = self.targetAry[indexPath.row];
-//    targetModel.unfold = YES;
-//    [self.homeTableView reloadData];
+  
+
+    HomeMyTargetController *myTargerVC = [HomeMyTargetController new];
+    myTargerVC.targerModel = self.targetAry[indexPath.row];
+    [self.navigationController pushViewController:myTargerVC animated:YES];
     
-//    HomeMyTargetController *myTargerVC = [HomeMyTargetController new];
-//    myTargerVC.targerModel = self.targetAry[indexPath.row];
-//    [self.navigationController pushViewController:myTargerVC animated:YES];
-    
-//    TargetModel *model = self.targetAry[indexPath.row];model.unfold = YES;
-//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+
 }
 
 
@@ -208,27 +216,27 @@
 }
 
 
-- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UITableViewRowAction *action0 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"修改" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-        NSLog(@"点击了。。%ld",indexPath.row);
-        
-        // 收回左滑出现的按钮(退出编辑模式)
-        tableView.editing = NO;
-    }];
-    action0.backgroundColor = GrayColor;
-    
-    
-    UITableViewRowAction *action1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-        
-        NSLog(@"删除。。%ld",indexPath.row);
-        tableView.editing = NO;
-    }];
-    action1.backgroundColor = RedColor;;
-    
-    return @[action1, action0];
-    
-}
+//- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+//
+//    UITableViewRowAction *action0 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"修改" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+//        NSLog(@"点击了。。%ld",indexPath.row);
+//
+//        // 收回左滑出现的按钮(退出编辑模式)
+//        tableView.editing = NO;
+//    }];
+//    action0.backgroundColor = GrayColor;
+//
+//
+//    UITableViewRowAction *action1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+//
+//        NSLog(@"删除。。%ld",indexPath.row);
+//        tableView.editing = NO;
+//    }];
+//    action1.backgroundColor = RedColor;;
+//
+//    return @[action1, action0];
+//
+//}
 //- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
 //
 //

@@ -15,40 +15,73 @@
 
 @property (weak, nonatomic) SKSpriteNode *apple;
 @property (nonatomic,strong) NSMutableArray *apples;
-
+@property (nonatomic,strong) AVAudioPlayer *bgmPlayer;
 @end
 
 @implementation FarmScene
 
+
+- (instancetype)initWithSize:(CGSize)size {
+    
+    self = [super initWithSize:size];
+    if (self) {
+        
+        NSString *bgmPath = [[NSBundle mainBundle] pathForResource:@"MainBGM" ofType:@"mp3"];
+        self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:bgmPath] error:NULL];
+        self.bgmPlayer.numberOfLoops = -1;
+        [self.bgmPlayer play];
+    }
+    
+    return self;
+}
 /** 做一些初始化的操作 */
 - (void)didMoveToView:(SKView *)view {
     
     
     self.apples = [NSMutableArray new];
-    
-    
-    
-    for (int index = 1; index < 4; index++) {
-
-        NSString *appleName = [NSString stringWithFormat:@"//apple%d",index];
-         SKSpriteNode *apple = (SKSpriteNode *)[self childNodeWithName:appleName];
-
+    TargetManage *TM = [TargetManage sharedTargetManage];
+    NSArray *targetAry = [TM allTarget];
+    for (int index = 0; index < targetAry.count%5; index++) {
+        
+        NSString *appleName = [NSString stringWithFormat:@"//apple%d",index + 1];
+        SKSpriteNode *apple = (SKSpriteNode *)[self childNodeWithName:appleName];
+        apple.alpha = 1;
+        
         SKAction *wind = [SKAction runBlock:^{
             // 进行推力
             NSLog(@"%@ ", @"进行风的推力");
-            CGVector vector = CGVectorMake(3, 0);
+            CGVector vector = CGVectorMake(3 + index/2.0, 0);
             [apple.physicsBody applyForce:vector atPoint:CGPointZero];
         }];
         SKAction *wait = [SKAction waitForDuration:20];
         SKAction *forever = [SKAction repeatActionForever:[SKAction sequence:@[wait, wind]]];
         [apple runAction:forever];
-         [self.apples addObject:apple];
-
+        [self.apples addObject:apple];
+        
     }
+    
+    
+//    for (int index = 1; index < 4; index++) {
+//
+//        NSString *appleName = [NSString stringWithFormat:@"//apple%d",index];
+//         SKSpriteNode *apple = (SKSpriteNode *)[self childNodeWithName:appleName];
+//
+//        SKAction *wind = [SKAction runBlock:^{
+//            // 进行推力
+//            NSLog(@"%@ ", @"进行风的推力");
+//            CGVector vector = CGVectorMake(3 + index/2.0, 0);
+//            [apple.physicsBody applyForce:vector atPoint:CGPointZero];
+//        }];
+//        SKAction *wait = [SKAction waitForDuration:20];
+//        SKAction *forever = [SKAction repeatActionForever:[SKAction sequence:@[wait, wind]]];
+//        [apple runAction:forever];
+//         [self.apples addObject:apple];
+//
+//    }
 
-    SKSpriteNode *redApple = [[SKSpriteNode alloc]initWithImageNamed:@"hongpingguo"];
-    redApple.position = CGPointMake(100, 100);
-    [self addChild:redApple];
+//    SKSpriteNode *redApple = [[SKSpriteNode alloc]initWithImageNamed:@"hongpingguo"];
+//    redApple.position = CGPointMake(100, 100);
+//    [self addChild:redApple];
     
     UISwipeGestureRecognizer *swiperight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
     swiperight.direction = UISwipeGestureRecognizerDirectionRight;

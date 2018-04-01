@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TargetPhaseModel.h"
 @interface HomePhaseBar : BasicView
-
+@property (nonatomic,strong) TargetPhaseModel *targetPhaseModel;
 @end

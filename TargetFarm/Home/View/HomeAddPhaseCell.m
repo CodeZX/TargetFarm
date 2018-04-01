@@ -46,18 +46,18 @@
     
     UILabel *titleLabel = [UILabel new];
     titleLabel.text  = @"阶段";
-    titleLabel.textColor = RandomColor;
+//    titleLabel.textColor = RandomColor;
     [self.contentView addSubview:titleLabel];
     self.titleLable = titleLabel;
     [self.titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(D_INTERVAL_LEFT);
+        make.left.equalTo(D_INTERVAL_LEFT * 3);
 //        make.top.equalTo(D_INTERVAL);
         make.centerY.equalTo(self.contentView);
     }];
     
     UILabel *contentLabel = [UILabel new];
     contentLabel.text  = @"苍山普洱5日游";
-    contentLabel.textColor = RandomColor;
+//    contentLabel.textColor = RandomColor;
     [self.contentView addSubview:contentLabel];
     self.contentLable = contentLabel;
     [self.contentLable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -68,16 +68,28 @@
     }];
     
     UIView *line = [UIView new];
-    line.backgroundColor = BlackColor;
+    line.backgroundColor = UIColorFromRGB(0x706f6d);
     [self.contentView addSubview:line];
     self.line = line;
     [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(1);
         make.top.equalTo(self.contentLable.bottom).offset(D_INTERVAL);
-        make.left.equalTo(self.contentLable.left).offset(D_INTERVAL);
+        make.left.equalTo(self.contentLable.left).offset(-D_INTERVAL);
         make.right.equalTo(self.contentLable.right).offset(D_INTERVAL);
     }];
     
+}
+
+- (void)setTargetPhaseModel:(TargetPhaseModel *)targetPhaseModel {
+    
+    _targetPhaseModel = targetPhaseModel;
+    self.contentLable.text = targetPhaseModel.content;
+}
+
+- (void)setTitle:(NSString *)title {
+    
+    _title = title;
+    self.titleLable.text = [NSString stringWithFormat:@"阶段 %@",title];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

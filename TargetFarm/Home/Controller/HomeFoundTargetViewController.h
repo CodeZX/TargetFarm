@@ -10,4 +10,5 @@
 
 @interface HomeFoundTargetViewController : BasicViewController
 - (void)setupUI;
+- (instancetype)initWithTargetModel:(TargetModel *)targetModel;
 @end

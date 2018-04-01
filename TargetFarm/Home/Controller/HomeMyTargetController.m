@@ -7,9 +7,13 @@
 //
 
 #import "HomeMyTargetController.h"
+#import "HomeAddPhaseCell.h"
+#import "HomeFoundTargetViewController.h"
 
-@interface HomeMyTargetController ()
+
+@interface HomeMyTargetController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,weak) UILabel *targetNameLabel;
+@property (nonatomic,weak) BasicTableView *tableView;
 @end
 
 @implementation HomeMyTargetController
@@ -50,6 +54,21 @@
     
     
     DEBUG_LOG(@"%@",self.targetNameLabel);
+    
+    
+    
+    BasicTableView *tableView = [BasicTableView new];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.backgroundColor = MotifColor;
+    tableView.separatorStyle = UITableViewCellEditingStyleNone;
+    [self.view addSubview:tableView];
+    self.tableView = tableView;
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.top.equalTo(self.targetNameLabel.bottom).offset(30);
+        make.left.right.bottom.equalTo(0);
+    }];
 }
 
 
@@ -69,11 +88,25 @@
                                                          handler:^(UIAlertAction * action) {
                                                              //响应事件
                                                              NSLog(@"action = %@", action);
+                                                             
+                                                             TargetManage *TM = [TargetManage sharedTargetManage];
+                                                             if (![TM deleteTarget:self.targerModel]) {
+                                                                 
+                                                                 DEBUG_LOG(@"删除失败");
+                                                                 return;
+                                                             }
+                                                              DEBUG_LOG(@"删除成功");
+                                                             [self.navigationController popViewControllerAnimated:YES];
                                                          }];
     UIAlertAction* modificationAction = [UIAlertAction actionWithTitle:@"修改目标" style:UIAlertActionStyleDefault
                                                                handler:^(UIAlertAction * action) {
                                                                    //响应事件
                                                                    NSLog(@"action = %@", action);
+                                                                   
+                                                                   HomeFoundTargetViewController *VC = [[HomeFoundTargetViewController alloc]initWithTargetModel:self.targerModel];
+                                                                   [self.navigationController pushViewController:VC animated:YES];
+                                                                   
+                                                                   
                                                                }];
     
     UIAlertAction* abandonAction = [UIAlertAction actionWithTitle:@"放弃目标" style:UIAlertActionStyleDefault
@@ -91,6 +124,32 @@
 }
 
 
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.targerModel.phaseAry.count;
+    
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 44;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    HomeAddPhaseCell *cell = [HomeAddPhaseCell cellWithTableView:tableView Identifier:@"cell"];
+    //    cell.textLabel.text = @"阶段";
+    TargetPhaseModel *model = self.targerModel.phaseAry[indexPath.row];
+    cell.targetPhaseModel = model;
+    cell.title = [NSString stringWithFormat:@"%ld",indexPath.row + 1];
+    return cell;
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

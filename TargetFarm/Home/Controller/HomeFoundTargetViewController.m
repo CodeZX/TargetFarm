@@ -60,10 +60,22 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     
     TargetManage *TM;
 }
+
+- (instancetype)initWithTargetModel:(TargetModel *)targetModel {
+    
+    self = [super init];
+    if (self) {
+        
+        self.targetModel = targetModel;
+        [self setupUI];
+    }
+    
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.targetModel = [TargetModel new];
+//    self.targetModel = [TargetModel new];
     TM = [TargetManage sharedTargetManage];
     [self setupUI];
     
@@ -71,9 +83,9 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 }
 - (void)viewWillAppear:(BOOL)animated {
     
-//    if (!self.targetModel.phaseTableName) { return ;}
-//   self.phaseAry  = [TM allPhaseFromPhaseName:self.targetModel.phaseTableName];
-//    [self.tableView reloadData];
+    if (!self.targetModel.phaseTableName) { return ;}
+   self.phaseAry  = [TM allPhaseFromPhaseName:self.targetModel.phaseTableName];
+    [self.tableView reloadData];
 }
 
 - (void)setupUI {
@@ -105,6 +117,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     targetNameTextField.placeholder = @"输入你的目标计划";
     [targetNameTextField setFont:FONT_PT_FROM_PX(26)];
     [targetNameTextField setTextColor:UIColorFromRGB(0x969797)];
+    targetNameTextField.text = self.targetModel.targetName;
     [self.tableHeaderView addSubview:targetNameTextField];
     self.targetNameTextField = targetNameTextField;
     [self.targetNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -129,6 +142,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.backgroundColor = MotifColor;
+    tableView.separatorStyle = UITableViewCellEditingStyleNone;
     tableView.tableHeaderView = self.tableHeaderView;
     [self.view addSubview:tableView];
     self.tableView = tableView;
@@ -173,7 +187,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 - (void)leftClick:(id)sender {
     
     
-   if (![self.targetModel.phaseTableName isEqualToString:@""]) {
+   if (self.targetModel.phaseTableName) {
 
 
         // 删除phaae
@@ -241,6 +255,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 
 - (void)addSelectBar {
    
+    DATE_FORMATTER(df)
     Weak_Self(weakSelf);
     self.startSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"起始日期" ImagName:nil Action:^{
         
@@ -249,6 +264,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         [weakSelf showDatePicker];
         
     }];
+    self.startSelectBar.content = [df stringFromDate:self.targetModel.beginDate];
     [self.view addSubview:self.startSelectBar];
     [self.startSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.line.bottom).offset(50);
@@ -264,6 +280,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         self.tapPhaseBarStyle = TapPhaseBarStyleEndSelectBar;
         [weakSelf showDatePicker];
     }];
+    self.endSelectBar.content = [df stringFromDate:self.targetModel.endDate];
     [self.view addSubview:self.endSelectBar];
     [self.endSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.startSelectBar.bottom).offset(10);
@@ -279,6 +296,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         self.tapPhaseBarStyle = TapPhaseBarStyleAwokeSelectBar;
         [weakSelf showDatePicker];
     }];
+    self.awokeSelectBar.content = [df stringFromDate:self.targetModel.awokeDate];
     [self.view addSubview:self.awokeSelectBar];
     [self.awokeSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.endSelectBar.bottom).offset(10);
@@ -350,8 +368,19 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     
      HomeAddPhaseCell *cell = [HomeAddPhaseCell cellWithTableView:tableView Identifier:@"cell"];
 //    cell.textLabel.text = @"阶段";
+    TargetPhaseModel *model = self.phaseAry[indexPath.row];
+    cell.targetPhaseModel = model;
+    cell.title = [NSString stringWithFormat:@"%ld",indexPath.row + 1];
     return cell;
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    HomeAddPhaseViewController *VC = [[HomeAddPhaseViewController alloc]initWithPhaseModel:self.targetModel.phaseAry[indexPath.row]];
+    BasicNavigationController *nav = [[BasicNavigationController alloc]initWithRootViewController:VC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 
@@ -385,6 +414,16 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     // Dispose of any resources that can be recreated.
 }
 
+
+- (TargetModel *)targetModel {
+    
+    if (!_targetModel) {
+        
+        _targetModel = [TargetModel new];
+    }
+    
+    return _targetModel;
+}
 
 //- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 //

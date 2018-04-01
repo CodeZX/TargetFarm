@@ -72,6 +72,8 @@
 		FB241FED20694D0C00631B17 /* UIWindow+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FEC20694D0C00631B17 /* UIWindow+PresentViewController.m */; };
 		FB241FF0206951F400631B17 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FEF206951F400631B17 /* UIViewController+HUD.m */; };
 		FB241FF3206D325B00631B17 /* HomePhaseBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FF2206D325B00631B17 /* HomePhaseBar.m */; };
+		FBD33D9420712772004BAB62 /* MainBGM.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FBD33D9320712772004BAB62 /* MainBGM.mp3 */; };
+		FBD33D96207127FF004BAB62 /* Afternoon_Zoom.wav in Resources */ = {isa = PBXBuildFile; fileRef = FBD33D95207127FF004BAB62 /* Afternoon_Zoom.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -203,6 +205,8 @@
 		FB241FEF206951F400631B17 /* UIViewController+HUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		FB241FF1206D325B00631B17 /* HomePhaseBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePhaseBar.h; sourceTree = "<group>"; };
 		FB241FF2206D325B00631B17 /* HomePhaseBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePhaseBar.m; sourceTree = "<group>"; };
+		FBD33D9320712772004BAB62 /* MainBGM.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MainBGM.mp3; sourceTree = "<group>"; };
+		FBD33D95207127FF004BAB62 /* Afternoon_Zoom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Afternoon_Zoom.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,6 +391,8 @@
 		1800953D206A2786003813C1 /* MyFarm */ = {
 			isa = PBXGroup;
 			children = (
+				FBD33D9320712772004BAB62 /* MainBGM.mp3 */,
+				FBD33D95207127FF004BAB62 /* Afternoon_Zoom.wav */,
 				1800953E206A2786003813C1 /* Othe */,
 				1800953F206A2786003813C1 /* Controller */,
 				18009542206A2786003813C1 /* Model */,
@@ -640,7 +646,9 @@
 				18969A3720648F320098AFFF /* WSDatePickerView.xib in Resources */,
 				162DA38720510439009242DA /* HomeSubCell.xib in Resources */,
 				18009548206A2786003813C1 /* FarmScene.sks in Resources */,
+				FBD33D96207127FF004BAB62 /* Afternoon_Zoom.wav in Resources */,
 				162DA31F204FB728009242DA /* noData.png in Resources */,
+				FBD33D9420712772004BAB62 /* MainBGM.mp3 in Resources */,
 				162DA2EB204FB71A009242DA /* LaunchScreen.storyboard in Resources */,
 				162DA2E8204FB71A009242DA /* Assets.xcassets in Resources */,
 				162DA32E204FB7A0009242DA /* HomeCell.xib in Resources */,
@@ -893,7 +901,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MN368D4UQP;
+				DEVELOPMENT_TEAM = 484G6WE6BR;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -916,7 +924,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MN368D4UQP;
+				DEVELOPMENT_TEAM = 484G6WE6BR;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

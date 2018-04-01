@@ -51,12 +51,12 @@
     
     UILabel *contentLabel = [UILabel new];
     contentLabel.textColor = UIColorFromRGB(0x333333);
-    contentLabel.font = FONT_PT_FROM_PX(26);
+    contentLabel.font = FONT_PT_FROM_PX(23);
     [self addSubview:contentLabel];
     self.contentLabel = contentLabel;
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleLabel.right).offset(5);
-        make.centerY.equalTo(self);
+//        make.left.equalTo(self.titleLabel.right).offset(5);
+        make.center.equalTo(self);
     }];
     
    

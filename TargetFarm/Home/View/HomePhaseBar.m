@@ -51,4 +51,10 @@
     }];
     
 }
+
+- (void)setTargetPhaseModel:(TargetPhaseModel *)targetPhaseModel {
+    
+    _targetPhaseModel = targetPhaseModel;
+    self.contentLB.text  = targetPhaseModel.content;
+}
 @end

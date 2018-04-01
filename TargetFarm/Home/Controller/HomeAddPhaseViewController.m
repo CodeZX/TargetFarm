@@ -41,10 +41,21 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 @property (nonatomic,strong) HomeFoundTargetSelectBar *phaseSelectBar;
 
 @property (nonatomic,assign) TapPhaseBarStyle tapPhaseBarStyle;
+@property (nonatomic,strong) TargetPhaseModel *targetPhaseModel;
 @end
 
 @implementation HomeAddPhaseViewController
 
+- (instancetype)initWithPhaseModel:(TargetPhaseModel *)phaseModel {
+    
+    self = [super init];
+    if (self) {
+        
+        self.targetPhaseModel = phaseModel;
+    }
+    
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
@@ -76,6 +87,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     //    targetNameTextField.keyboardType = UIKeyboardTypeNumberPad;
     targetNameTextField.placeholder = @"输入你的目标计划";
     [targetNameTextField setFont:FONT_PT_FROM_PX(26)];
+    targetNameTextField.text = self.targetPhaseModel.content;
     [targetNameTextField setTextColor:UIColorFromRGB(0x969797)];
     [self.view addSubview:targetNameTextField];
     self.targetNameTextField = targetNameTextField;
@@ -168,6 +180,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 - (void)addSelectBar {
     
     Weak_Self(weakSelf);
+    DATE_FORMATTER(df)
     self.startSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"起始日期" ImagName:nil Action:^{
         
         NSLog(@"起始日期");
@@ -175,6 +188,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         [weakSelf showDatePicker];
         
     }];
+    self.startSelectBar.content = [df stringFromDate:self.targetPhaseModel.beginDate];
     [self.view addSubview:self.startSelectBar];
     [self.startSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.line.bottom).offset(50);
@@ -190,6 +204,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         self.tapPhaseBarStyle = TapPhaseBarStyleEndSelectBar;
         [weakSelf showDatePicker];
     }];
+    self.endSelectBar.content = [df stringFromDate:self.targetPhaseModel.endDate];
     [self.view addSubview:self.endSelectBar];
     [self.endSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.startSelectBar.bottom).offset(10);
@@ -206,6 +221,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         [weakSelf showDatePicker];
     }];
     [self.view addSubview:self.awokeSelectBar];
+    self.awokeSelectBar.content = [df stringFromDate:self.targetPhaseModel.awokeDate];
     [self.awokeSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.endSelectBar.bottom).offset(10);
         make.left.equalTo(20);

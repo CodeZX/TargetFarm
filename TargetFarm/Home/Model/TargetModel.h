@@ -16,7 +16,7 @@
 @property (nonatomic,assign,getter=isawoke) BOOL awoke;
 @property (nonatomic,copy) NSDate *awokeDate;
 @property (nonatomic,copy) NSString *phaseTableName;
-@property (nonatomic,strong) NSMutableArray *scheduleAry;
+@property (nonatomic,strong) NSMutableArray *phaseAry;
 
 
 @property (nonatomic,copy) NSString *targetStr;

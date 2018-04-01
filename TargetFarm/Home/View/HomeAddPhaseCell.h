@@ -7,7 +7,9 @@
 //
 
 #import "BasicTableViewCell.h"
+#import "TargetPhaseModel.h"
 
 @interface HomeAddPhaseCell : BasicTableViewCell
-
+@property (nonatomic,strong) TargetPhaseModel *targetPhaseModel;
+@property (nonatomic, strong) NSString *title;
 @end

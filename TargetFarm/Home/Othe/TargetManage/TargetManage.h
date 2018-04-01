@@ -59,7 +59,7 @@ WMSingletonH(TargetManage)
 
  @return <#return value description#>
  */
-//- (BOOL)deleteTarget;
+- (BOOL)deleteTarget:(TargetModel *)targetModel;
 
 /**
  get target

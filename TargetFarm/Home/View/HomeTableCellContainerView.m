@@ -118,10 +118,11 @@ static int backgroundImgHeight = 150;
         
        
         //_targetModel.scheduleAry.count
-        for (int index = 0; index < 3 ; index++) {
+        for (int index = 0; index < targetModel.phaseAry.count ; index++) {
 
             HomePhaseBar *phaseBar = [HomePhaseBar new];
             phaseBar.alpha = 0;
+            phaseBar.targetPhaseModel = targetModel.phaseAry[index];
             [self addSubview:phaseBar];
             
             if (!self.lastPhaseBar) {
@@ -151,11 +152,11 @@ static int backgroundImgHeight = 150;
         self.backgroundImg.image = [UIImage jk_resizableHalfImage:@"beijing22"];
         [self.backgroundImg mas_updateConstraints:^(MASConstraintMaker *make) {
             
-            make.height.equalTo(phaseBarHeight * 4 + backgroundImgHeight);
+            make.height.equalTo(phaseBarHeight * (self.phaseBarAry.count + 1) + backgroundImgHeight);
         }];
         
         [self.contentLable mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self).offset(-100);
+            make.centerY.equalTo(self).offset(-50);
         }];
         [self layoutIfNeeded];
         [UIView animateWithDuration:1 animations:^{
