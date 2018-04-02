@@ -38,7 +38,7 @@ static int backgroundImgHeight = 150;
     
     if (self) {
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"1234" object:nil];
+      
         [self setupUI];
     }
     
@@ -49,7 +49,7 @@ static int backgroundImgHeight = 150;
 - (void)reloadDate {
     
     
-    [self deletePhaseBar];
+//    [self deletePhaseBar];
     
 }
 
@@ -103,7 +103,7 @@ static int backgroundImgHeight = 150;
         NSNotification *notification = [[NSNotification alloc]initWithName:@"update" object:nil userInfo:@{@"cell":cell}];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
         if (!self.targetModel.unfold) {
-            
+
             [self deletePhaseBar];
         }
     }
@@ -116,13 +116,13 @@ static int backgroundImgHeight = 150;
 - (void)deletePhaseBar {
     
     for (HomePhaseBar *bar in self.phaseBarAry) {
-        
+
         [bar removeFromSuperview];
     }
-    
+
     [self.phaseBarAry removeAllObjects];
     
-
+    
     
 }
 
@@ -131,7 +131,7 @@ static int backgroundImgHeight = 150;
     _targetModel = targetModel;
     self.contentLable.text = targetModel.targetName;
     
-    
+   
     
     if (targetModel.unfold) {
         
@@ -178,11 +178,11 @@ static int backgroundImgHeight = 150;
         }];
         
         [self.contentLable mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self).offset(-120);
+            make.centerY.equalTo(self).offset(-80);
         }];
         [self layoutIfNeeded];
         
-        [UIView animateWithDuration:1 animations:^{
+        [UIView animateWithDuration:2 animations:^{
             
             for (HomePhaseBar *phaseBar in self.phaseBarAry) {
                 
@@ -195,6 +195,7 @@ static int backgroundImgHeight = 150;
         
     
     }else {
+        
         
        
         self.backgroundImg.image = [UIImage imageNamed:@"beijing22"];
@@ -222,7 +223,7 @@ static int backgroundImgHeight = 150;
     
     if (!_phaseBarAry) {
         
-        _phaseBarAry = [NSMutableArray new];
+        _phaseBarAry = [[NSMutableArray alloc]init];
         
     }
     

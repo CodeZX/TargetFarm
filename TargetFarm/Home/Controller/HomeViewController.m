@@ -22,6 +22,8 @@
 @property (nonatomic,weak) HomeTableView *homeTableView;
 @property (nonatomic,strong) NSMutableArray *targetAry;
 @property (nonatomic,strong) AVAudioPlayer *bgmPlayer;
+
+@property (nonatomic,strong) HomeTableViewCell *lastCell;
 @end
 
 @implementation HomeViewController
@@ -46,6 +48,7 @@
     HomeTableViewCell *cell = [notification.userInfo valueForKey:@"cell"];
     NSIndexPath *indexpath = [self.homeTableView indexPathForCell:cell];
     TargetModel *targetModel = self.targetAry[indexpath.row];
+   
     if (targetModel.unfold) {
         
          [self.homeTableView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationBottom];
@@ -53,6 +56,7 @@
         
          [self.homeTableView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationTop];
     }
+   
    
 
 }
@@ -86,7 +90,7 @@
 }
 
 - (void)loadNewData {
-    
+   
     DEBUG_LOG(@"加载数据");
      TargetManage *targetManage = [TargetManage sharedTargetManage];
     self.targetAry = [targetManage allTarget];
@@ -98,7 +102,7 @@
         
     }
     
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"1234" object:nil];
+   
     [self.homeTableView reloadData];
     
     
@@ -153,8 +157,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HomeTableViewCell *cell = [HomeTableViewCell cellWithTableView:tableView Identifier:@"homeTableView"];
+    [cell deletePhaseBar];
     TargetModel *targetModel = self.targetAry[indexPath.row];
     cell.targetModel = targetModel;
+    
+    
 //    [UIView animateWithDuration:9 animations:^{
 //        cell.transform =CGAffineTransformMakeTranslation(100, 0);
 //    } completion:^(BOOL finished) {
