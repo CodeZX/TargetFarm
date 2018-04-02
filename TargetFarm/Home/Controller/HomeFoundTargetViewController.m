@@ -48,6 +48,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 @property (nonatomic,strong) HomeFoundTargetSelectBar *phaseSelectBar;
 
 @property (nonatomic,strong) TargetModel *targetModel;
+@property (nonatomic,strong) TargetModel *editTargetModel;
 @property (nonatomic,strong) NSArray *phaseAry;
 @property (nonatomic,assign) TapPhaseBarStyle tapPhaseBarStyle;
 
@@ -66,8 +67,8 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     self = [super init];
     if (self) {
         
-        self.targetModel = targetModel;
-        [self setupUI];
+        self.editTargetModel = targetModel;
+        
     }
     
     return self;
@@ -77,20 +78,30 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 
 //    self.targetModel = [TargetModel new];
     TM = [TargetManage sharedTargetManage];
+    self.phaseAry = [NSMutableArray new];
     [self setupUI];
     
     
 }
 - (void)viewWillAppear:(BOOL)animated {
     
-    if (!self.targetModel.phaseTableName) { return ;}
-   self.phaseAry  = [TM allPhaseFromPhaseName:self.targetModel.phaseTableName];
+//    if (!self.targetModel.phaseTableName) { return ;}
+    if (self.editTargetModel.phaseTableName ) {
+        
+         self.phaseAry = [TM allPhaseFromPhaseName:self.editTargetModel.phaseTableName];
+    
+    }else if (self.targetModel.phaseTableName) {
+        
+         self.phaseAry = [TM allPhaseFromPhaseName:self.targetModel.phaseTableName];
+    }
+  
+    
     [self.tableView reloadData];
 }
 
 - (void)setupUI {
     
-    self.title = @"创建目标";
+    self.title = self.editTargetModel? @"修改目标":@"创建目标";
     self.view.backgroundColor = MotifColor;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(leftClick:)];
@@ -117,7 +128,8 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     targetNameTextField.placeholder = @"输入你的目标计划";
     [targetNameTextField setFont:FONT_PT_FROM_PX(26)];
     [targetNameTextField setTextColor:UIColorFromRGB(0x969797)];
-    targetNameTextField.text = self.targetModel.targetName;
+    targetNameTextField.textAlignment = NSTextAlignmentCenter;
+    targetNameTextField.text = self.editTargetModel.targetName;
     [self.tableHeaderView addSubview:targetNameTextField];
     self.targetNameTextField = targetNameTextField;
     [self.targetNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -245,7 +257,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     self.targetModel.beginDate = [df dateFromString:self.startSelectBar.content];
     self.targetModel.endDate = [df dateFromString:self.endSelectBar.content];
     self.targetModel.awokeDate= [df dateFromString:self.awokeSelectBar.content];
-//    self.targetModel.phaseTableName = @"";
+    self.targetModel.phaseTableName = self.targetModel.phaseTableName ? self.targetModel.phaseTableName:@"";
     self.targetModel.awoke = NO;
     return self.targetModel;
     
@@ -264,7 +276,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         [weakSelf showDatePicker];
         
     }];
-    self.startSelectBar.content = [df stringFromDate:self.targetModel.beginDate];
+    self.startSelectBar.content = [df stringFromDate:self.editTargetModel.beginDate];
     [self.view addSubview:self.startSelectBar];
     [self.startSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.line.bottom).offset(50);
@@ -280,7 +292,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         self.tapPhaseBarStyle = TapPhaseBarStyleEndSelectBar;
         [weakSelf showDatePicker];
     }];
-    self.endSelectBar.content = [df stringFromDate:self.targetModel.endDate];
+    self.endSelectBar.content = [df stringFromDate:self.editTargetModel.endDate];
     [self.view addSubview:self.endSelectBar];
     [self.endSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.startSelectBar.bottom).offset(10);
@@ -296,7 +308,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         self.tapPhaseBarStyle = TapPhaseBarStyleAwokeSelectBar;
         [weakSelf showDatePicker];
     }];
-    self.awokeSelectBar.content = [df stringFromDate:self.targetModel.awokeDate];
+    self.awokeSelectBar.content = [df stringFromDate:self.editTargetModel.awokeDate];
     [self.view addSubview:self.awokeSelectBar];
     [self.awokeSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.endSelectBar.bottom).offset(10);
@@ -312,10 +324,15 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 
     self.phaseSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"阶段" ImagName:@"" Action:^{
 
-            HomeAddPhaseViewController *addPhaseVC = [HomeAddPhaseViewController new];
+        if (!self.targetModel.phaseTableName) {
+            
+            self.targetModel.phaseTableName =  [NSString stringWithFormat:@"t_phase_%@",[NSString jk_UUIDTimestamp]];
+        }
+   
+            HomeAddPhaseViewController *addPhaseVC = [[HomeAddPhaseViewController alloc]initWithPhaseName:self.targetModel.phaseTableName];
             addPhaseVC.delegate = self;
         BasicNavigationController *NaV = [[BasicNavigationController alloc]initWithRootViewController:addPhaseVC];
-        [self presentViewController:NaV animated:YES completion:nil];
+        [weakSelf presentViewController:NaV animated:YES completion:nil];
         
         
         }];
@@ -377,8 +394,9 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSString *phaseName = self.editTargetModel ? self.editTargetModel.phaseTableName:self.targetModel.phaseTableName;
     
-    HomeAddPhaseViewController *VC = [[HomeAddPhaseViewController alloc]initWithPhaseModel:self.targetModel.phaseAry[indexPath.row]];
+    HomeAddPhaseViewController *VC = [[HomeAddPhaseViewController alloc]initWithPhaseModel:self.phaseAry[indexPath.row] PhaseName:phaseName];
     BasicNavigationController *nav = [[BasicNavigationController alloc]initWithRootViewController:VC];
     [self presentViewController:nav animated:YES completion:nil];
 }

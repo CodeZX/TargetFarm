@@ -29,12 +29,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:@"MainBGM" withExtension:@"mp3"];
-    self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileUrl error:nil];
-//    NSString *bgmPath = [[NSBundle mainBundle] pathForResource:@"Afternoon_Zoom" ofType:@"wav"];
-//    self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:bgmPath] error:NULL];
-    self.bgmPlayer.numberOfLoops = -1;
-    [self.bgmPlayer play];
+//    NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:@"MainBGM" withExtension:@"mp3"];
+//    self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileUrl error:nil];
+////    NSString *bgmPath = [[NSBundle mainBundle] pathForResource:@"Afternoon_Zoom" ofType:@"wav"];
+////    self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:bgmPath] error:NULL];
+//    self.bgmPlayer.numberOfLoops = -1;
+//    [self.bgmPlayer play];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:@"update" object:nil];
     [self setupUI];
@@ -45,7 +45,15 @@
     
     HomeTableViewCell *cell = [notification.userInfo valueForKey:@"cell"];
     NSIndexPath *indexpath = [self.homeTableView indexPathForCell:cell];
-    [self.homeTableView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationBottom];
+    TargetModel *targetModel = self.targetAry[indexpath.row];
+    if (targetModel.unfold) {
+        
+         [self.homeTableView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationBottom];
+    }else {
+        
+         [self.homeTableView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationTop];
+    }
+   
 
 }
 
@@ -83,12 +91,14 @@
      TargetManage *targetManage = [TargetManage sharedTargetManage];
     self.targetAry = [targetManage allTarget];
     [self.homeTableView.mj_header endRefreshing];
-    if (self.targetAry.count == 0) {  DEBUG_LOG(@"暂无目标");return; }
+//    if (self.targetAry.count == 0) {  DEBUG_LOG(@"暂无目标");return; }
     for (TargetModel *targerModel in self.targetAry) {
         
         targerModel.phaseAry  = [targetManage allPhaseFromPhaseName:targerModel.phaseTableName];
         
     }
+    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"1234" object:nil];
     [self.homeTableView reloadData];
     
     
@@ -161,10 +171,18 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
- 
+//    TargetModel *model = self.targetAry[indexPath.row];
+//    if (!model.unfold) {
+//
+//        HomeTableViewCell *homeTableViewCell = (HomeTableViewCell *)cell;
+//        [homeTableViewCell deletePhaseBar];
+//    }
+   
 //    UITableViewCell *c = [tableView cellForRowAtIndexPath:indexPath];
     
 }
+
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -249,38 +267,7 @@
 }
 #pragma mark -------------------------- lazy loading ----------------------------------------
 
-//- (NSMutableArray *)targetAry {
-//    
-//    if (!_targetAry) {
-//        
-//        _targetAry = [NSMutableArray new];
-//        TargetModel *model1 =  [TargetModel new];
-//        model1.targetStr = @"早上 6：00 去跑步";
-//        [_targetAry addObject:model1];
-//        
-//        TargetModel *model2 =  [TargetModel new];
-//        model2.targetStr = @"早上 7：00 早读";
-//        [_targetAry addObject:model2];
-//        
-//        TargetModel *model3 =  [TargetModel new];
-//        model3.targetStr = @"上午11：00 开会";
-//        [_targetAry addObject:model3];
-//        
-//        TargetModel *model4 =  [TargetModel new];
-//        model4.targetStr = @"中午12：00 午饭";
-//        [_targetAry addObject:model4];
-//        
-//        TargetModel *model5 =  [TargetModel new];
-//        model5.targetStr = @"下午1：00 整理文件";
-//        [_targetAry addObject:model5];
-//        
-//        TargetModel *model6 =  [TargetModel new];
-//        model6.targetStr = @"下午7：00 聚会";
-//        [_targetAry addObject:model6];
-//    }
-//    
-//    return _targetAry;
-//}
+
 /*
 #pragma mark - Navigation
 

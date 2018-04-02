@@ -11,4 +11,5 @@
 
 @interface HomeTableCellContainerView : BasicView
 @property (nonatomic,strong) TargetModel *targetModel;
+- (void)deletePhaseBar;
 @end

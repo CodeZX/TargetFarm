@@ -86,15 +86,15 @@ WMSingletonM(TargetManage)
 }
 
 
-- (NSString *)createPhaseTable {
+- (NSString *)createPhaseTableWithPhaseName:(NSString *)phaseName {
     
-    DATE_FORMATTER(df)
-    NSString *tableName =  [NSString stringWithFormat:@"t_phase_%@",[NSString jk_UUIDTimestamp]];
-    NSString *sql = [NSString stringWithFormat:CREATE_PHASE_TABLE_IF_NOT_EXISTS,tableName];
+//    DATE_FORMATTER(df)
+    
+    NSString *sql = [NSString stringWithFormat:CREATE_PHASE_TABLE_IF_NOT_EXISTS,phaseName];
     BOOL result = [db executeUpdate:sql];
-    if (!result) { DEBUG_LOG(@"创建表失败"); return @"";}
+    if (!result) { DEBUG_LOG(@"创建表失败"); return nil;}
     DEBUG_LOG(@"创建表成功");
-    return tableName;
+    return phaseName;
 }
 
 
@@ -107,6 +107,7 @@ WMSingletonM(TargetManage)
     if (!result) {
         
         DEBUG_LOG(@"插入失败");
+        return NO;
     
     }else {
         

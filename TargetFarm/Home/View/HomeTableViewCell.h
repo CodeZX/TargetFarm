@@ -13,5 +13,6 @@
 @interface HomeTableViewCell : BasicTableViewCell
 @property (nonatomic,strong) TargetScheduleModel *targetScheduleModel;
 @property (nonatomic,strong) TargetModel *targetModel;
+- (void)deletePhaseBar;
 //+ (instancetype)cellWithTableView:(UITableView *)tableView Identifier:(NSString *)Identifier;
 @end

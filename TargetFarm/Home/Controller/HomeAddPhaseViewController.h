@@ -15,5 +15,6 @@
 @end
 @interface HomeAddPhaseViewController : BasicViewController
 @property (nonatomic,weak) id <HomeAddPhaseDelegate>delegate;
-- (instancetype)initWithPhaseModel:(TargetPhaseModel *)phaseModel;
+- (instancetype)initWithPhaseModel:(TargetPhaseModel *)phaseModel PhaseName:(NSString *)phaseName;
+- (instancetype)initWithPhaseName:(NSString *)phaseName;
 @end

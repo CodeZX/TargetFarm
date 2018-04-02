@@ -37,12 +37,21 @@ static int backgroundImgHeight = 150;
     self = [super initWithFrame:frame];
     
     if (self) {
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"1234" object:nil];
         [self setupUI];
     }
     
     return self;
 }
 
+
+- (void)reloadDate {
+    
+    
+    [self deletePhaseBar];
+    
+}
 
 - (void)setupUI {
     
@@ -86,24 +95,34 @@ static int backgroundImgHeight = 150;
 // 3. 在此方法中设置点击label后要触发的操作
 - (void)contentLableClick {
     
-    self.targetModel.unfold = !self.targetModel.unfold;
-    HomeTableViewCell *cell = (HomeTableViewCell *)[[self superview] superview];
-    NSNotification *notification = [[NSNotification alloc]initWithName:@"update" object:nil userInfo:@{@"cell":cell}];
-   [[NSNotificationCenter defaultCenter] postNotification:notification];
-    if (self.phaseBarAry.count == 0) { return ;}
+    
+    if (self.targetModel.phaseAry.count > 0) {
         
-    [self deletePhaseBar];
+        self.targetModel.unfold = !self.targetModel.unfold;
+        HomeTableViewCell *cell = (HomeTableViewCell *)[[self superview] superview];
+        NSNotification *notification = [[NSNotification alloc]initWithName:@"update" object:nil userInfo:@{@"cell":cell}];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        if (!self.targetModel.unfold) {
+            
+            [self deletePhaseBar];
+        }
+    }
+    
+
     
     
 }
 
 - (void)deletePhaseBar {
     
-    for (UILabel *label in self.phaseBarAry) {
+    for (HomePhaseBar *bar in self.phaseBarAry) {
         
-        [label removeFromSuperview];
-        
+        [bar removeFromSuperview];
     }
+    
+    [self.phaseBarAry removeAllObjects];
+    
+
     
 }
 
@@ -111,10 +130,10 @@ static int backgroundImgHeight = 150;
     
     _targetModel = targetModel;
     self.contentLable.text = targetModel.targetName;
-     [self deletePhaseBar];
     
     
-    if (_targetModel.unfold) {
+    
+    if (targetModel.unfold) {
         
        
         //_targetModel.scheduleAry.count
@@ -127,7 +146,7 @@ static int backgroundImgHeight = 150;
             
             if (!self.lastPhaseBar) {
                 
-                [phaseBar mas_makeConstraints:^(MASConstraintMaker *make) {
+                [phaseBar mas_remakeConstraints:^(MASConstraintMaker *make) {
                     make.top.equalTo(self.contentLable.bottom).offset(45);
                     make.left.equalTo(self).offset(phaseBarEdge);
                     make.right.equalTo(self).offset(-phaseBarEdge);
@@ -136,11 +155,14 @@ static int backgroundImgHeight = 150;
             
             }else {
                 
-                [phaseBar mas_makeConstraints:^(MASConstraintMaker *make) {
+                
+                [phaseBar mas_remakeConstraints:^(MASConstraintMaker *make) {
+                    
                     make.top.equalTo(self.lastPhaseBar.bottom);
                     make.left.right.equalTo(self.lastPhaseBar);
                     make.height.equalTo(phaseBarHeight);
                 }];
+               
                 
             }
             self.lastPhaseBar = phaseBar;
@@ -152,13 +174,14 @@ static int backgroundImgHeight = 150;
         self.backgroundImg.image = [UIImage jk_resizableHalfImage:@"beijing22"];
         [self.backgroundImg mas_updateConstraints:^(MASConstraintMaker *make) {
             
-            make.height.equalTo(phaseBarHeight * (self.phaseBarAry.count + 1) + backgroundImgHeight);
+            make.height.equalTo(phaseBarHeight * (targetModel.phaseAry.count + 1) + backgroundImgHeight);
         }];
         
         [self.contentLable mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self).offset(-50);
+            make.centerY.equalTo(self).offset(-120);
         }];
         [self layoutIfNeeded];
+        
         [UIView animateWithDuration:1 animations:^{
             
             for (HomePhaseBar *phaseBar in self.phaseBarAry) {
@@ -173,6 +196,7 @@ static int backgroundImgHeight = 150;
     
     }else {
         
+       
         self.backgroundImg.image = [UIImage imageNamed:@"beijing22"];
         [self.backgroundImg mas_updateConstraints:^(MASConstraintMaker *make) {
             
@@ -189,5 +213,19 @@ static int backgroundImgHeight = 150;
         [self layoutIfNeeded];
        
         }
+}
+
+
+#pragma mark -------------------------- laze loading ----------------------------------------
+
+- (NSMutableArray *)phaseBarAry {
+    
+    if (!_phaseBarAry) {
+        
+        _phaseBarAry = [NSMutableArray new];
+        
+    }
+    
+    return _phaseBarAry;
 }
 @end

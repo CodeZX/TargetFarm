@@ -391,21 +391,12 @@
 		1800953D206A2786003813C1 /* MyFarm */ = {
 			isa = PBXGroup;
 			children = (
-				FBD33D9320712772004BAB62 /* MainBGM.mp3 */,
-				FBD33D95207127FF004BAB62 /* Afternoon_Zoom.wav */,
-				1800953E206A2786003813C1 /* Othe */,
+				184CB32C2071C226002D4FDF /* Other */,
+				184CB32B2071C21A002D4FDF /* Model */,
 				1800953F206A2786003813C1 /* Controller */,
-				18009542206A2786003813C1 /* Model */,
 				18009543206A2786003813C1 /* View */,
 			);
 			path = MyFarm;
-			sourceTree = "<group>";
-		};
-		1800953E206A2786003813C1 /* Othe */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Othe;
 			sourceTree = "<group>";
 		};
 		1800953F206A2786003813C1 /* Controller */ = {
@@ -417,13 +408,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		18009542206A2786003813C1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		18009543206A2786003813C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +416,22 @@
 				18009546206A2786003813C1 /* FarmScene.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		184CB32B2071C21A002D4FDF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		184CB32C2071C226002D4FDF /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				FBD33D95207127FF004BAB62 /* Afternoon_Zoom.wav */,
+				FBD33D9320712772004BAB62 /* MainBGM.mp3 */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		189699672061EBC90098AFFF /* Home */ = {
@@ -901,7 +901,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 484G6WE6BR;
+				DEVELOPMENT_TEAM = MN368D4UQP;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -924,7 +924,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 484G6WE6BR;
+				DEVELOPMENT_TEAM = MN368D4UQP;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

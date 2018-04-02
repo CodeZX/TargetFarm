@@ -73,9 +73,9 @@ WMSingletonH(TargetManage)
 /**
  新建阶段表
 
- @return 阶段表名 —— 当前时间
+ @return 阶段表名 ——
  */
-- (NSString *)createPhaseTable;
+- (NSString *)createPhaseTableWithPhaseName:(NSString *)phaseName;
 
 /**
  添加阶段到目标中

@@ -8,6 +8,7 @@
 
 #import "MyFarmVC.h"
 #import "FarmScene.h"
+#import "HomeMyTargetController.h"
 
 
 @interface MyFarmVC ()
@@ -20,6 +21,18 @@
     [super viewDidLoad];
     
     
+   
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(push:) name:@"push" object:nil];
+    
+}
+- (void)push:(id)sender {
+    
+     HomeMyTargetController *VC = [HomeMyTargetController new];
+    [self.navigationController pushViewController:VC animated:YES];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     
     SKView *skView = [[SKView alloc] initWithFrame:self.view.bounds];
     
@@ -40,8 +53,8 @@
     NSArray *ary = [targetManage allTarget];
     
     DEBUG_LOG(@"%d",ary.count);
+    
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

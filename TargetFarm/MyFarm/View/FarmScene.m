@@ -60,7 +60,8 @@
         
     }
     
-    
+  
+
 //    for (int index = 1; index < 4; index++) {
 //
 //        NSString *appleName = [NSString stringWithFormat:@"//apple%d",index];
@@ -95,12 +96,27 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    UITouch *touch = [touches anyObject];
+//    CGPoint positionInScene = [touch locationInNode:self];
+//    SKSpriteNode *touchedNode = (SKSpriteNode *)[self nodeAtPoint:positionInScene];
+//    if ([[touchedNode name] isEqualToString:@"apple1"])    {
+//        NSLog(@"%@ ", @"这里可以进行点击事件操作");
+//    }
+    
+    
     UITouch *touch = [touches anyObject];
-    CGPoint positionInScene = [touch locationInNode:self];
-    SKSpriteNode *touchedNode = (SKSpriteNode *)[self nodeAtPoint:positionInScene];
-    if ([[touchedNode name] isEqualToString:@"apple1"])    {
-        NSLog(@"%@ ", @"这里可以进行点击事件操作");
+    
+    CGPoint  position = [touch locationInNode:self];
+    
+    SKNode *node = [self nodeAtPoint:position];
+    
+    if ([node.name isEqualToString:@"apple1"]) {
+        
+       [[NSNotificationCenter defaultCenter] postNotificationName:@"push" object:nil];
+        
     }
+    
+    
 }
 
 - (void)swipe:(UISwipeGestureRecognizer *)reg {

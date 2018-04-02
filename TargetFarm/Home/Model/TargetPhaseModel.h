@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface TargetPhaseModel : NSObject
-@property (nonatomic,assign) NSInteger id;
+@property (nonatomic,assign) int id;
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *content;
 @property (nonatomic,copy) NSDate *beginDate;

@@ -91,4 +91,10 @@
     // Configure the view for the selected state
 }
 
+- (void)deletePhaseBar {
+    
+    [self.containerView deletePhaseBar];
+    
+}
+
 @end

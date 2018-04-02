@@ -44,9 +44,23 @@
 
 - (void)setupUI  {
     
+    
+   
+    
+    UIView *bagView = [UIView new];
+    bagView.backgroundColor = WhiteColor;
+    bagView.layer.cornerRadius = 5;
+    bagView.layer.masksToBounds = YES;
+    [self.contentView addSubview:bagView];
+    [bagView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(UIEdgeInsetsMake(15, 15, 15, 15));
+                           }];
+   
     UILabel *titleLabel = [UILabel new];
     titleLabel.text  = @"阶段";
-//    titleLabel.textColor = RandomColor;
+    titleLabel.textColor = UIColorFromRGB(0x706f6d);
+//    titleLabel.backgroundColor = RandomColor;
+    
     [self.contentView addSubview:titleLabel];
     self.titleLable = titleLabel;
     [self.titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -57,12 +71,11 @@
     
     UILabel *contentLabel = [UILabel new];
     contentLabel.text  = @"苍山普洱5日游";
-//    contentLabel.textColor = RandomColor;
+    contentLabel.textColor = UIColorFromRGB(0x706f6d);
     [self.contentView addSubview:contentLabel];
     self.contentLable = contentLabel;
     [self.contentLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleLable.right).offset(D_INTERVAL);
-//        make.top.equalTo(D_INTERVAL);
+
         make.center.equalTo(self.contentView);
 //        make.center.equalTo(self.contentView);
     }];
@@ -74,8 +87,8 @@
     [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(1);
         make.top.equalTo(self.contentLable.bottom).offset(D_INTERVAL);
-        make.left.equalTo(self.contentLable.left).offset(-D_INTERVAL);
-        make.right.equalTo(self.contentLable.right).offset(D_INTERVAL);
+        make.left.equalTo(titleLabel.right);
+        make.right.equalTo(bagView.right).offset(-30);
     }];
     
 }

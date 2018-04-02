@@ -42,16 +42,31 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 
 @property (nonatomic,assign) TapPhaseBarStyle tapPhaseBarStyle;
 @property (nonatomic,strong) TargetPhaseModel *targetPhaseModel;
+@property (nonatomic,strong) TargetPhaseModel *editTargetPhaseModel;
+@property (nonatomic,strong) NSString *editTargetPhaseName;
+@property (nonatomic,strong) NSString *phaseName;
 @end
 
 @implementation HomeAddPhaseViewController
 
-- (instancetype)initWithPhaseModel:(TargetPhaseModel *)phaseModel {
+- (instancetype)initWithPhaseModel:(TargetPhaseModel *)phaseModel PhaseName:(NSString *)phaseName {
     
     self = [super init];
     if (self) {
         
-        self.targetPhaseModel = phaseModel;
+        self.editTargetPhaseModel = phaseModel;
+        self.editTargetPhaseName = phaseName;
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithPhaseName:(NSString *)phaseName {
+    
+    self = [super init];
+    if (self) {
+        
+        self.phaseName = phaseName;
     }
     
     return self;
@@ -64,7 +79,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 - (void)setupUI  {
     
     
-    self.title = @"增加阶段";
+    self.title = self.editTargetPhaseModel?@"编辑阶段":@"增加阶段";
     self.view.backgroundColor = MotifColor;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStyleDone target:self action:@selector(rightBtnClick:)];
@@ -87,8 +102,9 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     //    targetNameTextField.keyboardType = UIKeyboardTypeNumberPad;
     targetNameTextField.placeholder = @"输入你的目标计划";
     [targetNameTextField setFont:FONT_PT_FROM_PX(26)];
-    targetNameTextField.text = self.targetPhaseModel.content;
+    targetNameTextField.text = self.editTargetPhaseModel.content;
     [targetNameTextField setTextColor:UIColorFromRGB(0x969797)];
+    targetNameTextField.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:targetNameTextField];
     self.targetNameTextField = targetNameTextField;
     [self.targetNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -149,30 +165,68 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 - (void)rightBtnClick:(id)sender {
     
 
-    [self showSaving];
-    DEBUG_LOG(@"保存");
-    TargetManage *targetManage = [TargetManage sharedTargetManage];
-    NSString *phaseTableName = [targetManage createPhaseTable];
-    if ([phaseTableName isEqualToString:@""]) { DEBUG_LOG(@"创建失败");return;}
-    DEBUG_LOG(@"创建成功");
-    NSLog(@"%@",phaseTableName);
+    if (self.phaseName) {
+        
+        [self showSaving];
+        DEBUG_LOG(@"保存");
+        TargetManage *targetManage = [TargetManage sharedTargetManage];
+        NSString *phaseTableName = [targetManage createPhaseTableWithPhaseName:self.phaseName
+                                    ];
+        if (!phaseTableName) { DEBUG_LOG(@"创建失败");return;}
+        DEBUG_LOG(@"创建成功");
+        NSLog(@"%@",phaseTableName);
+        
+        BOOL result =  [targetManage addPhaseWithPhase:[self getTargetPhaseModelofCurrentlyController] PhaseName:phaseTableName];
+        if (!result) {  DEBUG_LOG(@"插入失败"); return; }
+        DEBUG_LOG(@"插入成功");
+        
+        
+        if ([self.delegate respondsToSelector:@selector(homeAddPhase:didAddInPhase:)]) {
+            [self.delegate homeAddPhase:self didAddInPhase:phaseTableName];
+        }
+        
+        [NSTimer scheduledTimerWithTimeInterval:1.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
+            
+            [self hideHUD];
+            [self showMessage:@"保存成功"];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        }];
+        
+    }else if (self.editTargetPhaseModel){
+        
+        [self showSaving];
+        DEBUG_LOG(@"保存");
+        TargetManage *targetManage = [TargetManage sharedTargetManage];
+        NSString *phaseTableName = [targetManage createPhaseTableWithPhaseName:self.editTargetPhaseName
+                                    ];
+        if (!phaseTableName) { DEBUG_LOG(@"创建失败");return;}
+        DEBUG_LOG(@"创建成功");
+        NSLog(@"%@",phaseTableName);
+        
+//        BOOL result =  [targetManage addPhaseWithPhase:[self getTargetPhaseModelofCurrentlyController] PhaseName:phaseTableName];
+        TargetPhaseModel *targetPhaseModel = [self getTargetPhaseModelofCurrentlyController];
+        BOOL result =  [targetManage upDatePhaseWithPhaseName:self.editTargetPhaseName PrimaryKey:self.editTargetPhaseModel.id Option:@{@"content":targetPhaseModel.content}];
+        if (!result) {  DEBUG_LOG(@"插入失败"); return; }
+        DEBUG_LOG(@"插入成功");
+        
+        
+        if ([self.delegate respondsToSelector:@selector(homeAddPhase:didAddInPhase:)]) {
+            [self.delegate homeAddPhase:self didAddInPhase:phaseTableName];
+        }
+        
+        [NSTimer scheduledTimerWithTimeInterval:1.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
+            
+            [self hideHUD];
+            [self showMessage:@"保存成功"];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        }];
+        
+        
     
-   BOOL result =  [targetManage addPhaseWithPhase:[self getTargetPhaseModelofCurrentlyController] PhaseName:phaseTableName];
-   if (!result) {  DEBUG_LOG(@"插入失败"); return; }
-   DEBUG_LOG(@"插入成功");
-    
-    
-    if ([self.delegate respondsToSelector:@selector(homeAddPhase:didAddInPhase:)]) {
-         [self.delegate homeAddPhase:self didAddInPhase:phaseTableName];
     }
-   
-    [NSTimer scheduledTimerWithTimeInterval:1.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
-        
-        [self hideHUD];
-        [self showMessage:@"保存成功"];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        
-    }];
+    
     
 }
 
@@ -188,7 +242,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         [weakSelf showDatePicker];
         
     }];
-    self.startSelectBar.content = [df stringFromDate:self.targetPhaseModel.beginDate];
+    self.startSelectBar.content = [df stringFromDate:self.editTargetPhaseModel.beginDate];
     [self.view addSubview:self.startSelectBar];
     [self.startSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.line.bottom).offset(50);
@@ -204,7 +258,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         self.tapPhaseBarStyle = TapPhaseBarStyleEndSelectBar;
         [weakSelf showDatePicker];
     }];
-    self.endSelectBar.content = [df stringFromDate:self.targetPhaseModel.endDate];
+    self.endSelectBar.content = [df stringFromDate:self.editTargetPhaseModel.endDate];
     [self.view addSubview:self.endSelectBar];
     [self.endSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.startSelectBar.bottom).offset(10);
@@ -221,7 +275,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         [weakSelf showDatePicker];
     }];
     [self.view addSubview:self.awokeSelectBar];
-    self.awokeSelectBar.content = [df stringFromDate:self.targetPhaseModel.awokeDate];
+    self.awokeSelectBar.content = [df stringFromDate:self.editTargetPhaseModel.awokeDate];
     [self.awokeSelectBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.endSelectBar.bottom).offset(10);
         make.left.equalTo(20);
