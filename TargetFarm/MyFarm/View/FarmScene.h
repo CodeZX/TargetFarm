@@ -7,7 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
+#import "TargetModel.h"
 @interface FarmScene : SKScene
 
+
+- initWithTargetAry:(NSArray *)targetAry NonceTargetModel:(TargetModel *)targetModel;
 @end

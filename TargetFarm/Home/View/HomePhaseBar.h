@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "TargetPhaseModel.h"
+#import "TargetModel.h"
 @interface HomePhaseBar : BasicView
 @property (nonatomic,strong) TargetPhaseModel *targetPhaseModel;
+@property (nonatomic,strong) NSString *phaseName;
 @end

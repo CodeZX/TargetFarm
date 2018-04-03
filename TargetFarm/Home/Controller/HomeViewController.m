@@ -31,18 +31,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:@"MainBGM" withExtension:@"mp3"];
-//    self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileUrl error:nil];
-////    NSString *bgmPath = [[NSBundle mainBundle] pathForResource:@"Afternoon_Zoom" ofType:@"wav"];
-////    self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:bgmPath] error:NULL];
-//    self.bgmPlayer.numberOfLoops = -1;
-//    [self.bgmPlayer play];
+    NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:@"MainBGM" withExtension:@".mp3"];
+    self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileUrl error:nil];
+//    NSString *bgmPath = [[NSBundle mainBundle] pathForResource:@"Afternoon_Zoom" ofType:@"wav"];
+//    self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:bgmPath] error:NULL];
+    self.bgmPlayer.numberOfLoops = -1;
+    [self.bgmPlayer play];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:@"update" object:nil];
     [self setupUI];
     [self getData];
 }
-
+- (void)viewWillAppear:(BOOL)animated {
+    
+    
+    [self.homeTableView.mj_header beginRefreshing];
+}
 - (void)reloadData:(NSNotification *)notification {
     
     HomeTableViewCell *cell = [notification.userInfo valueForKey:@"cell"];

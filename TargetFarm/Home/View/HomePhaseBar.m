@@ -86,6 +86,8 @@
     [stateBtn setTitle:@"已完成" forState:UIControlStateSelected];
     stateBtn.titleLabel.font = FONT_PT_FROM_PX(20);
     [stateBtn setTitleColor:BlackColor forState:UIControlStateNormal];
+
+    [stateBtn addTarget:self action:@selector(stateBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:stateBtn];
     self.stateBtn = stateBtn;
     [stateBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -94,6 +96,16 @@
     }];
 }
 
+
+- (void)stateBtnClick:(UIButton *)btn {
+    
+    btn.selected  = !btn.selected;
+    
+    self.targetPhaseModel.accomplish = btn.selected ? accomplishStateEnd:accomplishStateMarch;
+    TargetManage *TM = [TargetManage sharedTargetManage];
+    if ([TM upDatePhaseWithPhaseName:self.phaseName PrimaryKey:self.targetPhaseModel.id Option:@{@"accomplish":@(self.targetPhaseModel.accomplish)}]) {  DEBUG_LOG(@"更改成功");}
+    
+}
 - (void)setTargetPhaseModel:(TargetPhaseModel *)targetPhaseModel {
     
     _targetPhaseModel = targetPhaseModel;

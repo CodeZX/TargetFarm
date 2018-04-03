@@ -223,23 +223,51 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 // 确定
 - (void)rigthClick:(id)sender {
     
-    [self showSaving];
-//    [self showWaiting];
-    TargetManage *targetManage = [TargetManage sharedTargetManage];
-//    if (![targetManage createDataBaseWithPath:nil])                                     { return; }
-    if (![targetManage addTargetWithTargetModel:[self getTargetModelofCurrentlyController]])  { return; }
-
-//    [self showSuccess:@"新建成功"];
     
-    [NSTimer scheduledTimerWithTimeInterval:1.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
-        
-        [self hideHUD];
-        [self showMessage:@"保存成功"];
-        [self.navigationController popViewControllerAnimated:YES];
+    
+    if (self.editTargetModel) {
        
-    }];
-   
-   
+        [self showSaving];
+        //    [self showWaiting];
+        TargetManage *targetManage = [TargetManage sharedTargetManage];
+        //    if (![targetManage createDataBaseWithPath:nil])                                     { return; }
+//        if (![targetManage addTargetWithTargetModel:[self getTargetModelofCurrentlyController]])  { return; }
+        if(![targetManage updateTargetWithPrimaryKey:self.editTargetModel.ID Option:@{@"targetName":[self getTargetModelofCurrentlyController].targetName}]) {return ;}
+//            [self showSuccess:@"新建成功"];
+        
+        [NSTimer scheduledTimerWithTimeInterval:1.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
+            
+            [self hideHUD];
+            [self showMessage:@"保存成功"];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+        }];
+        
+        
+    }else {
+        
+      
+        
+        [self showSaving];
+        //    [self showWaiting];
+        TargetManage *targetManage = [TargetManage sharedTargetManage];
+        //    if (![targetManage createDataBaseWithPath:nil])                                     { return; }
+        if (![targetManage addTargetWithTargetModel:[self getTargetModelofCurrentlyController]])  { return; }
+        
+        //    [self showSuccess:@"新建成功"];
+        
+        [NSTimer scheduledTimerWithTimeInterval:1.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
+            
+            [self hideHUD];
+            [self showMessage:@"保存成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }];
+        
+        
+        
+    }
+    
    
 
     

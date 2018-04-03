@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(int, accomplishState) {
+    accomplishStateMarch = 0,
+    accomplishStateEnd
+};
+
+
+
 @interface TargetPhaseModel : NSObject
 @property (nonatomic,assign) int id;
 @property (nonatomic,copy) NSString *title;
@@ -15,6 +22,6 @@
 @property (nonatomic,copy) NSDate *beginDate;
 @property (nonatomic,copy) NSDate *endDate;
 @property (nonatomic,copy) NSDate *awokeDate;
-@property (nonatomic,assign) int accomplish;
+@property (nonatomic,assign) accomplishState accomplish;
 
 @end

@@ -80,6 +80,7 @@ static int backgroundImgHeight = 150;
     self.contentLable = contentLable;
     [self.contentLable mas_makeConstraints:^(MASConstraintMaker *make) {
         
+//        make.top.equalTo(self.top).offset(backgroundImgHeight/2);
         make.center.equalTo(self);
     }];
     
@@ -121,7 +122,7 @@ static int backgroundImgHeight = 150;
     }
 
     [self.phaseBarAry removeAllObjects];
-    
+    self.lastPhaseBar = nil;
     
     
 }
@@ -142,6 +143,7 @@ static int backgroundImgHeight = 150;
             HomePhaseBar *phaseBar = [HomePhaseBar new];
             phaseBar.alpha = 0;
             phaseBar.targetPhaseModel = targetModel.phaseAry[index];
+            phaseBar.phaseName = targetModel.phaseTableName;
             [self addSubview:phaseBar];
             
             if (!self.lastPhaseBar) {
@@ -178,7 +180,7 @@ static int backgroundImgHeight = 150;
         }];
         
         [self.contentLable mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self).offset(-80);
+            make.centerY.equalTo(self).offset(-60);
         }];
         [self layoutIfNeeded];
         
@@ -196,7 +198,7 @@ static int backgroundImgHeight = 150;
     
     }else {
         
-        
+        self.lastPhaseBar = nil;
        
         self.backgroundImg.image = [UIImage imageNamed:@"beijing22"];
         [self.backgroundImg mas_updateConstraints:^(MASConstraintMaker *make) {

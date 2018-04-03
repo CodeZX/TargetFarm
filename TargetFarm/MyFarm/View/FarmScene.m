@@ -16,32 +16,70 @@
 @property (weak, nonatomic) SKSpriteNode *apple;
 @property (nonatomic,strong) NSMutableArray *apples;
 @property (nonatomic,strong) AVAudioPlayer *bgmPlayer;
+@property (nonatomic,strong) NSArray *targetAry;
+@property (nonatomic,strong) TargetModel *targetModel;
 @end
 
 @implementation FarmScene
 
 
-- (instancetype)initWithSize:(CGSize)size {
+- (id)initWithTargetAry:(NSArray *)targetAry NonceTargetModel:(TargetModel *)targetModel {
     
-    self = [super initWithSize:size];
+    self = [FarmScene nodeWithFileNamed:@"FarmScene.sks"];
     if (self) {
-        
-        NSString *bgmPath = [[NSBundle mainBundle] pathForResource:@"MainBGM" ofType:@"mp3"];
-        self.bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:bgmPath] error:NULL];
-        self.bgmPlayer.numberOfLoops = -1;
-        [self.bgmPlayer play];
+        self.targetModel = targetModel;
+        self.targetAry = targetAry;
     }
     
     return self;
+    
 }
 /** 做一些初始化的操作 */
 - (void)didMoveToView:(SKView *)view {
     
     
     self.apples = [NSMutableArray new];
-    TargetManage *TM = [TargetManage sharedTargetManage];
-    NSArray *targetAry = [TM allTarget];
-    for (int index = 0; index < targetAry.count%5; index++) {
+   
+   
+      [self seupNode];
+    
+
+    
+    UISwipeGestureRecognizer *swiperight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+    swiperight.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    UISwipeGestureRecognizer *swipeleft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+    swipeleft.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    
+    [self.view addGestureRecognizer:swiperight];
+    [self.view addGestureRecognizer:swipeleft];
+    
+    
+    
+    
+}
+
+
+- (void)seupNode {
+    
+    
+    SKLabelNode *textNode = [SKLabelNode labelNodeWithText:self.targetModel.targetName];
+    textNode.position = CGPointMake(0, SCREEN_HEIGHT/2 + 30);
+    [self addChild:textNode];
+     SKAction  *sizeAction1 = [SKAction scaleTo:2 duration:1];
+     SKAction  *sizeAction2 = [SKAction scaleTo:1 duration:1];
+    SKAction *groupAction = [SKAction sequence:@[
+                                               sizeAction2,
+                                               sizeAction1
+                                                 
+                                                 ]];
+    
+    
+    SKAction * repeatAction  = [SKAction  repeatActionForever:groupAction];
+    
+    [textNode runAction:repeatAction];
+    for (int index = 0; index < self.targetModel.phaseAry.count; index++) {
         
         NSString *appleName = [NSString stringWithFormat:@"//apple%d",index + 1];
         SKSpriteNode *apple = (SKSpriteNode *)[self childNodeWithName:appleName];
@@ -59,50 +97,11 @@
         [self.apples addObject:apple];
         
     }
-    
-  
-
-//    for (int index = 1; index < 4; index++) {
-//
-//        NSString *appleName = [NSString stringWithFormat:@"//apple%d",index];
-//         SKSpriteNode *apple = (SKSpriteNode *)[self childNodeWithName:appleName];
-//
-//        SKAction *wind = [SKAction runBlock:^{
-//            // 进行推力
-//            NSLog(@"%@ ", @"进行风的推力");
-//            CGVector vector = CGVectorMake(3 + index/2.0, 0);
-//            [apple.physicsBody applyForce:vector atPoint:CGPointZero];
-//        }];
-//        SKAction *wait = [SKAction waitForDuration:20];
-//        SKAction *forever = [SKAction repeatActionForever:[SKAction sequence:@[wait, wind]]];
-//        [apple runAction:forever];
-//         [self.apples addObject:apple];
-//
-//    }
-
-//    SKSpriteNode *redApple = [[SKSpriteNode alloc]initWithImageNamed:@"hongpingguo"];
-//    redApple.position = CGPointMake(100, 100);
-//    [self addChild:redApple];
-    
-    UISwipeGestureRecognizer *swiperight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
-    swiperight.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    UISwipeGestureRecognizer *swipeleft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
-    swipeleft.direction = UISwipeGestureRecognizerDirectionLeft;
-    
-    
-    [self.view addGestureRecognizer:swiperight];
-    [self.view addGestureRecognizer:swipeleft];
 }
 
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    UITouch *touch = [touches anyObject];
-//    CGPoint positionInScene = [touch locationInNode:self];
-//    SKSpriteNode *touchedNode = (SKSpriteNode *)[self nodeAtPoint:positionInScene];
-//    if ([[touchedNode name] isEqualToString:@"apple1"])    {
-//        NSLog(@"%@ ", @"这里可以进行点击事件操作");
-//    }
-    
+
     
     UITouch *touch = [touches anyObject];
     
@@ -110,11 +109,69 @@
     
     SKNode *node = [self nodeAtPoint:position];
     
-    if ([node.name isEqualToString:@"apple1"]) {
-        
-       [[NSNotificationCenter defaultCenter] postNotificationName:@"push" object:nil];
-        
-    }
+    int index = [[node.name substringFromIndex:node.name.length - 1] intValue];
+
+    DEBUG_LOG(@"%d",index);
+    
+//    if ([node.name isEqualToString:@"apple1"]) {
+//
+//
+//        int index = [[node.name substringFromIndex:node.name.length - 1] intValue];
+//        NSNotification *notification;
+//        switch (0) {
+//            case 1:
+//            {
+//
+//                TargetModel *model = self.targetAry[0];
+//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
+//
+//                break;
+//            }
+//
+//
+//            case 2:
+//            {
+//
+//                TargetModel *model = self.targetAry[1];
+//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
+//
+//                break;
+//            }
+//            case 3:
+//            {
+//
+//                TargetModel *model = self.targetAry[2];
+//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
+//
+//                break;
+//            }
+//
+//            case 4:
+//            {
+//
+//                TargetModel *model = self.targetAry[3];
+//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
+//
+//                break;
+//            }
+//
+//            case 5:
+//
+//            {
+//
+//                TargetModel *model = self.targetAry[4];
+//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
+//
+//                break;
+//            }
+//            default:
+//                break;
+//        }
+//
+//
+//       [[NSNotificationCenter defaultCenter] postNotification:notification];
+//
+//    }
     
     
 }
@@ -125,9 +182,33 @@
         
         NSLog(@"%@ ", left ? @"向左轻扫" : @"向右轻扫");
         
-        FarmScene *scene = [FarmScene nodeWithFileNamed:@"FarmScene.sks"];
-        scene.scaleMode = SKSceneScaleModeAspectFit;  
+        FarmScene *scene;
+
+        if (left) {
+            
+           
+            NSInteger index =   [self.targetAry indexOfObject:self.targetModel];
+            
+            if (index + 1 == self.targetAry.count ) {
+                
+                return ;
+            }
+
+            scene = [[FarmScene alloc]initWithTargetAry:self.targetAry NonceTargetModel:self.targetAry[index + 1]];
+        }else {
+            
+            NSInteger index = [self.targetAry indexOfObject:self.targetModel];
+            if (index == 0) {
+                
+                return ;
+            }
+
+            scene = [[FarmScene alloc]initWithTargetAry:self.targetAry NonceTargetModel:self.targetAry[index - 1]];
+            
+        }
         
+        
+        scene.scaleMode = SKSceneScaleModeFill;
         SKTransition *transition = [SKTransition pushWithDirection:left ? SKTransitionDirectionLeft : SKTransitionDirectionRight duration:.5];
         [self.view presentScene:scene transition:transition];
     }
