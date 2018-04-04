@@ -240,6 +240,7 @@
 		162DA2DD204FB71A009242DA /* TargetFarm */ = {
 			isa = PBXGroup;
 			children = (
+				182395FF2074D90900BD2FA0 /* Networking */,
 				1800953D206A2786003813C1 /* MyFarm */,
 				180095362069D1DC003813C1 /* AppDelegate */,
 				18969A2E20648F320098AFFF /* Other */,
@@ -414,6 +415,21 @@
 				18009546206A2786003813C1 /* FarmScene.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		182395FF2074D90900BD2FA0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				182396002074D92700BD2FA0 /* Api */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		182396002074D92700BD2FA0 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 		184CB32B2071C21A002D4FDF /* Model */ = {

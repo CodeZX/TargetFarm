@@ -18,6 +18,7 @@
 @property (nonatomic,strong) AVAudioPlayer *bgmPlayer;
 @property (nonatomic,strong) NSArray *targetAry;
 @property (nonatomic,strong) TargetModel *targetModel;
+@property (nonatomic,strong) SKSpriteNode *indicatorNode;
 @end
 
 @implementation FarmScene
@@ -29,6 +30,7 @@
     if (self) {
         self.targetModel = targetModel;
         self.targetAry = targetAry;
+//        self.anchorPoint = CGPointMake(0, 0);
     }
     
     return self;
@@ -67,12 +69,29 @@
     SKLabelNode *textNode = [SKLabelNode labelNodeWithText:self.targetModel.targetName];
     textNode.position = CGPointMake(0, SCREEN_HEIGHT/2 + 30);
     [self addChild:textNode];
+    
      SKAction  *sizeAction1 = [SKAction scaleTo:2 duration:1];
      SKAction  *sizeAction2 = [SKAction scaleTo:1 duration:1];
+    SKAction *alphaInAction  = [SKAction fadeInWithDuration:1];
+    
+    SKAction *alphaOutAction = [SKAction fadeOutWithDuration:1];
+    
+    
+    SKAction *groupAction1 = [SKAction group:@[
+                                            sizeAction1,
+                                            alphaInAction
+                                              ]];
+    SKAction *groupAction2 = [SKAction group:@[
+                                             sizeAction2,
+                                             alphaOutAction
+                                               ]];
+    
+    
+    
     SKAction *groupAction = [SKAction sequence:@[
-                                               sizeAction2,
-                                               sizeAction1
-                                                 
+                                                 groupAction1,
+                                                 groupAction2
+                                               
                                                  ]];
     
     
@@ -81,7 +100,7 @@
     [textNode runAction:repeatAction];
     for (int index = 0; index < self.targetModel.phaseAry.count; index++) {
         
-        NSString *appleName = [NSString stringWithFormat:@"//apple%d",index + 1];
+        NSString *appleName = [NSString stringWithFormat:@"apple%d",index + 1];
         SKSpriteNode *apple = (SKSpriteNode *)[self childNodeWithName:appleName];
         apple.alpha = 1;
         
@@ -109,9 +128,67 @@
     
     SKNode *node = [self nodeAtPoint:position];
     
-    int index = [[node.name substringFromIndex:node.name.length - 1] intValue];
-
-    DEBUG_LOG(@"%d",index);
+    NSRange range =  [node.name rangeOfString:@"apple"];
+    if (range.length != 0) {
+        
+        int index = [[node.name substringFromIndex:node.name.length - 1] intValue];
+        
+        DEBUG_LOG(@"%d",index);
+        
+//         SKSpriteNode *indicatorNode = (SKSpriteNode *)[self childNodeWithName:indicator];
+//         SKAction *turnAction = [SKAction action]
+        
+        
+        if (self.indicatorNode) {
+            
+            SKAction *moveX = [SKAction moveByX:self.frame.size.width y:0 duration:.8];
+            SKAction *moveY = [SKAction moveByX:0 y:30 duration:.5];
+            SKAction *scaleAction = [SKAction scaleBy:.4 duration:.5];
+            SKAction *group = [SKAction group:@[moveX,scaleAction]];
+              SKAction *removeAciton = [SKAction removeFromParent];
+            SKAction *groupAction = [SKAction sequence:@[moveY,group,removeAciton]];
+            
+           
+            //        [s addChild:textNode];
+           
+            
+            [self.indicatorNode runAction:groupAction];
+            
+            self.indicatorNode = nil;
+            
+            
+        }else {
+            
+            
+            SKSpriteNode *indicatorNode = [SKSpriteNode spriteNodeWithImageNamed:@"4152"];//anniu2
+            indicatorNode.position = CGPointMake(-SCREEN_WIDTH, -SCREEN_HEIGHT/2 + 50);
+            indicatorNode.size = CGSizeMake(100, 100);
+            [self addChild:indicatorNode];
+            self.indicatorNode = indicatorNode;
+            SKAction *moveX = [SKAction moveByX:SCREEN_WIDTH/2 y:0 duration:.5];
+            SKAction *moveY = [SKAction moveByX:0 y:-10 duration:.3];
+            SKAction *scaleAction = [SKAction scaleBy:2 duration:.3];
+            SKAction *group = [SKAction group:@[moveY,scaleAction]];
+            
+            SKAction *groupAction = [SKAction sequence:@[moveX,group]];
+            
+            SKLabelNode *textNode = [SKLabelNode labelNodeWithText:self.targetModel.targetName];
+            textNode.position = CGPointMake(0,20);
+            TargetPhaseModel *model = self.targetModel.phaseAry[index - 1];
+            textNode.text = model.content;
+            textNode.fontColor = [SKColor blackColor];
+            textNode.fontSize = 12;
+            //        [s addChild:textNode];
+            [indicatorNode addChild:textNode];
+            
+            [indicatorNode runAction:groupAction];
+            
+        }
+        
+        
+       
+    }
+   
     
 //    if ([node.name isEqualToString:@"apple1"]) {
 //

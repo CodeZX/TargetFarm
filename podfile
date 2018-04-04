@@ -10,6 +10,8 @@ target 'TargetFarm' do
   pod 'MBProgressHUD'
   pod 'MJRefresh'
   pod 'TYAlertController'
+  pod 'YTKNetwork'
+  pod 'AFNetworking'
   # Pods for TargetFarm
 
 end

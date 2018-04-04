@@ -31,8 +31,8 @@
     self.title = @"我的目标";
     self.view.backgroundColor = MotifColor;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(rightBtnClick:)];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@". . ." style:UIBarButtonItemStyleDone target:self action:@selector(rightBtnClick:)];
     
     
     UILabel *targetNameLabel = [UILabel new];
