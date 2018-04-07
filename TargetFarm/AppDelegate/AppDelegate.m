@@ -24,6 +24,8 @@
     [self.window makeKeyAndVisible];
    
     [[TargetManage sharedTargetManage] createDataBaseWithPath:nil];
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    config.baseUrl = @"https://www.sojson.com";
     return YES;
 }
 

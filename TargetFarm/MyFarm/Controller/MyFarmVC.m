@@ -9,7 +9,7 @@
 #import "MyFarmVC.h"
 #import "FarmScene.h"
 #import "HomeMyTargetController.h"
-
+#import "myApi.h"
 
 @interface MyFarmVC ()
 @property (nonatomic,strong) AVAudioPlayer *audioPlayer;
@@ -22,6 +22,14 @@
     [super viewDidLoad];
     
     
+    myApi *api = [[myApi alloc]initWithCity:@"北京"];
+    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        DEBUG_LOG(@"%@",request.responseObject);
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+    }];
     
     
 //    TargetManage *targetManage= [TargetManage sharedTargetManage];

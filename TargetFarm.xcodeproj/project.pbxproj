@@ -73,6 +73,7 @@
 		FB241FED20694D0C00631B17 /* UIWindow+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FEC20694D0C00631B17 /* UIWindow+PresentViewController.m */; };
 		FB241FF0206951F400631B17 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FEF206951F400631B17 /* UIViewController+HUD.m */; };
 		FB241FF3206D325B00631B17 /* HomePhaseBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FB241FF2206D325B00631B17 /* HomePhaseBar.m */; };
+		FBBA892F2079163E000329E7 /* myApi.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBA892E2079163D000329E7 /* myApi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -205,6 +206,8 @@
 		FB241FEF206951F400631B17 /* UIViewController+HUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
 		FB241FF1206D325B00631B17 /* HomePhaseBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePhaseBar.h; sourceTree = "<group>"; };
 		FB241FF2206D325B00631B17 /* HomePhaseBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePhaseBar.m; sourceTree = "<group>"; };
+		FBBA892D2079163D000329E7 /* myApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myApi.h; sourceTree = "<group>"; };
+		FBBA892E2079163D000329E7 /* myApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myApi.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +275,8 @@
 				162DA2ED204FB71A009242DA /* main.m */,
 				189699652061E8C50098AFFF /* PrefixHeader.pch */,
 				189699662061E9780098AFFF /* MacroDefinitionHeader.h */,
+				FBBA892D2079163D000329E7 /* myApi.h */,
+				FBBA892E2079163D000329E7 /* myApi.m */,
 			);
 			path = TargetFarm;
 			sourceTree = "<group>";
@@ -699,7 +704,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -780,6 +785,7 @@
 				162DA326204FB75F009242DA /* HomeVC.m in Sources */,
 				FB241FEA20694BEA00631B17 /* UIAlertController+custom.m in Sources */,
 				18009549206A2786003813C1 /* FarmScene.m in Sources */,
+				FBBA892F2079163E000329E7 /* myApi.m in Sources */,
 				FB241FF0206951F400631B17 /* UIViewController+HUD.m in Sources */,
 				18969A12206225940098AFFF /* HomeTableSectionHeadView.m in Sources */,
 				162DA317204FB728009242DA /* BaseTableViewToolVC.m in Sources */,
@@ -913,7 +919,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MN368D4UQP;
+				DEVELOPMENT_TEAM = 484G6WE6BR;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -936,7 +942,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MN368D4UQP;
+				DEVELOPMENT_TEAM = 484G6WE6BR;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TargetFarm/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
