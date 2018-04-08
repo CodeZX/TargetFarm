@@ -21,8 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     HomeCellModel *model1 = [HomeCellModel new];
     model1.isRegisterXib = YES;
+    
     
     HomeCellModel *model2 = [HomeCellModel new];
     model2.isRegisterXib = YES;

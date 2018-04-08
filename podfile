@@ -13,6 +13,7 @@ target 'TargetFarm' do
   pod 'YTKNetwork'
   pod 'AFNetworking'
   pod 'JPush'
+  pod 'YYModel'
   # Pods for TargetFarm
 
 end
