@@ -12,6 +12,7 @@ target 'TargetFarm' do
   pod 'TYAlertController'
   pod 'YTKNetwork'
   pod 'AFNetworking'
+  pod 'JPush'
   # Pods for TargetFarm
 
 end
