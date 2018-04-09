@@ -87,7 +87,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     
 
     UILabel *targetNameLabel = [UILabel new];
-    targetNameLabel.text = @"目标名称";
+    targetNameLabel.text = @"阶段名称";
     targetNameLabel.textColor = UIColorFromRGB(0x28282a);
     targetNameLabel.font = FONT_PT_FROM_PX(20);
     [self.view addSubview:targetNameLabel];
@@ -100,7 +100,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     
     UITextField *targetNameTextField = [UITextField new];
     //    targetNameTextField.keyboardType = UIKeyboardTypeNumberPad;
-    targetNameTextField.placeholder = @"输入你的目标计划";
+    targetNameTextField.placeholder = @"输入你的阶段名称";
     [targetNameTextField setFont:FONT_PT_FROM_PX(26)];
     targetNameTextField.text = self.editTargetPhaseModel.content;
     [targetNameTextField setTextColor:UIColorFromRGB(0x969797)];
@@ -166,6 +166,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     
 
     if (self.phaseName) {
+        if (![self inspect]) {return;}
         
         [self showSaving];
         DEBUG_LOG(@"保存");
@@ -289,6 +290,40 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     
     
 }
+
+
+- (BOOL)inspect {
+    
+    if (self.targetNameTextField.text.length == 0) {
+        
+        [self showMessage:@"请输入阶段名称"];
+        return NO;
+    }
+    
+    if (self.startSelectBar.content.length == 0) {
+        
+        [self showMessage:@"请选择开始时间"];
+        return NO;
+    }
+    
+    if (self.endSelectBar.content.length == 0) {
+        
+        [self showMessage:@"请选择结束时间"];
+        return NO;
+    }
+    
+    if (self.awokeSelectBar.content.length == 0) {
+        
+        [self showMessage:@"请选择提醒时间"];
+        return NO;
+    }
+    
+    return YES;
+    
+}
+
+
+
 
 - (TargetPhaseModel *)getTargetPhaseModelofCurrentlyController {
     

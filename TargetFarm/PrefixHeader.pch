@@ -35,6 +35,8 @@ typedef void (^NSDateCompletionBlock)(NSDate *date);
 #import "YTKNetwork.h"
 #import "JPUSHService.h"
 #import "YYModel.h"
+#import "MJExtension.h"
+
 
 #import "UIView+TYAlertView.h"
 

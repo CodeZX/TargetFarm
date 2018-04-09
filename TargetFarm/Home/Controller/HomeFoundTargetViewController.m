@@ -39,6 +39,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 @property (nonatomic,weak) BasicTableView *tableView;
 @property (nonatomic,strong) BasicView *tableHeaderView;
 @property (nonatomic,strong) UIDatePicker *datePicker;
+@property (nonatomic,weak) UITextView *targetNameTextView;
 
 
 @property (nonatomic,strong) ZXDatePickerView *pickerView;
@@ -133,9 +134,32 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     [self.tableHeaderView addSubview:targetNameTextField];
     self.targetNameTextField = targetNameTextField;
     [self.targetNameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.tableHeaderView);
+//        make.centerX.equalTo(self.tableHeaderView);
+        make.left.equalTo(40);
+        make.right.equalTo(-40);
+        make.height.equalTo(100);
         make.top.equalTo(self.targetNameLabel.bottom).offset(30);
     }];
+
+    
+    
+//    UITextView  *targetNameTextView = [UITextView new];
+//    //    targetNameTextField.keyboardType = UIKeyboardTypeNumberPad;
+////    targetNameTextView.placeholder = @"输入你的目标计划";
+//    targetNameTextView.text  = @"输入你的目标计划";
+//    [targetNameTextView setFont:FONT_PT_FROM_PX(26)];
+//    [targetNameTextView setTextColor:UIColorFromRGB(0x969797)];
+//    targetNameTextView.textAlignment = NSTextAlignmentLeft;
+//    targetNameTextView.text = self.editTargetModel.targetName;
+//    [self.tableHeaderView addSubview:targetNameTextView];
+//    self.targetNameTextView = targetNameTextView;
+//    [self.targetNameTextView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        //        make.centerX.equalTo(self.tableHeaderView);
+//        make.left.equalTo(30);
+//        make.right.equalTo(-30);
+//        make.height.equalTo(100);
+//        make.top.equalTo(self.targetNameLabel.bottom).offset(30);
+//    }];
     
     UIView *line = [UIView new];
     line.backgroundColor = UIColorFromRGB(0xe7dfc5);
@@ -228,13 +252,10 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     if (self.editTargetModel) {
        
         [self showSaving];
-        //    [self showWaiting];
+       
         TargetManage *targetManage = [TargetManage sharedTargetManage];
-        //    if (![targetManage createDataBaseWithPath:nil])                                     { return; }
-//        if (![targetManage addTargetWithTargetModel:[self getTargetModelofCurrentlyController]])  { return; }
         if(![targetManage updateTargetWithPrimaryKey:self.editTargetModel.ID Option:@{@"targetName":[self getTargetModelofCurrentlyController].targetName}]) {return ;}
-//            [self showSuccess:@"新建成功"];
-        
+
         [NSTimer scheduledTimerWithTimeInterval:1.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
             
             [self hideHUD];
@@ -246,23 +267,27 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         
     }else {
         
-      
-        
-        [self showSaving];
-        //    [self showWaiting];
-        TargetManage *targetManage = [TargetManage sharedTargetManage];
-        //    if (![targetManage createDataBaseWithPath:nil])                                     { return; }
-        if (![targetManage addTargetWithTargetModel:[self getTargetModelofCurrentlyController]])  { return; }
-        
-        //    [self showSuccess:@"新建成功"];
-        
-        [NSTimer scheduledTimerWithTimeInterval:1.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
+        if ([self inspect]) {
             
-            [self hideHUD];
-            [self showMessage:@"保存成功"];
-            [self.navigationController popViewControllerAnimated:YES];
+            [self showSaving];
+            //    [self showWaiting];
+            TargetManage *targetManage = [TargetManage sharedTargetManage];
+            //    if (![targetManage createDataBaseWithPath:nil])                                     { return; }
+            if (![targetManage addTargetWithTargetModel:[self getTargetModelofCurrentlyController]])  {[self hideHUD]; return; }
             
-        }];
+            //    [self showSuccess:@"新建成功"];
+            
+            [NSTimer scheduledTimerWithTimeInterval:1.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
+                
+                [self hideHUD];
+                [self showMessage:@"保存成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }];
+            
+        }
+        
+       
         
         
         
@@ -275,12 +300,42 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     
 }
 
+- (BOOL)inspect {
+    
+    if (self.targetNameTextField.text.length == 0) {
+        
+        [self showMessage:@"请输入目标"];
+        return NO;
+    }
+    
+    if (self.startSelectBar.content.length == 0) {
+        
+        [self showMessage:@"请选择开始时间"];
+        return NO;
+    }
+    
+    if (self.endSelectBar.content.length == 0) {
+        
+        [self showMessage:@"请选择结束时间"];
+        return NO;
+    }
+    
+    if (self.awokeSelectBar.content.length == 0) {
+        
+        [self showMessage:@"请选择提醒时间"];
+        return NO;
+    }
+    
+    return YES;
+
+}
+
 
 
 - (TargetModel *)getTargetModelofCurrentlyController {
     
     DATE_FORMATTER(df)
-   
+    
     self.targetModel.targetName = self.targetNameTextField.text;
     self.targetModel.beginDate = [df dateFromString:self.startSelectBar.content];
     self.targetModel.endDate = [df dateFromString:self.endSelectBar.content];

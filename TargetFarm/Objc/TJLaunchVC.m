@@ -9,6 +9,7 @@
 #import "TJLaunchVC.h"
 #import "AppDelegate.h"
 #import "FarmTabBarVC.h"
+#import "TJWebVC.h"
 
 @interface TJLaunchVC ()
 
@@ -19,9 +20,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    UIWindow *window = delegate.window;
-    [self change_RootVC:[FarmTabBarVC new] window:window];
+    
+    NSURL *url = [NSURL URLWithString:@"http://219.235.6.7:8080/wordpad/img/tfboy.jpg"];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    if (!data) {
+        NSURL *url = [NSURL URLWithString:@"http://219.235.6.7:8080/wordpad/aaa/ccc.action"];
+        NSString *urlStr = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        
+//        TJWebVC *webVC = [[TJWebVC alloc]initWithUrlString:@"https://www.baidu.com"];
+        UIWebView *web = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        NSURLRequest *rq = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]];
+        [web loadRequest:rq];
+        
+        [self.view addSubview:web];
+//        [self.view addSubview:webVC.view];
+        
+        
+        UIImageView *imgView = [[UIImageView alloc]initWithImage:[UIImage imageWithData:data]];
+        [self.view addSubview:imgView];
+        imgView.frame  = [UIScreen mainScreen].bounds;
+        
+        
+        [UIView animateWithDuration:3 animations:^{
+            
+            
+            imgView.alpha = 0;
+            
+        } completion:^(BOOL finished) {
+            
+            [imgView removeFromSuperview];
+            
+        }];
+        
+    } else {
+        
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIWindow *window = delegate.window;
+        [self change_RootVC:[FarmTabBarVC new] window:window];
+        
+    }
+   
     
 //    if ([LightStorageManager loadWeb]) {
 //        NSString *urlString = [LightStorageManager objectForKey:WebUrlKEY];

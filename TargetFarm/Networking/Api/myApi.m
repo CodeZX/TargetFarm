@@ -27,7 +27,10 @@
 
 - (NSString *)requestUrl {
     
-    return @"/open/api/weather/json.shtml";
+//    return @"/open/api/weather/json.shtml";
+    
+    return @"/wordpad/aaa/bbb.action";
+//    wordpad/aaa/bbb.action
 }
 
 - (YTKRequestMethod)requestMethod {
@@ -35,8 +38,8 @@
     return  YTKRequestMethodGET;
 }
 
-- (id)requestArgument {
-    
-    return @{@"city":_city};
-}
+//- (id)requestArgument {
+//
+//    return @{@"city":_city};
+//}
 @end

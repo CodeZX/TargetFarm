@@ -27,7 +27,6 @@
 		162DA32D204FB7A0009242DA /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA32B204FB7A0009242DA /* HomeCell.m */; };
 		162DA32E204FB7A0009242DA /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162DA32C204FB7A0009242DA /* HomeCell.xib */; };
 		162DA331204FB7B3009242DA /* FarmTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA330204FB7B3009242DA /* FarmTabBarVC.m */; };
-		162DA339204FC6F6009242DA /* BigFarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA338204FC6F6009242DA /* BigFarmVC.m */; };
 		162DA38620510439009242DA /* HomeSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA38420510439009242DA /* HomeSubCell.m */; };
 		162DA38720510439009242DA /* HomeSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162DA38520510439009242DA /* HomeSubCell.xib */; };
 		162DA38A20510962009242DA /* HomeSubCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DA38920510961009242DA /* HomeSubCellModel.m */; };
@@ -49,6 +48,9 @@
 		1800959C206B7ACB003813C1 /* HomeMyTargetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1800959B206B7ACB003813C1 /* HomeMyTargetController.m */; };
 		182396072079A5CA00BD2FA0 /* myApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 182396062079A5CA00BD2FA0 /* myApi.m */; };
 		184CB37C20734320002D4FDF /* 2dde4c532409388b050d185c56ce9051.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 184CB37B20734320002D4FDF /* 2dde4c532409388b050d185c56ce9051.mp3 */; };
+		1886F9C7207B02FB00E91086 /* BigFarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1886F9C6207B02FB00E91086 /* BigFarmVC.m */; };
+		1886F9D4207B470600E91086 /* BigFarmScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1886F9D3207B470600E91086 /* BigFarmScene.m */; };
+		1886F9D6207B472200E91086 /* BigFarm.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1886F9D5207B472200E91086 /* BigFarm.sks */; };
 		189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699702061ED8E0098AFFF /* BasicTableViewController.m */; };
 		189699742061EDBA0098AFFF /* BasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699732061EDBA0098AFFF /* BasicNavigationController.m */; };
 		189699772061EE2C0098AFFF /* BasicTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699762061EE2C0098AFFF /* BasicTabBarController.m */; };
@@ -114,8 +116,6 @@
 		162DA32C204FB7A0009242DA /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		162DA32F204FB7B3009242DA /* FarmTabBarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FarmTabBarVC.h; sourceTree = "<group>"; };
 		162DA330204FB7B3009242DA /* FarmTabBarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarmTabBarVC.m; sourceTree = "<group>"; };
-		162DA337204FC6F6009242DA /* BigFarmVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigFarmVC.h; sourceTree = "<group>"; };
-		162DA338204FC6F6009242DA /* BigFarmVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BigFarmVC.m; sourceTree = "<group>"; };
 		162DA38320510439009242DA /* HomeSubCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSubCell.h; sourceTree = "<group>"; };
 		162DA38420510439009242DA /* HomeSubCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSubCell.m; sourceTree = "<group>"; };
 		162DA38520510439009242DA /* HomeSubCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSubCell.xib; sourceTree = "<group>"; };
@@ -156,6 +156,11 @@
 		182396062079A5CA00BD2FA0 /* myApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myApi.m; sourceTree = "<group>"; };
 		182396082079E2E500BD2FA0 /* TargetFarm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TargetFarm.entitlements; sourceTree = "<group>"; };
 		184CB37B20734320002D4FDF /* 2dde4c532409388b050d185c56ce9051.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2dde4c532409388b050d185c56ce9051.mp3; sourceTree = "<group>"; };
+		1886F9C5207B02FB00E91086 /* BigFarmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigFarmVC.h; sourceTree = "<group>"; };
+		1886F9C6207B02FB00E91086 /* BigFarmVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigFarmVC.m; sourceTree = "<group>"; };
+		1886F9D2207B470600E91086 /* BigFarmScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigFarmScene.h; sourceTree = "<group>"; };
+		1886F9D3207B470600E91086 /* BigFarmScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BigFarmScene.m; sourceTree = "<group>"; };
+		1886F9D5207B472200E91086 /* BigFarm.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BigFarm.sks; sourceTree = "<group>"; };
 		189699652061E8C50098AFFF /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		189699662061E9780098AFFF /* MacroDefinitionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinitionHeader.h; sourceTree = "<group>"; };
 		1896996F2061ED8E0098AFFF /* BasicTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTableViewController.h; sourceTree = "<group>"; };
@@ -241,6 +246,7 @@
 		162DA2DD204FB71A009242DA /* TargetFarm */ = {
 			isa = PBXGroup;
 			children = (
+				1886F9C1207B02AF00E91086 /* BigFarm */,
 				182396082079E2E500BD2FA0 /* TargetFarm.entitlements */,
 				182396012079A2B600BD2FA0 /* Networking */,
 				1800953D206A2786003813C1 /* MyFarm */,
@@ -263,8 +269,6 @@
 				162DA38920510961009242DA /* HomeSubCellModel.m */,
 				162DA32F204FB7B3009242DA /* FarmTabBarVC.h */,
 				162DA330204FB7B3009242DA /* FarmTabBarVC.m */,
-				162DA337204FC6F6009242DA /* BigFarmVC.h */,
-				162DA338204FC6F6009242DA /* BigFarmVC.m */,
 				162DA2F4204FB727009242DA /* Objc */,
 				162DA2E7204FB71A009242DA /* Assets.xcassets */,
 				162DA2E9204FB71A009242DA /* LaunchScreen.storyboard */,
@@ -447,6 +451,42 @@
 				184CB37B20734320002D4FDF /* 2dde4c532409388b050d185c56ce9051.mp3 */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		1886F9C1207B02AF00E91086 /* BigFarm */ = {
+			isa = PBXGroup;
+			children = (
+				1886F9C2207B02AF00E91086 /* Controller */,
+				1886F9C3207B02AF00E91086 /* Model */,
+				1886F9C4207B02AF00E91086 /* View */,
+			);
+			path = BigFarm;
+			sourceTree = "<group>";
+		};
+		1886F9C2207B02AF00E91086 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1886F9C5207B02FB00E91086 /* BigFarmVC.h */,
+				1886F9C6207B02FB00E91086 /* BigFarmVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1886F9C3207B02AF00E91086 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1886F9C4207B02AF00E91086 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1886F9D2207B470600E91086 /* BigFarmScene.h */,
+				1886F9D3207B470600E91086 /* BigFarmScene.m */,
+				1886F9D5207B472200E91086 /* BigFarm.sks */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		189699672061EBC90098AFFF /* Home */ = {
@@ -673,6 +713,7 @@
 				184CB37C20734320002D4FDF /* 2dde4c532409388b050d185c56ce9051.mp3 in Resources */,
 				162DA2EB204FB71A009242DA /* LaunchScreen.storyboard in Resources */,
 				162DA2E8204FB71A009242DA /* Assets.xcassets in Resources */,
+				1886F9D6207B472200E91086 /* BigFarm.sks in Resources */,
 				162DA32E204FB7A0009242DA /* HomeCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,7 +750,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -751,6 +792,7 @@
 				1800952920688954003813C1 /* HomeAddPhaseCell.m in Sources */,
 				180095352068F81F003813C1 /* ZXFMDBManager.m in Sources */,
 				1800959C206B7ACB003813C1 /* HomeMyTargetController.m in Sources */,
+				1886F9D4207B470600E91086 /* BigFarmScene.m in Sources */,
 				18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */,
 				1800953C2069D868003813C1 /* ZXDatePickerView.m in Sources */,
 				180095232068885C003813C1 /* HomeFoundTargetSelectBar.m in Sources */,
@@ -759,7 +801,6 @@
 				18969A1820625E8D0098AFFF /* HomeAddTargetView.m in Sources */,
 				162DA323204FB742009242DA /* HomeCellModel.m in Sources */,
 				189699742061EDBA0098AFFF /* BasicNavigationController.m in Sources */,
-				162DA339204FC6F6009242DA /* BigFarmVC.m in Sources */,
 				18969A0F206210640098AFFF /* TargetModel.m in Sources */,
 				162DA31C204FB728009242DA /* CommonTableViewHeaderFooterView.m in Sources */,
 				18969A0C206209B50098AFFF /* HomeTableViewCell.m in Sources */,
@@ -784,6 +825,7 @@
 				162DA318204FB728009242DA /* CommonSectionModel.m in Sources */,
 				180095392069D1DC003813C1 /* AppDelegate.m in Sources */,
 				18009547206A2786003813C1 /* MyFarmVC.m in Sources */,
+				1886F9C7207B02FB00E91086 /* BigFarmVC.m in Sources */,
 				1896997D2061EE930098AFFF /* HomeViewController.m in Sources */,
 				1896997A2061EE600098AFFF /* BasicViewController.m in Sources */,
 				189699772061EE2C0098AFFF /* BasicTabBarController.m in Sources */,

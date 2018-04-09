@@ -1,17 +1,15 @@
 //
-//  FarmScene.m
+//  BigFarmScene.m
 //  TargetFarm
 //
-//  Created by chenkaijie on 2018/3/7.
+//  Created by apple on 2018/4/9.
 //  Copyright © 2018年 chenkaijie. All rights reserved.
 //
 
-#import "FarmScene.h"
+#import "BigFarmScene.h"
 
+@interface BigFarmScene()
 
-@interface FarmScene ()
-
-//@property (strong, nonatomic) NSArray *<#UILabel#>;
 
 @property (weak, nonatomic) SKSpriteNode *apple;
 @property (nonatomic,strong) NSMutableArray *apples;
@@ -19,33 +17,39 @@
 @property (nonatomic,strong) NSArray *targetAry;
 @property (nonatomic,strong) TargetModel *targetModel;
 @property (nonatomic,strong) SKSpriteNode *indicatorNode;
+
 @end
 
-@implementation FarmScene
+@implementation BigFarmScene
 
 
 - (id)initWithTargetAry:(NSArray *)targetAry NonceTargetModel:(TargetModel *)targetModel {
     
-    self = [FarmScene nodeWithFileNamed:@"FarmScene.sks"];
+    self = [BigFarmScene nodeWithFileNamed:@"BigFarm.sks"];
     if (self) {
         self.targetModel = targetModel;
         self.targetAry = targetAry;
-//        self.anchorPoint = CGPointMake(0, 0);
+        //        self.anchorPoint = CGPointMake(0, 0);
     }
     
     return self;
     
+}
+
+- (TargetModel *)getTargetModel {
+    
+    return self.targetModel;
 }
 /** 做一些初始化的操作 */
 - (void)didMoveToView:(SKView *)view {
     
     
     self.apples = [NSMutableArray new];
-   
-   
-      [self seupNode];
     
-
+    
+    [self seupNode];
+    
+    
     
     UISwipeGestureRecognizer *swiperight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
     swiperight.direction = UISwipeGestureRecognizerDirectionRight;
@@ -67,23 +71,23 @@
     
     
     SKLabelNode *textNode = [SKLabelNode labelNodeWithText:self.targetModel.targetName];
-    textNode.position = CGPointMake(0, SCREEN_HEIGHT/2 + 30);
+    textNode.position = CGPointMake(0, SCREEN_HEIGHT/2 + 50);
     [self addChild:textNode];
     
-     SKAction  *sizeAction1 = [SKAction scaleTo:2 duration:1];
-     SKAction  *sizeAction2 = [SKAction scaleTo:1 duration:1];
+    SKAction  *sizeAction1 = [SKAction scaleTo:2 duration:1];
+    SKAction  *sizeAction2 = [SKAction scaleTo:1 duration:1];
     SKAction *alphaInAction  = [SKAction fadeInWithDuration:1];
     
     SKAction *alphaOutAction = [SKAction fadeOutWithDuration:1];
     
     
     SKAction *groupAction1 = [SKAction group:@[
-                                            sizeAction1,
-                                            alphaInAction
-                                              ]];
+                                               sizeAction1,
+                                               alphaInAction
+                                               ]];
     SKAction *groupAction2 = [SKAction group:@[
-                                             sizeAction2,
-                                             alphaOutAction
+                                               sizeAction2,
+                                               alphaOutAction
                                                ]];
     
     
@@ -91,7 +95,7 @@
     SKAction *groupAction = [SKAction sequence:@[
                                                  groupAction1,
                                                  groupAction2
-                                               
+                                                 
                                                  ]];
     
     
@@ -100,6 +104,10 @@
     [textNode runAction:repeatAction];
     for (int index = 0; index < self.targetModel.phaseAry.count; index++) {
         
+        if (index > 4) {
+            
+            break;
+        }
         NSString *appleName = [NSString stringWithFormat:@"apple%d",index + 1];
         SKSpriteNode *apple = (SKSpriteNode *)[self childNodeWithName:appleName];
         apple.alpha = 1;
@@ -120,7 +128,7 @@
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-
+    
     
     UITouch *touch = [touches anyObject];
     
@@ -135,8 +143,8 @@
         
         DEBUG_LOG(@"%d",index);
         
-//         SKSpriteNode *indicatorNode = (SKSpriteNode *)[self childNodeWithName:indicator];
-//         SKAction *turnAction = [SKAction action]
+        //         SKSpriteNode *indicatorNode = (SKSpriteNode *)[self childNodeWithName:indicator];
+        //         SKAction *turnAction = [SKAction action]
         
         
         if (self.indicatorNode) {
@@ -145,12 +153,12 @@
             SKAction *moveY = [SKAction moveByX:0 y:30 duration:.5];
             SKAction *scaleAction = [SKAction scaleBy:.4 duration:.5];
             SKAction *group = [SKAction group:@[moveX,scaleAction]];
-              SKAction *removeAciton = [SKAction removeFromParent];
+            SKAction *removeAciton = [SKAction removeFromParent];
             SKAction *groupAction = [SKAction sequence:@[moveY,group,removeAciton]];
             
-           
+            
             //        [s addChild:textNode];
-           
+            
             
             [self.indicatorNode runAction:groupAction];
             
@@ -186,71 +194,12 @@
         }
         
         
-       
+        
     }
+    
+    
    
-    
-//    if ([node.name isEqualToString:@"apple1"]) {
-//
-//
-//        int index = [[node.name substringFromIndex:node.name.length - 1] intValue];
-//        NSNotification *notification;
-//        switch (0) {
-//            case 1:
-//            {
-//
-//                TargetModel *model = self.targetAry[0];
-//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
-//
-//                break;
-//            }
-//
-//
-//            case 2:
-//            {
-//
-//                TargetModel *model = self.targetAry[1];
-//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
-//
-//                break;
-//            }
-//            case 3:
-//            {
-//
-//                TargetModel *model = self.targetAry[2];
-//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
-//
-//                break;
-//            }
-//
-//            case 4:
-//            {
-//
-//                TargetModel *model = self.targetAry[3];
-//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
-//
-//                break;
-//            }
-//
-//            case 5:
-//
-//            {
-//
-//                TargetModel *model = self.targetAry[4];
-//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
-//
-//                break;
-//            }
-//            default:
-//                break;
-//        }
-//
-//
-//       [[NSNotificationCenter defaultCenter] postNotification:notification];
-//
-//    }
-    
-    
+
 }
 
 - (void)swipe:(UISwipeGestureRecognizer *)reg {
@@ -264,20 +213,20 @@
         
         NSLog(@"%@ ", left ? @"向左轻扫" : @"向右轻扫");
         
-        FarmScene *scene;
-
+        BigFarmScene *scene;
+        
         
         if (left) {
             
-           
+            
             NSInteger index =   [self.targetAry indexOfObject:self.targetModel];
             
             if (index + 1 == self.targetAry.count ) {
                 
                 return ;
             }
-
-            scene = [[FarmScene alloc]initWithTargetAry:self.targetAry NonceTargetModel:self.targetAry[index + 1]];
+            
+            scene = [[BigFarmScene alloc]initWithTargetAry:self.targetAry NonceTargetModel:self.targetAry[index + 1]];
         }else {
             
             NSInteger index = [self.targetAry indexOfObject:self.targetModel];
@@ -285,8 +234,8 @@
                 
                 return ;
             }
-
-            scene = [[FarmScene alloc]initWithTargetAry:self.targetAry NonceTargetModel:self.targetAry[index - 1]];
+            
+            scene = [[BigFarmScene alloc]initWithTargetAry:self.targetAry NonceTargetModel:self.targetAry[index - 1]];
             
         }
         
@@ -299,3 +248,4 @@
 
 
 @end
+

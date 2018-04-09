@@ -22,14 +22,7 @@
     [super viewDidLoad];
     
     
-    myApi *api = [[myApi alloc]initWithCity:@"北京"];
-    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
-        DEBUG_LOG(@"%@",request.responseObject);
-        
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
-    }];
+   
     
     
 //    TargetManage *targetManage= [TargetManage sharedTargetManage];

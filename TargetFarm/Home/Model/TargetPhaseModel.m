@@ -10,4 +10,10 @@
 
 @implementation TargetPhaseModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    
+    return @{@"content":@"name",
+             
+             };
+}
 @end

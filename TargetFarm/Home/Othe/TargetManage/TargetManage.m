@@ -100,6 +100,10 @@ WMSingletonM(TargetManage)
 
 - (BOOL)addTargetWithTargetModel:(TargetModel *)targetModel {
     
+    if (!targetModel) {
+        
+        return NO;
+    }
     [self createTargetTable];
     
    BOOL result =  [db executeUpdate:INSERT_INTO_TABLE_TARGET,targetModel.targetName,targetModel.beginDate,targetModel.endDate,targetModel.awokeDate,targetModel.phaseTableName];

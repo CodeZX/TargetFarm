@@ -27,6 +27,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [TJLaunchVC new];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -34,9 +36,9 @@
    
     [[TargetManage sharedTargetManage] createDataBaseWithPath:nil];
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    config.baseUrl = @"https://www.sojson.com";
-    
-    
+//    config.baseUrl = @"https://www.sojson.com";
+    config.baseUrl  = @"http://192.168.71.13:8080";
+//    http://192.168.71.13:8080/wordpad/aaa/bbb.action
     
     
     //Required
