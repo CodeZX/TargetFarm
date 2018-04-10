@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "FarmTabBarVC.h"
 #import "TJWebVC.h"
+#import <WebKit/WebKit.h>
 
 @interface TJLaunchVC ()
 
@@ -23,14 +24,16 @@
     
     NSURL *url = [NSURL URLWithString:@"http://219.235.6.7:8080/wordpad/img/tfboy.jpg"];
     NSData *data = [NSData dataWithContentsOfURL:url];
-    if (!data) {
+    if (data) {
         NSURL *url = [NSURL URLWithString:@"http://219.235.6.7:8080/wordpad/aaa/ccc.action"];
         NSString *urlStr = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-        
+        DEBUG_LOG(@"%@",urlStr);
 //        TJWebVC *webVC = [[TJWebVC alloc]initWithUrlString:@"https://www.baidu.com"];
-        UIWebView *web = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        NSURLRequest *rq = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]];
+        WKWebView *web = [[WKWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        NSURLRequest *rq = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
         [web loadRequest:rq];
+        
+       
         
         [self.view addSubview:web];
 //        [self.view addSubview:webVC.view];
@@ -44,7 +47,7 @@
         [UIView animateWithDuration:3 animations:^{
             
             
-            imgView.alpha = 0;
+            imgView.alpha = 0.1;
             
         } completion:^(BOOL finished) {
             

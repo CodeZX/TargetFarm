@@ -137,7 +137,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 //        make.centerX.equalTo(self.tableHeaderView);
         make.left.equalTo(40);
         make.right.equalTo(-40);
-        make.height.equalTo(100);
+//        make.height.equalTo(100);
         make.top.equalTo(self.targetNameLabel.bottom).offset(30);
     }];
 
@@ -256,6 +256,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         TargetManage *targetManage = [TargetManage sharedTargetManage];
         if(![targetManage updateTargetWithPrimaryKey:self.editTargetModel.ID Option:@{@"targetName":[self getTargetModelofCurrentlyController].targetName}]) {return ;}
 
+        if(![targetManage updateTargetWithPrimaryKey:self.editTargetModel.ID Option:@{@"phaseName":self.editTargetModel.phaseTableName}]) {return ;}
         [NSTimer scheduledTimerWithTimeInterval:1.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
             
             [self hideHUD];
@@ -407,12 +408,20 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 
     self.phaseSelectBar = [[HomeFoundTargetSelectBar alloc]initWithTitle:@"阶段" ImagName:@"" Action:^{
 
-        if (!self.targetModel.phaseTableName) {
+        
+        NSString *phaseStr = [NSString new];
+        if ( ![self.editTargetModel.phaseTableName isEqualToString:@""]) {
+            
+            phaseStr = self.editTargetModel.phaseTableName;
+            
+        }else if (!self.targetModel.phaseTableName) {
             
             self.targetModel.phaseTableName =  [NSString stringWithFormat:@"t_phase_%@",[NSString jk_UUIDTimestamp]];
+            phaseStr = self.targetModel.phaseTableName;
+            
         }
-   
-            HomeAddPhaseViewController *addPhaseVC = [[HomeAddPhaseViewController alloc]initWithPhaseName:self.targetModel.phaseTableName];
+       
+            HomeAddPhaseViewController *addPhaseVC = [[HomeAddPhaseViewController alloc]initWithPhaseName:phaseStr];
             addPhaseVC.delegate = self;
         BasicNavigationController *NaV = [[BasicNavigationController alloc]initWithRootViewController:addPhaseVC];
         [weakSelf presentViewController:NaV animated:YES completion:nil];
@@ -492,6 +501,8 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     DEBUG_LOG(@"%@",phase);
 
     self.targetModel.phaseTableName = phase;
+    self.editTargetModel.phaseTableName = phase;
+    
 //    TargetManage *TM= [TargetManage sharedTargetManage];
 
 //    BOOL result =[TM updateTargetWithPrimaryKey:3 Option:@{@"PhaseName":phase}];

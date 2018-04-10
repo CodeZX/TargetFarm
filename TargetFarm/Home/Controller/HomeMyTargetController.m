@@ -45,9 +45,12 @@
     
     [self.view addSubview:targetNameLabel];
     self.targetNameLabel = targetNameLabel;
+    self.targetNameLabel.textAlignment = NSTextAlignmentCenter;
     [self.targetNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(100);
         make.centerX.equalTo(self.view);
+        make.left.equalTo(self.view).offset(30);
+        make.right.equalTo(self.view).offset(-30);
 //        make.height.equalTo(100);
         
     }];

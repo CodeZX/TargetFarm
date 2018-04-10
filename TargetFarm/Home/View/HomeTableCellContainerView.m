@@ -75,11 +75,14 @@ static int backgroundImgHeight = 150;
     
     UILabel *contentLable = [UILabel new];
     contentLable.textColor = UIColorFromRGB(0x2d2d2d);
+//    contentLable.backgroundColor = RandomColor;
     contentLable.font = [UIFont systemFontOfSize:contentLableFont*3/4];
+    contentLable.textAlignment = NSTextAlignmentCenter;
     [self addSubview:contentLable];
     self.contentLable = contentLable;
     [self.contentLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        
+        make.left.equalTo(tagImg.left).offset(20);
+        make.right.equalTo(tagImg.right).offset(-20);
 //        make.top.equalTo(self.top).offset(backgroundImgHeight/2);
         make.center.equalTo(self);
     }];

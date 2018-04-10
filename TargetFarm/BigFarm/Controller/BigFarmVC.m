@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.view.backgroundColor = MotifColor;
     self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc]initWithTitle:@"获取" style:UIBarButtonItemStyleDone target:self action:@selector(rightBtnClick:)];
     myApi *api = [[myApi alloc]initWithCity:@"北京"];
     [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -65,7 +65,10 @@
     TargetModel *model = [scene getTargetModel];
     DEBUG_LOG(@"%@",model);
     TargetManage *TM= [TargetManage sharedTargetManage];
-    [TM addTargetWithTargetModel:[self targetModelInit:model]];
+    if ([TM addTargetWithTargetModel:[self targetModelInit:model]]) {
+        
+        [self showMessage:@"获取成功，可到首页查看"];
+    };
 }
 
 - (TargetModel *)targetModelInit:(TargetModel *)targerModel {
