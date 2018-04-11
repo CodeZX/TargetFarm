@@ -84,7 +84,8 @@ static int backgroundImgHeight = 150;
         make.left.equalTo(tagImg.left).offset(20);
         make.right.equalTo(tagImg.right).offset(-20);
 //        make.top.equalTo(self.top).offset(backgroundImgHeight/2);
-        make.center.equalTo(self);
+        make.centerX.equalTo(self);
+        make.top.equalTo(self).offset(backgroundImgHeight/2);
     }];
     
     UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentLableClick)];
@@ -183,7 +184,8 @@ static int backgroundImgHeight = 150;
         }];
         
         [self.contentLable mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self).offset(-60);
+////            make.centerY.equalTo(self).offset();
+//            make.top.equalTo(self).offset(75);
         }];
         [self layoutIfNeeded];
         
@@ -213,7 +215,7 @@ static int backgroundImgHeight = 150;
         [self.contentLable mas_updateConstraints:^(MASConstraintMaker *make) {
             
             
-            make.centerY.equalTo(self.centerY);
+//            make.centerY.equalTo(self.centerY);
         }];
         
         [self layoutIfNeeded];

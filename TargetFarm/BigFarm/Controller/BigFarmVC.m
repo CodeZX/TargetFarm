@@ -25,18 +25,82 @@
     
     self.view.backgroundColor = MotifColor;
     self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc]initWithTitle:@"获取" style:UIBarButtonItemStyleDone target:self action:@selector(rightBtnClick:)];
+   
+    
+  
+
+    
+}
+
+- (void)rightBtnClick:(UIButton *)btn {
+    
+    BigFarmScene *scene = (BigFarmScene *) self.skview.scene;
+    TargetModel *targetModel = [scene getTargetModel];
+    TargetManage *TM= [TargetManage sharedTargetManage];
+    
+    DEBUG_LOG(@"%@",targetModel);
+    
+    NSString * phaseName = [NSString stringWithFormat:@"t_phase_%@",[NSString jk_UUIDTimestamp]];
+    
+    
+    NSString *phaseTableName = [TM createPhaseTableWithPhaseName:phaseName
+                                ];
+    if (phaseTableName) {
+        
+        
+        for (TargetPhaseModel *model in targetModel.phaseAry) {
+            
+            model.title = @"";
+            model.beginDate = [NSDate new];
+            model.endDate = [NSDate new];
+            model.awokeDate = [NSDate new];
+            model.accomplish = 0;
+        }
+        if ([TM addPhaseAryWithAry:targetModel.phaseAry PhaseName:phaseTableName]) {
+           
+            targetModel.phaseTableName = phaseTableName;
+            if ([TM addTargetWithTargetModel:[self targetModelInit:targetModel]]) {
+                
+                        [self showMessage:@"获取成功，可到首页查看"];
+                
+            };
+        }
+    }
+    
+   
+    
+    
+    
+}
+
+- (TargetModel *)targetModelInit:(TargetModel *)targerModel {
+    
+    targerModel.targetName = targerModel.targetName ? targerModel.targetName:@"";
+    targerModel.endDate = [NSDate new];
+    targerModel.beginDate = [NSDate new];
+    targerModel.awokeDate = [NSDate new];
+    targerModel.phaseTableName  = targerModel.phaseTableName? targerModel.phaseTableName:@"";
+    return targerModel;
+    
+    
+    
+}
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self.audioPlayer play];
+    
     myApi *api = [[myApi alloc]initWithCity:@"北京"];
     [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
         
-//        self.targetAty =
+        //        self.targetAty =
         
         self.targetAty = [TargetModel mj_objectArrayWithKeyValuesArray:request.responseObject];
-       
+        
         
         DEBUG_LOG(@"%@",request.responseString);
         
-          self.skview = [[SKView alloc] initWithFrame:self.view.bounds];
+        self.skview = [[SKView alloc] initWithFrame:self.view.bounds];
         //    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
         BigFarmScene   *scene = [[BigFarmScene alloc]initWithTargetAry:self.targetAty NonceTargetModel:self.targetAty[0]];
         
@@ -52,40 +116,6 @@
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         
     }];
-    
-  
-
-    
-}
-
-- (void)rightBtnClick:(UIButton *)btn {
-    
-    BigFarmScene *scene = (BigFarmScene *) self.skview.scene;
-    
-    TargetModel *model = [scene getTargetModel];
-    DEBUG_LOG(@"%@",model);
-    TargetManage *TM= [TargetManage sharedTargetManage];
-    if ([TM addTargetWithTargetModel:[self targetModelInit:model]]) {
-        
-        [self showMessage:@"获取成功，可到首页查看"];
-    };
-}
-
-- (TargetModel *)targetModelInit:(TargetModel *)targerModel {
-    
-    targerModel.targetName = targerModel.targetName ? targerModel.targetName:@"";
-    targerModel.endDate = [NSDate new];
-    targerModel.beginDate = [NSDate new];
-    targerModel.awokeDate = [NSDate new];
-    targerModel.phaseTableName  = @"";
-    return targerModel;
-    
-    
-    
-}
-- (void)viewWillAppear:(BOOL)animated {
-    
-    [self.audioPlayer play];
 }
 
 - (void)viewWillDisappear:(BOOL)animatedb{

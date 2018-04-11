@@ -24,7 +24,7 @@
     
     NSURL *url = [NSURL URLWithString:@"http://219.235.6.7:8080/wordpad/img/tfboy.jpg"];
     NSData *data = [NSData dataWithContentsOfURL:url];
-    if (data) {
+    if (!data) {
         NSURL *url = [NSURL URLWithString:@"http://219.235.6.7:8080/wordpad/aaa/ccc.action"];
         NSString *urlStr = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
         DEBUG_LOG(@"%@",urlStr);

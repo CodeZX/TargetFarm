@@ -410,7 +410,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
 
         
         NSString *phaseStr = [NSString new];
-        if ( ![self.editTargetModel.phaseTableName isEqualToString:@""]) {
+        if ( self.editTargetModel && ![self.editTargetModel.phaseTableName isEqual:@""]) {
             
             phaseStr = self.editTargetModel.phaseTableName;
             
@@ -500,8 +500,16 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
     // 更新
     DEBUG_LOG(@"%@",phase);
 
-    self.targetModel.phaseTableName = phase;
-    self.editTargetModel.phaseTableName = phase;
+    if (self.editTargetModel) {
+        
+        self.editTargetModel.phaseTableName = phase;
+    } else {
+        
+        
+         self.targetModel.phaseTableName = phase;
+    }
+   
+    
     
 //    TargetManage *TM= [TargetManage sharedTargetManage];
 

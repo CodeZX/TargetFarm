@@ -77,6 +77,14 @@ WMSingletonH(TargetManage)
  */
 - (NSString *)createPhaseTableWithPhaseName:(NSString *)phaseName;
 
+
+
+/**
+ 根据阶段数组
+
+ 
+ */
+- (BOOL)addPhaseAryWithAry:(NSArray *)phaseAry PhaseName:(NSString *)phaseName;
 /**
  添加阶段到目标中
 

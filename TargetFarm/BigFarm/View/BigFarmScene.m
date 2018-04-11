@@ -104,7 +104,7 @@
     [textNode runAction:repeatAction];
     for (int index = 0; index < self.targetModel.phaseAry.count; index++) {
         
-        if (index > 4) {
+        if (index == 4) {
             
             break;
         }

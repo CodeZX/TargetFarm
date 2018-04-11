@@ -100,9 +100,21 @@
     [textNode runAction:repeatAction];
     for (int index = 0; index < self.targetModel.phaseAry.count; index++) {
         
+        if (index == 4) {break;}
+        TargetPhaseModel *targetPhaseModel = self.targetModel.phaseAry[index];
         NSString *appleName = [NSString stringWithFormat:@"apple%d",index + 1];
-        SKSpriteNode *apple = (SKSpriteNode *)[self childNodeWithName:appleName];
-        apple.alpha = 1;
+        SKSpriteNode *appleNormal = (SKSpriteNode *)[self childNodeWithName:appleName];
+//        apple.alpha = 1;
+        SKSpriteNode *apple;
+        if (targetPhaseModel.accomplish == 1) {
+            
+            apple = [SKSpriteNode spriteNodeWithImageNamed:@"hongpingguo"];
+            apple.position = appleNormal.position;
+        }else {
+            
+            apple = [SKSpriteNode spriteNodeWithImageNamed:@"lvpingguo"];
+            apple.position = appleNormal.position;
+        }
         
         SKAction *wind = [SKAction runBlock:^{
             // 进行推力
@@ -110,8 +122,11 @@
             CGVector vector = CGVectorMake(3 + index/2.0, 0);
             [apple.physicsBody applyForce:vector atPoint:CGPointZero];
         }];
+        apple.anchorPoint = CGPointMake(1, 1);
+        apple.name =[NSString stringWithFormat:@"phase%d",index + 1];
         SKAction *wait = [SKAction waitForDuration:20];
         SKAction *forever = [SKAction repeatActionForever:[SKAction sequence:@[wait, wind]]];
+        [self addChild:apple];
         [apple runAction:forever];
         [self.apples addObject:apple];
         
@@ -127,8 +142,27 @@
     CGPoint  position = [touch locationInNode:self];
     
     SKNode *node = [self nodeAtPoint:position];
-    
-    NSRange range =  [node.name rangeOfString:@"apple"];
+    if ([node isKindOfClass:[FarmScene class]]) {
+        
+        if (self.indicatorNode) {
+            
+            SKAction *moveX = [SKAction moveByX:self.frame.size.width y:0 duration:.8];
+            SKAction *moveY = [SKAction moveByX:0 y:30 duration:.5];
+            SKAction *scaleAction = [SKAction scaleBy:.4 duration:.5];
+            SKAction *group = [SKAction group:@[moveX,scaleAction]];
+            SKAction *removeAciton = [SKAction removeFromParent];
+            SKAction *groupAction = [SKAction sequence:@[moveY,group,removeAciton]];
+            
+            
+            //        [s addChild:textNode];
+            
+            
+            [self.indicatorNode runAction:groupAction];
+            
+            self.indicatorNode = nil;
+    }
+    }
+    NSRange range =  [node.name rangeOfString:@"phase"];
     if (range.length != 0) {
         
         int index = [[node.name substringFromIndex:node.name.length - 1] intValue];
@@ -190,66 +224,7 @@
     }
    
     
-//    if ([node.name isEqualToString:@"apple1"]) {
-//
-//
-//        int index = [[node.name substringFromIndex:node.name.length - 1] intValue];
-//        NSNotification *notification;
-//        switch (0) {
-//            case 1:
-//            {
-//
-//                TargetModel *model = self.targetAry[0];
-//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
-//
-//                break;
-//            }
-//
-//
-//            case 2:
-//            {
-//
-//                TargetModel *model = self.targetAry[1];
-//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
-//
-//                break;
-//            }
-//            case 3:
-//            {
-//
-//                TargetModel *model = self.targetAry[2];
-//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
-//
-//                break;
-//            }
-//
-//            case 4:
-//            {
-//
-//                TargetModel *model = self.targetAry[3];
-//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
-//
-//                break;
-//            }
-//
-//            case 5:
-//
-//            {
-//
-//                TargetModel *model = self.targetAry[4];
-//                notification = [[NSNotification alloc]initWithName:@"phaseModel" object:nil userInfo:@{@"phaseModel":model}];
-//
-//                break;
-//            }
-//            default:
-//                break;
-//        }
-//
-//
-//       [[NSNotificationCenter defaultCenter] postNotification:notification];
-//
-//    }
-    
+
     
 }
 

@@ -37,9 +37,9 @@
     [[TargetManage sharedTargetManage] createDataBaseWithPath:nil];
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
 //    config.baseUrl = @"https://www.sojson.com";
-    config.baseUrl  = @"http://192.168.71.13:8080";
+    config.baseUrl  = @"http://219.235.6.7:8080";
 //    http://192.168.71.13:8080/wordpad/aaa/bbb.action
-    
+//    httP://219.235.6.7:8080/wordpad/aaa/bbb.action
     
     //Required
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式

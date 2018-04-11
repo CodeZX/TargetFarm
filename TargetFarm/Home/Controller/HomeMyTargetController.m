@@ -38,6 +38,7 @@
     UILabel *targetNameLabel = [UILabel new];
     targetNameLabel.font = [UIFont systemFontOfSize:FONT_SIZE_BIG];
     targetNameLabel.textColor = UIColorFromRGB(0x353535);
+    targetNameLabel.numberOfLines = 0;
 //    targetNameLabel.backgroundColor = RedColor;
     if (self.targerModel) {
        targetNameLabel.text = self.targerModel.targetName;

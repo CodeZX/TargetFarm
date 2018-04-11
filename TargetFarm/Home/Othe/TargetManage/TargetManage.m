@@ -131,6 +131,20 @@ WMSingletonM(TargetManage)
    
 }
 
+- (BOOL)addPhaseAryWithAry:(NSArray *)phaseAry PhaseName:(NSString *)phaseName {
+    
+    
+    BOOL result = NO;
+    for (TargetPhaseModel *targetPhaseModel in phaseAry) {
+        
+        result =  [self addPhaseWithPhase:targetPhaseModel PhaseName:phaseName];
+        
+    }
+    
+    return result;
+    
+}
+
 - (TargetModel *)getTarget {
     
     //查询整个表
@@ -224,7 +238,7 @@ WMSingletonM(TargetManage)
                      BOOL result = [db executeUpdate:sql,[option valueForKey:key],@(primaryKey)];
                      if (!result) { DEBUG_LOG(@"更新失败"); return NO;}
                      
-                     DEBUG_LOG(@"更新失败");
+                     DEBUG_LOG(@"更新成功");
                      return YES;
 }
 
@@ -236,7 +250,7 @@ WMSingletonM(TargetManage)
     BOOL result = [db executeUpdate:sql,[option valueForKey:key],@(primaryKey)];
     if (!result) { DEBUG_LOG(@"更新失败"); return NO;}
     
-    DEBUG_LOG(@"更新失败");
+    DEBUG_LOG(@"更新成功");
     return YES;
     
     

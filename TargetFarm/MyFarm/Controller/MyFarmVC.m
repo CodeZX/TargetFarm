@@ -75,6 +75,8 @@
 - (void)viewWillDisappear:(BOOL)animatedb{
     
     [self.audioPlayer stop];
+    [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
 }
 
 -(AVAudioPlayer *)audioPlayer{

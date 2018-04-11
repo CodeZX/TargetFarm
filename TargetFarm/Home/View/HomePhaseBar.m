@@ -82,8 +82,10 @@
     
     
     UIButton *stateBtn = [[UIButton alloc]init];
-    [stateBtn setTitle:@"未完成" forState:UIControlStateNormal];
-    [stateBtn setTitle:@"已完成" forState:UIControlStateSelected];
+//    [stateBtn setTitle:@"未完成" forState:UIControlStateNormal];
+//    [stateBtn setTitle:@"已完成" forState:UIControlStateSelected];
+    [stateBtn setImage:[UIImage imageNamed:@"buttonNormal"] forState:UIControlStateNormal];
+    [stateBtn setImage:[UIImage imageNamed:@"buttonSelected"] forState:UIControlStateSelected];
     stateBtn.titleLabel.font = FONT_PT_FROM_PX(20);
     [stateBtn setTitleColor:BlackColor forState:UIControlStateNormal];
 
@@ -115,5 +117,6 @@
     NSString *endDateStr = [NSString stringWithFormat:@"%ld月%ld日前",month,day];
     self.endDateLB.text = endDateStr;
     self.phaseLB.text = [NSString stringWithFormat:@"阶段%d",1];
+    self.stateBtn.selected = targetPhaseModel.accomplish?YES:NO;
 }
 @end

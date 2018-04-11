@@ -24,8 +24,8 @@
 
 + (NSDictionary *)replacedKeyFromPropertyName{
     return @{
-             @"targetName" : @"name",
-            @"phaseAry" : @"value"
+             @"targetName" : @"title",
+            @"phaseAry" : @"stage"
              };
 }
 
