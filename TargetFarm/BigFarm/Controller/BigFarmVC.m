@@ -50,9 +50,9 @@
         
         for (TargetPhaseModel *model in targetModel.phaseAry) {
             
-            model.title = @"";
-            model.beginDate = [NSDate new];
-            model.endDate = [NSDate new];
+//            model.title = @"";
+//            model.beginDate = [NSDate new];
+//            model.endDate = [NSDate new];
             model.awokeDate = [NSDate new];
             model.accomplish = 0;
         }
@@ -76,8 +76,8 @@
 - (TargetModel *)targetModelInit:(TargetModel *)targerModel {
     
     targerModel.targetName = targerModel.targetName ? targerModel.targetName:@"";
-    targerModel.endDate = [NSDate new];
-    targerModel.beginDate = [NSDate new];
+//    targerModel.endDate = [NSDate new];
+//    targerModel.beginDate = [NSDate new];
     targerModel.awokeDate = [NSDate new];
     targerModel.phaseTableName  = targerModel.phaseTableName? targerModel.phaseTableName:@"";
     return targerModel;
@@ -121,6 +121,7 @@
 - (void)viewWillDisappear:(BOOL)animatedb{
     
     [self.audioPlayer stop];
+    
 }
 
 -(AVAudioPlayer *)audioPlayer{

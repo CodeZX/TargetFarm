@@ -45,14 +45,14 @@
                                    kSelImgKey : @"首页"},
                                  
                                  @{kClassKey  : @"MyFarmVC",
-                                   kTitleKey  : @"我的农场",
-                                   kImgKey    : @"wodenongchang",
-                                   kSelImgKey : @"wodenongchangxuanzhong"},
-                                 
-                                 @{kClassKey  : @"BigFarmVC",
-                                   kTitleKey  : @"大农场",
+                                   kTitleKey  : @"农场",
                                    kImgKey    : @"dasnongchang",
-                                   kSelImgKey : @"danongchang"}
+                                   kSelImgKey : @"dasnongchang"}//,
+                                 
+//                                 @{kClassKey  : @"BigFarmVC",
+//                                   kTitleKey  : @"大农场",
+//                                   kImgKey    : @"dasnongchang",
+//                                   kSelImgKey : @"danongchang"}
                                  ];
     
     [childItemsArray enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {

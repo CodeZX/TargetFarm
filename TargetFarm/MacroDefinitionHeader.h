@@ -233,4 +233,9 @@ return _instance; \
 /** 十二进制的小时*/
 #define TimeFormat12 @"yyyy-MM-dd hh:mm"
 
+
+#define DATE_FORMATTER(df)  NSDateFormatter *df  =   [NSDateFormatter new]; \
+df.timeZone = [NSTimeZone systemTimeZone];\
+df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
+
 #endif /* MacroDefinitionHeader_h */

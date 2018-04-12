@@ -13,7 +13,18 @@
 @implementation TargetModel
 
 
-
+- (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
+{
+    if ([property.name isEqualToString:@"publisher"]) {
+        if (oldValue == nil) return @"";
+    } else if (property.type.typeClass == [NSDate class]) {
+        NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+        fmt.dateFormat = @"yyyy-MM-dd";
+        return [fmt dateFromString:oldValue];
+    }
+    
+    return oldValue;
+}
 + (NSDictionary *)objectClassInArray{
     return @{
              @"phaseAry" : @"TargetPhaseModel",
@@ -25,7 +36,9 @@
 + (NSDictionary *)replacedKeyFromPropertyName{
     return @{
              @"targetName" : @"title",
-            @"phaseAry" : @"stage"
+             @"beginDate":@"begin",
+             @"endDate":@"end",
+             @"phaseAry" : @"stage"
              };
 }
 

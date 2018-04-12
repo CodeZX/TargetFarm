@@ -8,9 +8,7 @@
 
 #import "TargetManage.h"
 
-#define DATE_FORMATTER(df)  NSDateFormatter *df  =   [NSDateFormatter new]; \
-df.timeZone = [NSTimeZone systemTimeZone];\
-df.dateFormat = @"YYYY-MM-dd HH:mm:ss";
+
 
 
 //#define CREAT_TABLE_IFNOT_EXISTS             @"create table if not exists %@ (key text primary key, data blob)"

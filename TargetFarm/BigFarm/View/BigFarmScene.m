@@ -99,9 +99,9 @@
                                                  ]];
     
     
-    SKAction * repeatAction  = [SKAction  repeatActionForever:groupAction];
+//    SKAction * repeatAction  = [SKAction  repeatActionForever:groupAction];
     
-    [textNode runAction:repeatAction];
+//    [textNode runAction:repeatAction];
     for (int index = 0; index < self.targetModel.phaseAry.count; index++) {
         
         if (index == 4) {
@@ -136,16 +136,7 @@
     
     SKNode *node = [self nodeAtPoint:position];
     
-    NSRange range =  [node.name rangeOfString:@"apple"];
-    if (range.length != 0) {
-        
-        int index = [[node.name substringFromIndex:node.name.length - 1] intValue];
-        
-        DEBUG_LOG(@"%d",index);
-        
-        //         SKSpriteNode *indicatorNode = (SKSpriteNode *)[self childNodeWithName:indicator];
-        //         SKAction *turnAction = [SKAction action]
-        
+    if ([node isKindOfClass:[BigFarmScene class]]) {
         
         if (self.indicatorNode) {
             
@@ -163,33 +154,30 @@
             [self.indicatorNode runAction:groupAction];
             
             self.indicatorNode = nil;
+        }
+    }
+    
+    NSRange range =  [node.name rangeOfString:@"apple"];
+    if (range.length != 0) {
+        
+        int index = [[node.name substringFromIndex:node.name.length - 1] intValue];
+        
+        DEBUG_LOG(@"%d",index);
+        
+        
+        
+        if (self.indicatorNode) {
             
+            [self hiddenTag];
+            [self showTag:index];
+            
+            
+           
             
         }else {
             
             
-            SKSpriteNode *indicatorNode = [SKSpriteNode spriteNodeWithImageNamed:@"4152"];//anniu2
-            indicatorNode.position = CGPointMake(-SCREEN_WIDTH, -SCREEN_HEIGHT/2 + 50);
-            indicatorNode.size = CGSizeMake(100, 100);
-            [self addChild:indicatorNode];
-            self.indicatorNode = indicatorNode;
-            SKAction *moveX = [SKAction moveByX:SCREEN_WIDTH/2 y:0 duration:.5];
-            SKAction *moveY = [SKAction moveByX:0 y:-10 duration:.3];
-            SKAction *scaleAction = [SKAction scaleBy:2 duration:.3];
-            SKAction *group = [SKAction group:@[moveY,scaleAction]];
-            
-            SKAction *groupAction = [SKAction sequence:@[moveX,group]];
-            
-            SKLabelNode *textNode = [SKLabelNode labelNodeWithText:self.targetModel.targetName];
-            textNode.position = CGPointMake(0,20);
-            TargetPhaseModel *model = self.targetModel.phaseAry[index - 1];
-            textNode.text = model.content;
-            textNode.fontColor = [SKColor blackColor];
-            textNode.fontSize = 12;
-            //        [s addChild:textNode];
-            [indicatorNode addChild:textNode];
-            
-            [indicatorNode runAction:groupAction];
+            [self showTag:index];
             
         }
         
@@ -200,6 +188,48 @@
     
    
 
+}
+
+- (void)hiddenTag {
+    
+    SKAction *moveX = [SKAction moveByX:self.frame.size.width y:0 duration:.8];
+    SKAction *moveY = [SKAction moveByX:0 y:30 duration:.5];
+    SKAction *scaleAction = [SKAction scaleBy:.4 duration:.5];
+    SKAction *group = [SKAction group:@[moveX,scaleAction]];
+    SKAction *removeAciton = [SKAction removeFromParent];
+    SKAction *groupAction = [SKAction sequence:@[moveY,group,removeAciton]];
+    
+    [self.indicatorNode runAction:groupAction];
+    
+    self.indicatorNode = nil;
+    
+}
+
+- (void)showTag:(int )index {
+    
+    SKSpriteNode *indicatorNode = [SKSpriteNode spriteNodeWithImageNamed:@"4152"];//anniu2
+    indicatorNode.position = CGPointMake(-SCREEN_WIDTH, -SCREEN_HEIGHT/2 + 50);
+    indicatorNode.size = CGSizeMake(100, 100);
+    [self addChild:indicatorNode];
+    self.indicatorNode = indicatorNode;
+    SKAction *moveX = [SKAction moveByX:SCREEN_WIDTH/2 y:0 duration:.5];
+    SKAction *moveY = [SKAction moveByX:0 y:-10 duration:.3];
+    SKAction *scaleAction = [SKAction scaleBy:2 duration:.3];
+    SKAction *group = [SKAction group:@[moveY,scaleAction]];
+    
+    SKAction *groupAction = [SKAction sequence:@[moveX,group]];
+    
+    SKLabelNode *textNode = [SKLabelNode labelNodeWithText:self.targetModel.targetName];
+    textNode.position = CGPointMake(0,20);
+    TargetPhaseModel *model = self.targetModel.phaseAry[index - 1];
+    textNode.text = model.content;
+    textNode.fontColor = [SKColor blackColor];
+    textNode.fontSize = 12;
+    //        [s addChild:textNode];
+    [indicatorNode addChild:textNode];
+    
+    [indicatorNode runAction:groupAction];
+    
 }
 
 - (void)swipe:(UISwipeGestureRecognizer *)reg {
@@ -242,6 +272,7 @@
         
         scene.scaleMode = SKSceneScaleModeAspectFill;
         SKTransition *transition = [SKTransition pushWithDirection:left ? SKTransitionDirectionLeft : SKTransitionDirectionRight duration:.5];
+        [self.view.scene removeAllActions];
         [self.view presentScene:scene transition:transition];
     }
 }
