@@ -230,7 +230,7 @@ typedef NS_ENUM(NSInteger, TapPhaseBarStyle) {
         TargetManage *TM = [TargetManage sharedTargetManage];
        if (![TM deletePhaseTableWithPhaseName:self.targetModel.phaseTableName])
        {
-           DEBUG_LOG(@"删除失败"); return;
+           DEBUG_LOG(@"删除失败");
            
        }else  {
            

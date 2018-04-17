@@ -145,8 +145,10 @@ static int backgroundImgHeight = 150;
         for (int index = 0; index < targetModel.phaseAry.count ; index++) {
 
             HomePhaseBar *phaseBar = [HomePhaseBar new];
+            phaseBar.phaseValue = index + 1;
             phaseBar.alpha = 0;
             phaseBar.targetPhaseModel = targetModel.phaseAry[index];
+            
             phaseBar.phaseName = targetModel.phaseTableName;
             [self addSubview:phaseBar];
             
@@ -177,7 +179,11 @@ static int backgroundImgHeight = 150;
         }
         
         
-        self.backgroundImg.image = [UIImage jk_resizableHalfImage:@"beijing22"];
+        UIImage *normal = [UIImage imageNamed:@"beijing22"];
+        CGFloat imageW = normal.size.width * 0.4;
+        CGFloat imageH = normal.size.height * 0.5;
+        self.backgroundImg.image =  [normal resizableImageWithCapInsets:UIEdgeInsetsMake(imageH, normal.size.width * 0.6, imageH, imageW)];
+//        self.backgroundImg.image = [UIImage jk_resizableHalfImage:@"beijing22"];
         [self.backgroundImg mas_updateConstraints:^(MASConstraintMaker *make) {
             
             make.height.equalTo(phaseBarHeight * (targetModel.phaseAry.count + 1) + backgroundImgHeight);

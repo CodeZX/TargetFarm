@@ -72,6 +72,9 @@
     
     SKLabelNode *textNode = [SKLabelNode labelNodeWithText:self.targetModel.targetName];
     textNode.position = CGPointMake(0, SCREEN_HEIGHT/2 + 50);
+    textNode.numberOfLines = 0;
+    //    textNode.lineBreakMode = NSLineBreakByTruncatingHead;
+    textNode.preferredMaxLayoutWidth = self.frame.size.width - 100;
     [self addChild:textNode];
     
     SKAction  *sizeAction1 = [SKAction scaleTo:2 duration:1];

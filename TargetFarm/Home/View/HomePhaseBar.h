@@ -12,4 +12,5 @@
 @interface HomePhaseBar : BasicView
 @property (nonatomic,strong) TargetPhaseModel *targetPhaseModel;
 @property (nonatomic,strong) NSString *phaseName;
+@property (nonatomic,assign) int phaseValue;
 @end

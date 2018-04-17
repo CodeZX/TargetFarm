@@ -47,7 +47,7 @@
                                  @{kClassKey  : @"MyFarmVC",
                                    kTitleKey  : @"农场",
                                    kImgKey    : @"dasnongchang",
-                                   kSelImgKey : @"dasnongchang"}//,
+                                   kSelImgKey : @"danongchang"}//,
                                  
 //                                 @{kClassKey  : @"BigFarmVC",
 //                                   kTitleKey  : @"大农场",

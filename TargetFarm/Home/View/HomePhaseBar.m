@@ -116,7 +116,17 @@
     long  int month = [targetPhaseModel.endDate jk_month];
     NSString *endDateStr = [NSString stringWithFormat:@"%ld月%ld日前",month,day];
     self.endDateLB.text = endDateStr;
-    self.phaseLB.text = [NSString stringWithFormat:@"阶段%d",1];
+    self.phaseLB.text = [NSString stringWithFormat:@"阶段%@",[self conversionWithIntValue: self.phaseValue ]];
     self.stateBtn.selected = targetPhaseModel.accomplish?YES:NO;
+}
+
+
+- (NSString *)conversionWithIntValue:(int)value {
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = kCFNumberFormatterRoundHalfDown;
+    NSString *string = [formatter stringFromNumber:[NSNumber numberWithInt:value]];
+    return string;
+    
 }
 @end

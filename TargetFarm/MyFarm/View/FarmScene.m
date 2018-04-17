@@ -68,13 +68,18 @@
     
     SKLabelNode *textNode = [SKLabelNode labelNodeWithText:self.targetModel.targetName];
     textNode.position = CGPointMake(0, SCREEN_HEIGHT/2 + 30);
+    textNode.numberOfLines = 0;
+//    textNode.lineBreakMode = NSLineBreakByTruncatingHead;
+    textNode.preferredMaxLayoutWidth = self.frame.size.width - 100;
+    
+    
     [self addChild:textNode];
     
-     SKAction  *sizeAction1 = [SKAction scaleTo:2 duration:1];
-     SKAction  *sizeAction2 = [SKAction scaleTo:1 duration:1];
-    SKAction *alphaInAction  = [SKAction fadeInWithDuration:1];
+     SKAction  *sizeAction1 = [SKAction scaleTo:1.5 duration:2];
+     SKAction  *sizeAction2 = [SKAction scaleTo:1 duration:2];
+    SKAction *alphaInAction  = [SKAction fadeInWithDuration:2];
     
-    SKAction *alphaOutAction = [SKAction fadeOutWithDuration:1];
+    SKAction *alphaOutAction = [SKAction fadeOutWithDuration:2];
     
     
     SKAction *groupAction1 = [SKAction group:@[
@@ -104,31 +109,45 @@
         TargetPhaseModel *targetPhaseModel = self.targetModel.phaseAry[index];
         NSString *appleName = [NSString stringWithFormat:@"apple%d",index + 1];
         SKSpriteNode *appleNormal = (SKSpriteNode *)[self childNodeWithName:appleName];
-//        apple.alpha = 1;
+        
+//        appleNormal.alpha = 1;
         SKSpriteNode *apple;
         if (targetPhaseModel.accomplish == 1) {
             
             apple = [SKSpriteNode spriteNodeWithImageNamed:@"hongpingguo"];
-            apple.position = appleNormal.position;
+           
         }else {
             
             apple = [SKSpriteNode spriteNodeWithImageNamed:@"lvpingguo"];
-            apple.position = appleNormal.position;
+            
         }
+        
+        apple.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(22, 22)];
+        apple.anchorPoint = CGPointMake(0.5, 1);
+        
+        apple.physicsBody.pinned = YES;
+//        apple.physicsBody.dynamic = YES;
+//        apple.physicsBody.allowsRotation = YES;
+//        apple.physicsBody.affectedByGravity= YES;
+        apple.name =[NSString stringWithFormat:@"phase%d",index + 1];
+        apple.zPosition = 0;
+        apple.position = appleNormal.position;
         
         SKAction *wind = [SKAction runBlock:^{
             // 进行推力
             NSLog(@"%@ ", @"进行风的推力");
-            CGVector vector = CGVectorMake(3 + index/2.0, 0);
+            CGVector vector = CGVectorMake(2, 0);
             [apple.physicsBody applyForce:vector atPoint:CGPointZero];
         }];
-        apple.anchorPoint = CGPointMake(1, 1);
-        apple.name =[NSString stringWithFormat:@"phase%d",index + 1];
         SKAction *wait = [SKAction waitForDuration:20];
         SKAction *forever = [SKAction repeatActionForever:[SKAction sequence:@[wait, wind]]];
         [self addChild:apple];
         [apple runAction:forever];
+//        [appleNormal runAction:forever];
         [self.apples addObject:apple];
+        
+        
+        
         
     }
 }

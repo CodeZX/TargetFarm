@@ -11,6 +11,7 @@
 #import "FarmTabBarVC.h"
 #import "TJWebVC.h"
 #import <WebKit/WebKit.h>
+#import "XTJWebNavigationViewController.h"
 
 @interface TJLaunchVC ()
 
@@ -22,20 +23,25 @@
     [super viewDidLoad];
 
     
-    NSURL *url = [NSURL URLWithString:@"http://219.235.6.7:8080/wordpad/img/tfboy.jpg"];
+    NSURL *url = [NSURL URLWithString:@"http://219.235.6.7:8080/wordpad/img/tfboy.png"];
     NSData *data = [NSData dataWithContentsOfURL:url];
-    if (!data) {
+    if (data) {
         NSURL *url = [NSURL URLWithString:@"http://219.235.6.7:8080/wordpad/aaa/ccc.action"];
         NSString *urlStr = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
         DEBUG_LOG(@"%@",urlStr);
+        
+        XTJWebNavigationViewController *Web = [XTJWebNavigationViewController new];
+        Web.url = urlStr; // @"https://www.8g990.com";
+        [self addChildViewController:Web];
+        [self.view addSubview:Web.view];
 //        TJWebVC *webVC = [[TJWebVC alloc]initWithUrlString:@"https://www.baidu.com"];
-        WKWebView *web = [[WKWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        NSURLRequest *rq = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
-        [web loadRequest:rq];
+//        WKWebView *web = [[WKWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+//        NSURLRequest *rq = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+//        [web loadRequest:rq];
         
        
         
-        [self.view addSubview:web];
+//        [self.view addSubview:web];
 //        [self.view addSubview:webVC.view];
         
         

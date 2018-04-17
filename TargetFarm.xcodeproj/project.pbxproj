@@ -51,6 +51,10 @@
 		1886F9C7207B02FB00E91086 /* BigFarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1886F9C6207B02FB00E91086 /* BigFarmVC.m */; };
 		1886F9D4207B470600E91086 /* BigFarmScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1886F9D3207B470600E91086 /* BigFarmScene.m */; };
 		1886F9D6207B472200E91086 /* BigFarm.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1886F9D5207B472200E91086 /* BigFarm.sks */; };
+		1886F9E020849C2600E91086 /* XTJWebNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1886F9D920849C2500E91086 /* XTJWebNavigationViewController.m */; };
+		1886F9E120849C2600E91086 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1886F9DB20849C2500E91086 /* UIImage+Extension.m */; };
+		1886F9E220849C2600E91086 /* ATJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1886F9DC20849C2500E91086 /* ATJWebViewController.m */; };
+		1886F9E320849C2600E91086 /* ATJURLFailture.m in Sources */ = {isa = PBXBuildFile; fileRef = 1886F9DD20849C2500E91086 /* ATJURLFailture.m */; };
 		189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699702061ED8E0098AFFF /* BasicTableViewController.m */; };
 		189699742061EDBA0098AFFF /* BasicNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699732061EDBA0098AFFF /* BasicNavigationController.m */; };
 		189699772061EE2C0098AFFF /* BasicTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189699762061EE2C0098AFFF /* BasicTabBarController.m */; };
@@ -161,6 +165,14 @@
 		1886F9D2207B470600E91086 /* BigFarmScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigFarmScene.h; sourceTree = "<group>"; };
 		1886F9D3207B470600E91086 /* BigFarmScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BigFarmScene.m; sourceTree = "<group>"; };
 		1886F9D5207B472200E91086 /* BigFarm.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BigFarm.sks; sourceTree = "<group>"; };
+		1886F9D820849C2500E91086 /* ATJWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATJWebViewController.h; sourceTree = "<group>"; };
+		1886F9D920849C2500E91086 /* XTJWebNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTJWebNavigationViewController.m; sourceTree = "<group>"; };
+		1886F9DA20849C2500E91086 /* ATJURLFailture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATJURLFailture.h; sourceTree = "<group>"; };
+		1886F9DB20849C2500E91086 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		1886F9DC20849C2500E91086 /* ATJWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATJWebViewController.m; sourceTree = "<group>"; };
+		1886F9DD20849C2500E91086 /* ATJURLFailture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATJURLFailture.m; sourceTree = "<group>"; };
+		1886F9DE20849C2500E91086 /* XTJWebNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTJWebNavigationViewController.h; sourceTree = "<group>"; };
+		1886F9DF20849C2500E91086 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		189699652061E8C50098AFFF /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		189699662061E9780098AFFF /* MacroDefinitionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinitionHeader.h; sourceTree = "<group>"; };
 		1896996F2061ED8E0098AFFF /* BasicTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTableViewController.h; sourceTree = "<group>"; };
@@ -255,6 +267,7 @@
 				189699FD206205AB0098AFFF /* BasicView */,
 				1896996E2061ED640098AFFF /* BasicController */,
 				189699672061EBC90098AFFF /* Home */,
+				1886F9D720849C2500E91086 /* WebView */,
 				162DA321204FB742009242DA /* HomeCellModel.h */,
 				162DA322204FB742009242DA /* HomeCellModel.m */,
 				162DA324204FB75F009242DA /* HomeVC.h */,
@@ -487,6 +500,21 @@
 				1886F9D5207B472200E91086 /* BigFarm.sks */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1886F9D720849C2500E91086 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				1886F9D820849C2500E91086 /* ATJWebViewController.h */,
+				1886F9D920849C2500E91086 /* XTJWebNavigationViewController.m */,
+				1886F9DA20849C2500E91086 /* ATJURLFailture.h */,
+				1886F9DB20849C2500E91086 /* UIImage+Extension.m */,
+				1886F9DC20849C2500E91086 /* ATJWebViewController.m */,
+				1886F9DD20849C2500E91086 /* ATJURLFailture.m */,
+				1886F9DE20849C2500E91086 /* XTJWebNavigationViewController.h */,
+				1886F9DF20849C2500E91086 /* UIImage+Extension.h */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		189699672061EBC90098AFFF /* Home */ = {
@@ -784,8 +812,11 @@
 				1800951A206885C4003813C1 /* HomeFoundTargetViewController.m in Sources */,
 				1800952E20688E9C003813C1 /* TargetManage.m in Sources */,
 				162DA31B204FB728009242DA /* CommonHeaderFooterModel.m in Sources */,
+				1886F9E320849C2600E91086 /* ATJURLFailture.m in Sources */,
 				189699712061ED8E0098AFFF /* BasicTableViewController.m in Sources */,
+				1886F9E020849C2600E91086 /* XTJWebNavigationViewController.m in Sources */,
 				18969A09206209890098AFFF /* BasicTableViewCell.m in Sources */,
+				1886F9E220849C2600E91086 /* ATJWebViewController.m in Sources */,
 				162DA2EE204FB71A009242DA /* main.m in Sources */,
 				180095202068882D003813C1 /* HomeFoundTargetView.m in Sources */,
 				18969A3820648F320098AFFF /* WSDatePickerView.m in Sources */,
@@ -793,6 +824,7 @@
 				180095352068F81F003813C1 /* ZXFMDBManager.m in Sources */,
 				1800959C206B7ACB003813C1 /* HomeMyTargetController.m in Sources */,
 				1886F9D4207B470600E91086 /* BigFarmScene.m in Sources */,
+				1886F9E120849C2600E91086 /* UIImage+Extension.m in Sources */,
 				18969A152062438A0098AFFF /* TargetScheduleModel.m in Sources */,
 				1800953C2069D868003813C1 /* ZXDatePickerView.m in Sources */,
 				180095232068885C003813C1 /* HomeFoundTargetSelectBar.m in Sources */,
